@@ -1,0 +1,56 @@
+ManifestFileVersion: 0
+CRC: 3472543465
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: airport_prefab.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: building_prefab.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: common_prefab.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: factory_prefab.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: farm_prefab.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: jetty_prefab.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: loading_prefab.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: login_prefab.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: main_prefab.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: map_prefab.unity3d
+      Dependencies:
+        Dependency_0: map_asset.unity3d
+    Info_10:
+      Name: map_asset.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: mine_prefab.unity3d
+      Dependencies: {}
+    Info_12:
+      Name: storage_prefab.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: tech_prefab.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: town_prefab.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: train_prefab.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: zoo_prefab.unity3d
+      Dependencies: {}

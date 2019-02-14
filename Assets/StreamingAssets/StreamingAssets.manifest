@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 502242916
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: common_prefab.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: jetty_prefab.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: loading_prefab.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: login_prefab.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: main_prefab.unity3d
+      Dependencies: {}
