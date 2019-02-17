@@ -5,6 +5,7 @@ local _M = class()
 function _M:GetGoodsList()
     local goodsList = {}
     local goods = Goods.new()
+    goods:Init()
     goods.name = "小麦"
     goods.num = 100
     goodsList[1] = goods

@@ -21,6 +21,10 @@ function _M:Init()
     self.name = ""
     -- 数量
     self.num = 0
+    -- 描述
+    self.desc = ""
+    -- 售价
+    self.price = 0
     -- 类型
     self.type = GoodsType.None
 end

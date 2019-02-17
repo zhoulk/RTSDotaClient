@@ -28,9 +28,6 @@ Game = class();
 local this = Game
 
 function Game:Start()
-    
-    print("game start")
-
     print("game start")
     NetManager:Init()
     -- CtrlManager:Init()
@@ -51,7 +48,7 @@ function Game.OnInitOK()
     -- CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
     -- CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
 
-    print('LuaFramework InitOK--->>>>>>');
+    print('LuaFramework InitOK--->>>');
 end
 
 --测试协同--

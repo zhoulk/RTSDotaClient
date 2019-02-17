@@ -18,6 +18,7 @@ function _M:OnCreate()
     self.topBlock = self:InitTopBlock(self.transform, "content/top")
     self.menuBlock = self:InitMenuBlock(self.transform, "content/menuList")
     self.goodsBlock = self:InitGoodsBlock(self.transform, "content/storage")
+    self.bottomBlock = self:InitBottomBlock(self.transform, "content/bottom")
 
     self:InitData()
     self:SelectMenu(self.menuItemCache[1])
@@ -64,6 +65,8 @@ end
 
 function _M:InitGoodsData()
     self.goodsData = self.iCtrl:GetGoodsList()
+
+    local currentVolume = 0
     for i,goods in ipairs(self.goodsData) do
         local goodsObj = newObject(self.goodsBlock.goodsItem)
         goodsObj.transform:SetParent(self.goodsBlock.goodsList.content, false)
@@ -78,6 +81,8 @@ function _M:InitGoodsData()
         nameText.text = goods.name
         numText.text = goods.num
 
+        currentVolume = currentVolume + goods.num
+
         local goodsItem = {}
         goodsItem.id = i
         goodsItem.obj = goodsObj
@@ -90,6 +95,8 @@ function _M:InitGoodsData()
             self:OnGoodsClick(goodsItem)
         end)
     end
+
+    self.bottomBlock.volumeText.text = currentVolume .. "/" .. "500"
 end
 
 function _M:InitTopBlock(trans, path)
@@ -122,6 +129,38 @@ function _M:InitGoodsBlock(trans, path)
     block.goodsList = transform:GetComponent("ScrollRect")
     block.goodsItem = transform:Find("item").gameObject
 
+    local itemDetail = self:InitItemDetail(transform, "itemDetail")
+    block.itemDetail = itemDetail
+
+    block.goodsList.gameObject:SetOnClick(function ()
+        block.itemDetail.obj:SetActive(false)
+    end)
+
+    return block
+end
+
+function _M:InitItemDetail(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.obj = transform.gameObject
+    block.titleText = transform:Find("title/text"):GetComponent("Text")
+    block.descText = transform:Find("desc"):GetComponent("Text")
+    block.icon = transform:Find("center/Image"):GetComponent("Image")
+    block.minusBtn = transform:Find("center/minus").gameObject
+    block.plusBtn = transform:Find("center/plus").gameObject
+    block.numText = transform:Find("center/num"):GetComponent("Text")
+    block.goldNumText = transform:Find("gold/num"):GetComponent("Text")
+    block.sellBtn = transform:Find("sellBtn").gameObject
+    return block
+end
+
+function _M:InitBottomBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.volumeText = transform:Find("volume/text"):GetComponent("Text")
+    block.upgradeBtn = transform:Find("upgrade").gameObject
+
     return block
 end
 
@@ -136,7 +175,25 @@ function _M:SelectMenu(menuItem)
 end
 
 function _M:OnGoodsClick(goodsItem)
-    
+
+    local itemSize = goodsItem.obj.transform:GetComponent("RectTransform").sizeDelta
+    local detailSize = self.goodsBlock.itemDetail.obj:GetComponent("RectTransform").sizeDelta
+    if goodsItem.obj.transform.position.x < Screen.width * 0.5 then
+        local pos = Vector3(goodsItem.obj.transform.position.x + itemSize.x * 0.5 + detailSize.x * 0.5, goodsItem.obj.transform.position.y, 0)
+        self.goodsBlock.itemDetail.obj.transform.position = pos
+    else
+        local pos = Vector3(goodsItem.obj.transform.position.x - itemSize.x * 0.5 - detailSize.x * 0.5, goodsItem.obj.transform.position.y, 0)
+        self.goodsBlock.itemDetail.obj.transform.position = pos
+    end
+    self:ShowItemDetail(self.goodsBlock.itemDetail, goodsItem.data)
+    self.goodsBlock.itemDetail.obj:SetActive(true)
+end
+
+function _M:ShowItemDetail(item, data)
+    item.titleText.text = data.name
+    item.descText.text = data.desc
+    item.numText.text = data.num / 2
+    item.goldNumText.text = data.num / 2 * data.price
 end
 
 function _M:OnBackClick()
