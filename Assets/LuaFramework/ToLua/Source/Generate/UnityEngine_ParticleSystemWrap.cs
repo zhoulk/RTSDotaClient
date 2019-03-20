@@ -18,7 +18,6 @@ public class UnityEngine_ParticleSystemWrap
 		L.RegFunction("Clear", Clear);
 		L.RegFunction("IsAlive", IsAlive);
 		L.RegFunction("Emit", Emit);
-		L.RegFunction("EnableMeshNonUniformScaleFix", EnableMeshNonUniformScaleFix);
 		L.RegFunction("New", _CreateUnityEngine_ParticleSystem);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -395,22 +394,6 @@ public class UnityEngine_ParticleSystemWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: UnityEngine.ParticleSystem.Emit");
 			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int EnableMeshNonUniformScaleFix(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 1);
-			bool arg0 = LuaDLL.luaL_checkboolean(L, 1);
-			UnityEngine.ParticleSystem.EnableMeshNonUniformScaleFix(arg0);
-			return 0;
 		}
 		catch (Exception e)
 		{
