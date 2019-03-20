@@ -30,8 +30,8 @@ local this = Game
 function Game:Start()
     print("game start")
     NetManager:Init()
-    -- CtrlManager:Init()
-    -- ViewManager:Init()
+    CtrlManager:Init()
+    ViewManager:Init()
     PBManager:Init()
     PanelManager.Instance():Init( function ()
         this.OnInitOK()
@@ -45,8 +45,8 @@ function Game.OnInitOK()
     AppConst.SocketAddress = App.serverIp;
     networkMgr:SendConnect();
 
-    -- CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
-    -- CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
+    CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
+    --CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
 
     print('LuaFramework InitOK--->>>');
 end

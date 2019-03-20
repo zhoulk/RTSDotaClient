@@ -6,8 +6,8 @@ PBManager = _PBManager.Instance()
 
 function _PBManager:Init()
     self:Registe("err.pb")
-
     self:Registe("login.pb")
+    self:Registe("hero.pb")
 end
 
 function _PBManager:Registe(luaName)

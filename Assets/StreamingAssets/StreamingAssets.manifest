@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 502242916
+CRC: 2684196257
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -16,4 +16,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: main_prefab.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: test_prefab.unity3d
       Dependencies: {}

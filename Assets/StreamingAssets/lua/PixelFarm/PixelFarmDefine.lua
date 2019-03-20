@@ -24,7 +24,9 @@ MoudleNames = {
     PlayerInfo = "PlayerInfo",
     Building = "Building",
     Storage = "Storage",
-    Town = "Town"
+    Town = "Town",
+
+    Test = "Test"
 }
 
 -- UI层级
@@ -53,5 +55,6 @@ require "PixelFarm/Modules/Building/BuildingDefine"
 require "PixelFarm/Modules/Storage/StorageDefine"
 require "PixelFarm/Modules/Town/TownDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
+require "PixelFarm/Modules/Test/TestDefine"
 
 require "PixelFarm.EventDefine"

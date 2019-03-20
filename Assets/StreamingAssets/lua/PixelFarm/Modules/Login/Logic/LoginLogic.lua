@@ -5,10 +5,17 @@ local _LoginLogic = class()
 
 -- 登录
 -- cb(succeed, err)
+
+local loginResponseFunc
+local registeResponseFunc
+
 function _LoginLogic:Login(accout, password, cb)
     print("[LoginLogic.Login] account = " .. accout .. " password = " .. password)
 
-    local loginResponseFunc = function(buffer)
+    if loginResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("LoginResponse"), loginResponseFunc) 
+    end
+    loginResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
         print("[LoginLogic.Login] response")
@@ -18,7 +25,7 @@ function _LoginLogic:Login(accout, password, cb)
         print("[LoginLogic.Login] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
-            self:SaveUid(decode.uid)
+            -- self:SaveUid(decode.uid)
             if cb then
                 cb(true)
             end
@@ -27,8 +34,6 @@ function _LoginLogic:Login(accout, password, cb)
                 cb(false, decode.err)
             end
         end
-
-        Event.RemoveListener(Protocal.KeyOf("LoginResponse"), loginResponseFunc)
     end
     Event.AddListener(Protocal.KeyOf("LoginResponse"), loginResponseFunc) 
 
@@ -46,7 +51,10 @@ end
 function _LoginLogic:Registe(accout, password, cb)
     print("[LoginLogic] Registe account = " .. accout .. " password = " .. password)
 
-    local registeResponseFunc = function(buffer)
+    if registeResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("RegisteResponse"), registeResponseFunc) 
+    end
+    registeResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
         print("[LoginLogic.Registe] response")
@@ -68,8 +76,6 @@ function _LoginLogic:Registe(accout, password, cb)
                 cb(false, decode.err)
             end
         end
-
-        Event.RemoveListener(Protocal.KeyOf("RegisteResponse"), registeResponseFunc) 
     end
     Event.AddListener(Protocal.KeyOf("RegisteResponse"), registeResponseFunc) 
 

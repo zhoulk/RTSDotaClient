@@ -13,10 +13,10 @@ function Event.AddListener(event,handler)
 		event = tostring(event)
 	end
 	if not event or type(event) ~= "string" then
-		error("event parameter in addlistener function has to be string, " .. type(event) .. " not right.")
+		print("event parameter in addlistener function has to be string, " .. type(event) .. " not right.")
 	end
 	if not handler or type(handler) ~= "function" then
-		error("handler parameter in addlistener function has to be function, " .. type(handler) .. " not right")
+		print("handler parameter in addlistener function has to be function, " .. type(handler) .. " not right")
 	end
 
 	if not events[event] then
@@ -29,18 +29,36 @@ function Event.AddListener(event,handler)
 end
 
 function Event.Brocast(event,...)
+
+	if type(event) == "number" then
+		event = tostring(event)
+	end
+	if not event or type(event) ~= "string" then
+		print("event parameter in addlistener function has to be string, " .. type(event) .. " not right.")
+	end
+
 	if not events[event] then
-		error("brocast " .. event .. " has no event.")
+		print("brocast " .. event .. " has no event.")
 	else
 		events[event]:fire(...)
 	end
 end
 
 function Event.RemoveListener(event,handler)
+	if type(event) == "number" then
+		event = tostring(event)
+	end
+	if not event or type(event) ~= "string" then
+		print("event parameter in RemoveListener function has to be string, " .. type(event) .. " not right.")
+	end
+	if not handler or type(handler) ~= "function" then
+		print("handler parameter in RemoveListener function has to be function, " .. type(handler) .. " not right")
+	end
+
 	if not events[event] then
-		error("remove " .. event .. " has no event.")
+		print("remove " .. event .. " has no event.")
 	else
-		events[event]:disconnect(handler)
+		events[event]:Disconnect(handler)
 	end
 end
 
