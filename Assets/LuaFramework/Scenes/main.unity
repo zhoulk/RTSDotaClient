@@ -380,6 +380,26 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224006190823084604, guid: 3b77a30844051fd42a0629d59325875e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 611
+      objectReference: {fileID: 0}
+    - target: {fileID: 224380250925417018, guid: 3b77a30844051fd42a0629d59325875e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 410
+      objectReference: {fileID: 0}
+    - target: {fileID: 224124923249675378, guid: 3b77a30844051fd42a0629d59325875e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 224166146050855722, guid: 3b77a30844051fd42a0629d59325875e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 175.93405
+      objectReference: {fileID: 0}
     - target: {fileID: 224380250925417018, guid: 3b77a30844051fd42a0629d59325875e,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -392,28 +412,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 224380250925417018, guid: 3b77a30844051fd42a0629d59325875e,
         type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 410
-      objectReference: {fileID: 0}
-    - target: {fileID: 224380250925417018, guid: 3b77a30844051fd42a0629d59325875e,
-        type: 2}
       propertyPath: m_SizeDelta.y
       value: 1155
-      objectReference: {fileID: 0}
-    - target: {fileID: 224006190823084604, guid: 3b77a30844051fd42a0629d59325875e,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 611
       objectReference: {fileID: 0}
     - target: {fileID: 224166146050855722, guid: 3b77a30844051fd42a0629d59325875e,
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 1155
-      objectReference: {fileID: 0}
-    - target: {fileID: 224124923249675378, guid: 3b77a30844051fd42a0629d59325875e,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1938712646698682, guid: 3b77a30844051fd42a0629d59325875e, type: 2}
       propertyPath: m_IsActive
@@ -498,7 +503,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

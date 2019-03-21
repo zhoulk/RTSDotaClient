@@ -8,6 +8,10 @@ function _PBManager:Init()
     self:Registe("err.pb")
     self:Registe("login.pb")
     self:Registe("hero.pb")
+    self:Registe("skill.pb")
+    self:Registe("item.pb")
+    self:Registe("map.pb")
+    self:Registe("battle.pb")
 end
 
 function _PBManager:Registe(luaName)
