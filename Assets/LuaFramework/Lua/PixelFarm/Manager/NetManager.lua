@@ -25,4 +25,8 @@ function _NetManager:Init()
     Protocal.Registe(117, "GuanKaResponse")
     Protocal.Registe(118, "BattleGuanKaRequest")
     Protocal.Registe(119, "BattleGuanKaResponse")
+    Protocal.Registe(120, "HeroSelectRequest")
+    Protocal.Registe(121, "HeroSelectResponse")
+    Protocal.Registe(122, "HeroUnSelectRequest")
+    Protocal.Registe(123, "HeroUnSelectResponse")
 end

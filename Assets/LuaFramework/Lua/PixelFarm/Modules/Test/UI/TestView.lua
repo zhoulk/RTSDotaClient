@@ -7,6 +7,8 @@ local BattleLogic = require "PixelFarm.Modules.Logic.BattleLogic"
 
 local _M = class(ViewBase)
 
+local ownHeros = {}
+
 function _M:OnCreate()
     self.item = self.transform:Find("bg/btnList/item").gameObject
     self.btnList = self.transform:Find("bg/btnList/Viewport/Content").gameObject
@@ -21,6 +23,8 @@ function _M:OnCreate()
         hero_allHero = function() self:AllHero() end,
         hero_randomHero = function() self:RandomHero() end,
         hero_ownHero = function() self:OwnHero() end,
+        hero_selectHero = function() self:SelectHero() end,
+        hero_unSelectHero = function() self:UnSelectHero() end,
         skill_allSkill = function() self:AllSkill() end,
         item_allItem = function() self:AllItem() end,
         map_allGuanKa = function() self:AllGuanKa() end,
@@ -53,8 +57,8 @@ function _M:Login()
     _name = "zhoulk"
     _pwd = "123456"
     self.requestText.text = "name : " .. _name .. "\n" .. "pwd : " .. _pwd
-    LoginLogic:Login(_name, _pwd, function (succeed, err)
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err)
+    LoginLogic:Login(_name, _pwd, function (succeed, err, player)
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nplayer : " .. self:PlayerStr(player)
     end)
 end
 
@@ -62,8 +66,8 @@ function _M:Registe()
     _name = "zhoulk"
     _pwd = "123456"
     self.requestText.text = "name : " .. _name .. "\n" .. "pwd : " .. _pwd
-    LoginLogic:Registe(_name, _pwd, function (succeed, err)
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err)
+    LoginLogic:Registe(_name, _pwd, function (succeed, err, player)
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nplayer : " .. self:PlayerStr(player)
     end)
 end
 
@@ -84,8 +88,9 @@ function _M:OwnHero()
             for i,hero in pairs(heros) do
                 str = str .. self:HeroStr(hero)
             end
+            ownHeros = heros
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nheros : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nheros : " .. str
     end)
 end
 
@@ -98,8 +103,35 @@ function _M:AllHero()
                 str = str .. self:HeroStr(hero)
             end
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nheros : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nheros : " .. str
     end)
+end
+
+function _M:SelectHero()
+    if ownHeros ~= null and #ownHeros > 0 then
+        _heroId = ownHeros[1].HeroId
+        _pos = 1
+        self.requestText.text = "heroId : " .. _heroId .. ", pos : " .. _pos
+        HeroLogic:SelectHero(_heroId, _pos, function (succeed, err, heroIds)
+            local str = tabStr(heroIds)
+            self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nheroIds : " .. str
+        end)
+    else
+        self.responseText.text = "own heros is null"
+    end
+end
+
+function _M:UnSelectHero()
+    if ownHeros ~= null and #ownHeros > 0 then
+        _heroId = ownHeros[1].HeroId
+        self.requestText.text = "heroId : " .. _heroId
+        HeroLogic:UnSelectHero(_heroId, function (succeed, err, heroIds)
+            local str = tabStr(heroIds)
+            self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nheroIds : " .. str
+        end)
+    else
+        self.responseText.text = "own heros is null"
+    end
 end
 
 function _M:AllSkill()
@@ -111,7 +143,7 @@ function _M:AllSkill()
                 str = str .. self:SkillStr(skill)
             end
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nskills : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nskills : " .. str
     end)
 end
 
@@ -124,7 +156,7 @@ function _M:AllItem()
                 str = str .. self:ItemStr(item)
             end
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nitems : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nitems : " .. str
     end)
 end
 
@@ -137,7 +169,7 @@ function _M:AllChapter()
                 str = str .. self:chapterStr(chapter)
             end
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nchapters : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nchapters : " .. str
     end)
 end
 
@@ -150,19 +182,19 @@ function _M:AllGuanKa()
                 str = str .. self:guanKaStr(guanKa)
             end
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nguanKas : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nguanKas : " .. str
     end)
 end
 
 function _M:BattleGuanKa()
     _guanKaId = 1
     self.requestText.text = "guanKaId : " .. _guanKaId .. "\n"
-    BattleLogic:BattleGuanKa(_guanKaId, function (succeed, err, guanka)
+    BattleLogic:BattleGuanKa(_guanKaId, function (succeed, err, result, guanka)
         local str = ""
         if guanka then
-            str = str .. self:guanKaStr(guanKa)
+            str = str .. self:guanKaStr(guanka)
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. tostring(err) .. "\nguanKa : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nresult : " .. result .. "\nguanKa : " .. str
     end)
 end
 
@@ -178,6 +210,10 @@ function _M:HeroStr(hero)
     local str = ""
     if hero then
         str = str .. "\n{Id : " .. hero.Id
+        str = str .. ", HeroId : " .. hero.HeroId
+        str = str .. ", PlayerId : " .. hero.PlayerId
+        str = str .. ", IsSelect : " .. tostring(hero.IsSelect)
+        str = str .. ", Pos : " .. hero.Pos
         str = str .. ", Name : " .. hero.Name
         str = str .. ", Level : " .. hero.Level
         str = str .. ", Type : " .. hero.Type
@@ -235,6 +271,7 @@ function _M:chapterStr(chapter)
     if chapter then
         str = str .. "\n{Id : " .. chapter.Id
         str = str .. ", Name : " .. chapter.Name
+        str = str .. ", IsOpen : " .. tostring(chapter.IsOpen)
         str = str .. "},"
     end
     return str
@@ -246,6 +283,7 @@ function _M:guanKaStr(guanKa)
         str = str .. "\n{Id : " .. guanKa.Id
         str = str .. ", Name : " .. guanKa.Name
         str = str .. ", ChapterId : " .. guanKa.ChapterId
+        str = str .. ", IsOpen : " .. tostring(guanKa.IsOpen)
         str = str .. ", Earn : " .. self:earnStr(guanKa.Earn)
         str = str .. ", Expend : " .. self:expendStr(guanKa.Expend)
         str = str .. "},"
@@ -269,6 +307,30 @@ function _M:expendStr(expend)
     local str = ""
     if expend then
         str = str .. "{ Power : " .. expend.Power
+        str = str .. "},"
+    end
+    return str
+end
+
+function _M:PlayerStr(player)
+    local str = ""
+    if player then
+        str = str .. "\n{UserId : " .. player.UserId
+        str = str .. ", Name : " .. player.Name
+        str = str .. ", BaseInfo : " .. self:BaseInfoStr(player.BaseInfo)
+        str = str .. "},"
+    end
+    return str
+end
+
+function _M:BaseInfoStr(baseInfo)
+    local str = ""
+    if baseInfo then
+        str = str .. "{ Gold : " .. baseInfo.Gold
+        str = str .. ", Diamond : " .. baseInfo.Diamond
+        str = str .. ", Exp : " .. baseInfo.Exp
+        str = str .. ", Power : " .. baseInfo.Power
+        str = str .. ", Level : " .. baseInfo.Level
         str = str .. "},"
     end
     return str

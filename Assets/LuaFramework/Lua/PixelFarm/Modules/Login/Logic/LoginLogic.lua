@@ -27,7 +27,7 @@ function _LoginLogic:Login(accout, password, cb)
         if decode.code == "SUCCESS" then
             -- self:SaveUid(decode.uid)
             if cb then
-                cb(true)
+                cb(true, nil, decode.player)
             end
         else
             if cb then
@@ -67,9 +67,9 @@ function _LoginLogic:Registe(accout, password, cb)
         print(decode.err.msg)
         
         if decode.code == "SUCCESS" then
-            self:SaveUid(decode.uid)
+            -- self:SaveUid(decode.uid)
             if cb then
-                cb(true)
+                cb(true, nil, decode.player)
             end
         else
             if cb then

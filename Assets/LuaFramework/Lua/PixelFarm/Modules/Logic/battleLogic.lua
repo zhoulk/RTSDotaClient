@@ -22,7 +22,7 @@ function _BattleLogic:BattleGuanKa(guanKaId, cb)
         if decode.code == "SUCCESS" then
             -- self:SaveUid(decode.uid)
             if cb then
-                cb(true, nil, decode.guanka)
+                cb(true, nil, decode.result, decode.guanka)
             end
         else
             if cb then
