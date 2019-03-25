@@ -1,5 +1,5 @@
 
-ö
+≥
 skill.protomsg	err.proto"
 SkillRequest"x
 SkillResponse%
@@ -7,10 +7,11 @@
 err (2
 .msg.ErrorRerr"
 skills (2
-.msg.SkillRskills"i
+.msg.SkillRskills"Å
 Skill
 Id (RId
 Name (	RName
 Level (RLevel
 Type (RType
-Desc (	RDescbproto3
+Desc (	RDesc
+IsOpen (RIsOpenbproto3

@@ -237,6 +237,7 @@ function _M:SkillStr(skill)
         str = str .. ", Level : " .. skill.Level
         str = str .. ", Type : " .. skill.Type
         str = str .. ", Desc : " .. skill.Desc
+        str = str .. ", IsOpen : " .. tostring(skill.IsOpen)
         str = str .. "},"
     end
     return str
