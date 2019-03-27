@@ -4,6 +4,7 @@ local _SkillLogic = class()
 -- cb(succeed, err, heros)
 
 local skillResponseFunc
+local skillUpgradeFunc
 
 function _SkillLogic:AllSkill(cb)
 
@@ -40,5 +41,43 @@ function _SkillLogic:AllSkill(cb)
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
 end
+
+function _SkillLogic:UpgradeSkill(skillId, cb)
+
+    if skillUpgradeFunc then
+        Event.RemoveListener(Protocal.KeyOf("SkillUpgradeResponse"), skillUpgradeFunc) 
+    end
+    skillUpgradeFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[SkillLogic.SkillUpgrade] response")
+
+        local decode = protobuf.decode("msg.SkillUpgradeResponse", data)
+
+        print("[SkillLogic.SkillUpgrade] response = " .. tabStr(decode))
+
+        if decode.code == "SUCCESS" then
+            -- self:SaveUid(decode.uid)
+            if cb then
+                cb(true, nil)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("SkillUpgradeResponse"), skillUpgradeFunc) 
+
+    local heroParams = {
+        skillId = skillId
+    }
+    local code = protobuf.encode("msg.SkillUpgradeRequest", heroParams)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("SkillUpgradeRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
 
 return _SkillLogic

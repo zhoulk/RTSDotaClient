@@ -8,6 +8,8 @@ local BattleLogic = require "PixelFarm.Modules.Logic.BattleLogic"
 local _M = class(ViewBase)
 
 local ownHeros = {}
+local heroSkills = {}
+local heroItems = {}
 
 function _M:OnCreate()
     self.item = self.transform:Find("bg/btnList/item").gameObject
@@ -25,7 +27,10 @@ function _M:OnCreate()
         hero_ownHero = function() self:OwnHero() end,
         hero_selectHero = function() self:SelectHero() end,
         hero_unSelectHero = function() self:UnSelectHero() end,
+        hero_heroSkills = function() self:HeroSkills() end,
+        hero_heroItems = function() self:HeroItems() end,
         skill_allSkill = function() self:AllSkill() end,
+        skill_skillUpgrade = function() self:UpgradeSkill() end,
         item_allItem = function() self:AllItem() end,
         map_allGuanKa = function() self:AllGuanKa() end,
         map_allChapter = function() self:AllChapter() end,
@@ -134,6 +139,39 @@ function _M:UnSelectHero()
     end
 end
 
+function _M:HeroSkills()
+    if ownHeros ~= null and #ownHeros > 0 then
+        _heroId = ownHeros[1].HeroId
+        self.requestText.text = "heroId : " .. _heroId
+        HeroLogic:HeroSkills(_heroId, function (succeed, err, skills)
+            heroSkills = skills
+            local str = ""
+            if skills then
+                for i,skill in pairs(skills) do
+                    str = str .. self:SkillStr(skill)
+                end
+            end
+            self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nskills : " .. str
+        end)
+    else
+        self.responseText.text = "own heros is null"
+    end
+end
+
+function _M:HeroItems()
+    if ownHeros ~= nil and #ownHeros > 0 then
+        _heroId = ownHeros[1].HeroId
+        self.requestText.text = "heroId : " .. _heroId
+        HeroLogic:HeroItems(_heroId, function (succeed, err, items)
+            heroItems = items
+            local str = tabStr(items)
+            self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nitems : " .. str
+        end)
+    else
+        self.responseText.text = "own heros is null"
+    end
+end
+
 function _M:AllSkill()
     self.requestText.text = "null"
     SkillLogic:AllSkill(function (succeed, err, skills)
@@ -145,6 +183,18 @@ function _M:AllSkill()
         end
         self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nskills : " .. str
     end)
+end
+
+function _M:UpgradeSkill()
+    if heroSkills ~= nil and #heroSkills > 0 then
+        _skillId = heroSkills[1].SkillId
+        self.requestText.text = "skillId : " .. _skillId
+        SkillLogic:UpgradeSkill(_skillId, function (succeed, err)
+            self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err)
+        end)
+    else
+        self.responseText.text = "own heroSkills is null"
+    end
 end
 
 function _M:AllItem()
@@ -194,7 +244,7 @@ function _M:BattleGuanKa()
         if guanka then
             str = str .. self:guanKaStr(guanka)
         end
-        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nresult : " .. result .. "\nguanKa : " .. str
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nresult : " .. tostring(result) .. "\nguanKa : " .. str
     end)
 end
 

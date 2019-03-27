@@ -1,5 +1,5 @@
 
-„
+Á
 login.protomsg	err.proto"D
 LoginRequest
 account (	Raccount
@@ -20,10 +20,14 @@
 Player
 UserId (	RUserId
 Name (	RName)
-BaseInfo (2.msg.BaseInfoRBaseInfo"v
+BaseInfo (2.msg.BaseInfoRBaseInfo"²
 BaseInfo
 Gold (RGold
 Diamond (RDiamond
 Exp (RExp
 Power (RPower
-Level (RLevelbproto3
+Level (RLevel
+
+LevelUpExp (R
+LevelUpExp
+MaxPower (RMaxPowerbproto3
