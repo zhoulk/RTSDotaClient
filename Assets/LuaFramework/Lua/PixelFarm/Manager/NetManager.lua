@@ -35,4 +35,6 @@ function _NetManager:Init()
     Protocal.Registe(127, "HeroItemsResponse")
     Protocal.Registe(128, "SkillUpgradeRequest")
     Protocal.Registe(129, "SkillUpgradeResponse")
+    Protocal.Registe(130, "ZoneRequest")
+    Protocal.Registe(131, "ZoneResponse")
 end

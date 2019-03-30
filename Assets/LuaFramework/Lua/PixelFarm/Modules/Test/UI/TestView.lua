@@ -22,6 +22,7 @@ function _M:OnCreate()
     self.strs = {
         login_login = function() self:Login() end,
         login_registe = function() self:Registe() end,
+        login_allZone = function() self:AllZone() end,
         hero_allHero = function() self:AllHero() end,
         hero_randomHero = function() self:RandomHero() end,
         hero_ownHero = function() self:OwnHero() end,
@@ -30,7 +31,10 @@ function _M:OnCreate()
         hero_heroSkills = function() self:HeroSkills() end,
         hero_heroItems = function() self:HeroItems() end,
         skill_allSkill = function() self:AllSkill() end,
-        skill_skillUpgrade = function() self:UpgradeSkill() end,
+        skill_skillUpgrade1 = function() self:UpgradeSkill(1) end,
+        skill_skillUpgrade2 = function() self:UpgradeSkill(2) end,
+        skill_skillUpgrade3 = function() self:UpgradeSkill(3) end,
+        skill_skillUpgrade4 = function() self:UpgradeSkill(4) end,
         item_allItem = function() self:AllItem() end,
         map_allGuanKa = function() self:AllGuanKa() end,
         map_allChapter = function() self:AllChapter() end,
@@ -73,6 +77,19 @@ function _M:Registe()
     self.requestText.text = "name : " .. _name .. "\n" .. "pwd : " .. _pwd
     LoginLogic:Registe(_name, _pwd, function (succeed, err, player)
         self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nplayer : " .. self:PlayerStr(player)
+    end)
+end
+
+function _M:AllZone()
+    self.requestText.text = "null"
+    LoginLogic:AllZone(function (succeed, err, zones)
+        local str = ""
+        if zones then
+            for i,zone in pairs(zones) do
+                str = str .. self:ZoneStr(zone)
+            end
+        end
+        self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err) .. "\nzones : " .. str
     end)
 end
 
@@ -185,9 +202,9 @@ function _M:AllSkill()
     end)
 end
 
-function _M:UpgradeSkill()
+function _M:UpgradeSkill(index)
     if heroSkills ~= nil and #heroSkills > 0 then
-        _skillId = heroSkills[1].SkillId
+        _skillId = heroSkills[index].SkillId
         self.requestText.text = "skillId : " .. _skillId
         SkillLogic:UpgradeSkill(_skillId, function (succeed, err)
             self.responseText.text = tostring(succeed) .. "\nerr : " .. self:ErrStr(err)
@@ -266,6 +283,7 @@ function _M:HeroStr(hero)
         str = str .. ", Pos : " .. hero.Pos
         str = str .. ", Name : " .. hero.Name
         str = str .. ", Level : " .. hero.Level
+        str = str .. ", Exp : " .. hero.Exp
         str = str .. ", Type : " .. hero.Type
         str = str .. ", Strength : " .. hero.Strength .. "(+" .. hero.StrengthStep .. ")"
         str = str .. ", Agility : " .. hero.Agility .. "(+" .. hero.AgilityStep .. ")"
@@ -382,6 +400,17 @@ function _M:BaseInfoStr(baseInfo)
         str = str .. ", Exp : " .. baseInfo.Exp
         str = str .. ", Power : " .. baseInfo.Power
         str = str .. ", Level : " .. baseInfo.Level
+        str = str .. "},"
+    end
+    return str
+end
+
+function _M:ZoneStr(zone)
+    local str = ""
+    if zone then
+        str = str .. "\n{ Id : " .. zone.Id
+        str = str .. ", Name : " .. zone.Name
+        str = str .. ", IsNew : " .. tostring(zone.IsNew)
         str = str .. "},"
     end
     return str

@@ -11,7 +11,8 @@ end
 function _LoadingCtrl:ShowMainView()
     local player = PlayerInterface:CurrentPlayer()
     print(tabStr(player))
-    CtrlManager:OpenCtrl(MoudleNames.Test, TestCtrlNames.Test)
+    -- CtrlManager:OpenCtrl(MoudleNames.Test, TestCtrlNames.Test)
+    CtrlManager:OpenCtrl(MoudleNames.Login, LoginCtrlNames.Login)
     -- if player and player.uid and #player.uid > 0 then
     --     LoginInterface:Login(player.uid,"",function (succeed, err)
     --         if succeed then

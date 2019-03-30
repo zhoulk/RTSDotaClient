@@ -79,3 +79,19 @@ function findPanel(str)
 	end
 	return obj:GetComponent("BaseLua");
 end
+
+function toast(str, delay)
+	toastCtrl = CtrlManager:GetCtrl(CommonCtrlNames.Toast)
+	delay = delay or 1.5
+	toastCtrl:ShowToast(str,delay)
+end
+
+function reverseTable(tab)  
+    local tmp = {}  
+    for i = 1, #tab do  
+        local key = #tab  
+        tmp[i] = table.remove(tab)  
+    end  
+  
+    return tmp  
+end  

@@ -8,6 +8,7 @@ local _LoginLogic = class()
 
 local loginResponseFunc
 local registeResponseFunc
+local zoneResponseFunc
 
 function _LoginLogic:Login(accout, password, cb)
     print("[LoginLogic.Login] account = " .. accout .. " password = " .. password)
@@ -25,9 +26,9 @@ function _LoginLogic:Login(accout, password, cb)
         print("[LoginLogic.Login] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
-            -- self:SaveUid(decode.uid)
+            self:SaveUid(decode.player.UserId)
             if cb then
-                cb(true)
+                cb(true, nil, decode.player)
             end
         else
             if cb then
@@ -67,9 +68,9 @@ function _LoginLogic:Registe(accout, password, cb)
         print(decode.err.msg)
         
         if decode.code == "SUCCESS" then
-            self:SaveUid(decode.uid)
+            self:SaveUid(decode.player.UserId)
             if cb then
-                cb(true)
+                cb(true, nil, decode.player)
             end
         else
             if cb then
@@ -86,6 +87,45 @@ function _LoginLogic:Registe(accout, password, cb)
     local code = protobuf.encode("msg.RegisteRequest", registe)
     local buffer = ByteBuffer.New()
     buffer:WriteShort(Protocal.KeyOf("RegisteRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
+function _LoginLogic:AllZone(cb)
+
+    if zoneResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("ZoneResponse"), zoneResponseFunc) 
+    end
+    zoneResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[LoginLogic.AllZone] response")
+
+        local decode = protobuf.decode("msg.ZoneResponse", data)
+
+        print("[LoginLogic.AllZone] response = " .. tabStr(decode) .. type(decode))
+        print(decode.code)
+        print(decode.err.code)
+        print(decode.err.msg)
+        
+        if decode.code == "SUCCESS" then
+            -- self:SaveUid(decode.uid)
+            if cb then
+                cb(true, nil, decode.zones)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("ZoneResponse"), zoneResponseFunc) 
+
+    local params = {
+    }
+    local code = protobuf.encode("msg.ZoneRequest", params)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("ZoneRequest"))
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
 end

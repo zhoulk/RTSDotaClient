@@ -1,4 +1,5 @@
 local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
+local PlayerInterface = require "PixelFarm.Modules.PlayerInfo.Interface.PlayerInfoInterface"
 
 local _LoginCtrl = class(CtrlBase)
 
@@ -13,7 +14,7 @@ function _LoginCtrl:Login(accout, password)
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else
-            CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
+            toast(err.msg)
         end
     end)
 end
@@ -24,9 +25,26 @@ function _LoginCtrl:Registe(accout, password)
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else
-            CtrlManager:GetCtrl(CommonCtrlNames.Toast):ShowToast(err.msg)
+            toast(err.msg)
         end
     end)
+end
+
+function _LoginCtrl:AllZones(cb)
+    LoginLogic:AllZone(function(succeed, err, zones)
+        if succeed then
+            if cb ~= nil then
+                cb(zones)
+            end
+        else
+            toast("获取服务器列表失败，请检查网络！")
+        end
+    end)
+end
+
+function _LoginCtrl:CurrentUser()
+    local player = PlayerInterface:CurrentPlayer()
+    return player
 end
 
 return _LoginCtrl

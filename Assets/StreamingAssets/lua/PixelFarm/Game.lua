@@ -10,6 +10,7 @@ local print_r = require "3rd/sproto/print_r"
 
 require "Common/functions"
 require "Common/define"
+require "common/printObj"
 
 require "Framework/Core/class"
 require "Framework/Core/CtrlBase"
@@ -46,7 +47,7 @@ function Game.OnInitOK()
     networkMgr:SendConnect();
 
     CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
-    --CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
+    CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
 
     print('LuaFramework InitOK--->>>');
 end

@@ -1,5 +1,5 @@
 
-Á
+ˆ
 login.protomsg	err.proto"D
 LoginRequest
 account (	Raccount
@@ -16,7 +16,13 @@
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr#
-player (2.msg.PlayerRplayer"_
+player (2.msg.PlayerRplayer"
+ZoneRequest"t
+ZoneResponse%
+code (2.msg.ResponseCodeRcode
+err (2
+.msg.ErrorRerr
+zones (2	.msg.ZoneRzones"_
 Player
 UserId (	RUserId
 Name (	RName)
@@ -30,4 +36,8 @@
 
 LevelUpExp (R
 LevelUpExp
-MaxPower (RMaxPowerbproto3
+MaxPower (RMaxPower"@
+Zone
+Id (	RId
+Name (	RName
+IsNew (RIsNewbproto3

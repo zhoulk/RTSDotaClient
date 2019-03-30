@@ -45,6 +45,7 @@ end
 function Network.OnDisconnect() 
     islogging = false; 
     logError("OnDisconnect------->>>>");
+    toast("连接异常！")
 end
 
 --登录返回--
