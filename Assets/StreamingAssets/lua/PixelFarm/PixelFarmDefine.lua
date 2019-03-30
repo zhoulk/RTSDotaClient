@@ -12,19 +12,8 @@ MoudleNames = {
     Loading = "Loading",
     Main = "Main",
     Login = "Login",
-    Map = "Map",
-    Farm = "Farm",
-    Factory = "Factory",
-    Tech = "Tech",
-    Jetty = "Jetty",
-    Mine = "Mine",
-    Zoo = "Zoo",
-    Airport = "Airport",
-    Train = "Train",
-    PlayerInfo = "PlayerInfo",
-    Building = "Building",
-    Storage = "Storage",
-    Town = "Town",
+    Tavern = "Tavern",
+    BattleArr = "BattleArr",
 
     Test = "Test"
 }
@@ -42,18 +31,8 @@ UIPanelOrder = {UIPanelNames.Low, UIPanelNames.Mid, UIPanelNames.High, UIPanelNa
 require "PixelFarm/Modules/Loading/LoadingDefine"
 require "PixelFarm/Modules/Main/MainDefine"
 require "PixelFarm/Modules/Login/LoginDefine"
-require "PixelFarm/Modules/Map/MapDefine"
-require "PixelFarm/Modules/Farm/FarmDefine"
-require "PixelFarm/Modules/Tech/TechDefine"
-require "PixelFarm/Modules/Factory/FactoryDefine"
-require "PixelFarm/Modules/Jetty/JettyDefine"
-require "PixelFarm/Modules/Mine/MineDefine"
-require "PixelFarm/Modules/Zoo/ZooDefine"
-require "PixelFarm/Modules/Airport/AirportDefine"
-require "PixelFarm/Modules/Train/TrainDefine"
-require "PixelFarm/Modules/Building/BuildingDefine"
-require "PixelFarm/Modules/Storage/StorageDefine"
-require "PixelFarm/Modules/Town/TownDefine"
+require "PixelFarm/Modules/Tavern/TavernDefine"
+require "PixelFarm/Modules/BattleArr/BattleArrDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
 require "PixelFarm/Modules/Test/TestDefine"
 

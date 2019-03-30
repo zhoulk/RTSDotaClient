@@ -19,7 +19,12 @@ end
 
 function _M:ShowTavern()
     CtrlManager:OpenCtrl(MoudleNames.Tavern, TavernCtrlNames.Tavern)
-    CtrlManager:CloseCtrl(MainViewNames.Main)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
+end
+
+function _M:ShowBattleArr()
+    CtrlManager:OpenCtrl(MoudleNames.BattleArr, BattleArrCtrlNames.BattleArr)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
 return _M

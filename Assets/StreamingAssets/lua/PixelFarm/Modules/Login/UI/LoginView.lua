@@ -21,7 +21,7 @@ function _LoginView:OnCreate()
     end)
 
     self.player = self.iCtrl:CurrentUser()
-    if self.player then
+    if self.player and #self.player.UserId > 0 then
         self.enterBtn:SetActive(true)
     else
         self.enterBtn:SetActive(false)
@@ -149,7 +149,7 @@ end
 
 function _LoginView:OnEnterBtnClick()
     print("OnEnterBtnClick ~~~~~")
-    self.iCtrl:Login(self.player.uid, "")
+    self.iCtrl:Login(self.player.UserId, "")
 end
 
 function _LoginView:OnAllZoneClick()

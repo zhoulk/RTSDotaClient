@@ -4,13 +4,12 @@ local _M = class(ViewBase)
 function _M:OnCreate()
     print("_TavernView oncreate  ~~~~~~~")
 
-    -- self.playerBlock = self:InitPlayerBlock(self.transform, "bg/player")
-    -- self.powerBlock = self:InitPowerBlock(self.transform, "bg/power")
-    -- self.coinBlock = self:InitCoinBlock(self.transform, "bg/coin")
-    -- self.diamondBlock = self:InitDiamondBlock(self.transform, "bg/diamond")
+    self.backBtn = self.transform:Find("backBtn").gameObject
+    self.backBtn:SetOnClick(function ()
+        self:OnBackClick()
+    end)
 
-    -- self:InitBtns()
-    -- self:InitData()
+    self.tavernBlock = self:InitTavernBlock(self.transform, "groups")
 end
 
 function _M:InitData()
@@ -22,17 +21,48 @@ function _M:InitData()
     end)
 end
 
-function _M:InitPlayerBlock(trans, path)
+function _M:InitTavernBlock(trans, path)
     local block = {}
     local transform = trans:Find(path)
     block.transform = transform
-    block.headImage = transform:Find("head"):GetComponent("Image")
-    block.nameText = transform:Find("name"):GetComponent("Text")
-    block.powerText = transform:Find("power"):GetComponent("Text")
-    block.lvText = transform:Find("level"):GetComponent("Text")
-    block.expFontImage = transform:Find("exp/font"):GetComponent("Image")
-    block.expPercentText = transform:Find("exp/percent"):GetComponent("Text")
+    
+    block.strength = self:InitGroup(transform, "strength")
+    block.agility = self:InitGroup(transform, "agility")
+    block.inteligent = self:InitGroup(transform, "inteligent")
+
     return block
+end
+
+function _M:InitGroup(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    
+    block.timesText = transform:Find("times"):GetComponent("Text")
+    block.jinWeiBtn = transform:Find("jinWeiBtn").gameObject
+    block.tianZaiBtn = transform:Find("tianZaiBtn").gameObject
+
+    block.jinWeiBtn:SetOnClick(function ()
+        self:OnJinWeiClick()
+    end)
+
+    block.tianZaiBtn:SetOnClick(function ()
+        self:OnTianZaiClick()
+    end)
+
+    return block
+end
+
+function _M:OnBackClick()
+    self.iCtrl:Close()
+end
+
+function _M:OnJinWeiClick()
+    self.iCtrl:ShowTavernDetail()
+end
+
+function _M:OnTianZaiClick()
+    self.iCtrl:ShowTavernDetail()
 end
 
 function _M:OnDestroy()

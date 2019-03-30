@@ -1,5 +1,5 @@
-local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
-local PlayerInterface = require "PixelFarm.Modules.PlayerInfo.Interface.PlayerInfoInterface"
+local LoginLogic = require "PixelFarm.Modules.Logic.LoginLogic"
+local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
 
 local _LoginCtrl = class(CtrlBase)
 
@@ -43,7 +43,7 @@ function _LoginCtrl:AllZones(cb)
 end
 
 function _LoginCtrl:CurrentUser()
-    local player = PlayerInterface:CurrentPlayer()
+    local player = StoreLogic:CurrentPlayer()
     return player
 end
 

@@ -99,10 +99,12 @@ end
 
 function _M:OnTavernClick()
     print("OnTavernClick click")
+    self.iCtrl:ShowTavern()
 end
 
 function _M:OnBattleArrClick()
     print("OnBattleArrClick click")
+    self.iCtrl:ShowBattleArr()
 end
 
 function _M:OnHeroClick()

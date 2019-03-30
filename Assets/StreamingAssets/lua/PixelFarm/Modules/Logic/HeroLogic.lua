@@ -26,7 +26,6 @@ function _HeroLogic:AllHero(cb)
         print("[HeroLogic.AllHero] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
-            -- self:SaveUid(decode.uid)
             if cb then
                 cb(true, nil, decode.heros)
             end
@@ -64,7 +63,7 @@ function _HeroLogic:RandomHero(level, cb)
         if decode.code == "SUCCESS" then
             -- self:SaveUid(decode.uid)
             if cb then
-                cb(true, nil)
+                cb(true, nil, decode.hero)
             end
         else
             if cb then

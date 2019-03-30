@@ -1,6 +1,3 @@
-local PlayerInterface = require "PixelFarm.Modules.PlayerInfo.Interface.PlayerInfoInterface"
-local LoginInterface = require "PixelFarm.Modules.Login.Interface.LoginInterface"
-
 local _LoadingCtrl = class(CtrlBase)
 
 function _LoadingCtrl:StartView()
@@ -9,8 +6,6 @@ function _LoadingCtrl:StartView()
 end
 
 function _LoadingCtrl:ShowMainView()
-    local player = PlayerInterface:CurrentPlayer()
-    print(tabStr(player))
     -- CtrlManager:OpenCtrl(MoudleNames.Test, TestCtrlNames.Test)
     CtrlManager:OpenCtrl(MoudleNames.Login, LoginCtrlNames.Login)
     -- if player and player.uid and #player.uid > 0 then

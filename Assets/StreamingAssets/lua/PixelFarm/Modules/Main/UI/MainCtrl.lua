@@ -1,5 +1,5 @@
-local PlayerInterface = require "PixelFarm.Modules.PlayerInfo.Interface.PlayerInfoInterface"
-local LoginLogic = require "PixelFarm.Modules.Login.Logic.LoginLogic"
+local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
+local LoginLogic = require "PixelFarm.Modules.Logic.LoginLogic"
 
 local _M = class(CtrlBase)
 
@@ -9,12 +9,22 @@ function _M:StartView()
 end
 
 function _M:CurrentPlayer(cb)
-    local player = PlayerInterface:CurrentPlayer()
-    LoginLogic:Login(player.uid, "", function (succeed, err, player)
+    local player = StoreLogic:CurrentPlayer()
+    LoginLogic:Login(player.UserId, "", function (succeed, err, player)
         if cb then
             cb(player)
         end
     end)
+end
+
+function _M:ShowTavern()
+    CtrlManager:OpenCtrl(MoudleNames.Tavern, TavernCtrlNames.Tavern)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
+end
+
+function _M:ShowBattleArr()
+    CtrlManager:OpenCtrl(MoudleNames.BattleArr, BattleArrCtrlNames.BattleArr)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
 return _M

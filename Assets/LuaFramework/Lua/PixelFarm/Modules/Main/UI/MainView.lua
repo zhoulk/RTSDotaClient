@@ -104,6 +104,7 @@ end
 
 function _M:OnBattleArrClick()
     print("OnBattleArrClick click")
+    self.iCtrl:ShowBattleArr()
 end
 
 function _M:OnHeroClick()

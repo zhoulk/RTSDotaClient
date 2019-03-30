@@ -1,10 +1,12 @@
 
 TavernCtrlNames = {
-    Tavern = "TavernCtrl"
+    Tavern = "TavernCtrl",
+    TavernDetail = "TavernDetailCtrl"
 }
 
 TavernViewNames = {
-    Tavern = "TavernView"
+    Tavern = "TavernView",
+    TavernDetail = "TavernDetailView"
 }
 
 
