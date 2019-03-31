@@ -1,19 +1,28 @@
 ManifestFileVersion: 0
-CRC: 1385629879
+CRC: 3314163665
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: common_prefab.unity3d
+      Name: battlearr_prefab.unity3d
       Dependencies: {}
     Info_1:
-      Name: jetty_prefab.unity3d
+      Name: common_prefab.unity3d
       Dependencies: {}
     Info_2:
-      Name: loading_prefab.unity3d
+      Name: hero_prefab.unity3d
       Dependencies: {}
     Info_3:
-      Name: login_prefab.unity3d
+      Name: loading_prefab.unity3d
       Dependencies: {}
     Info_4:
+      Name: login_prefab.unity3d
+      Dependencies: {}
+    Info_5:
       Name: main_prefab.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: tavern_prefab.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: test_prefab.unity3d
       Dependencies: {}

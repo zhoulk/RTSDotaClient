@@ -14,6 +14,7 @@ MoudleNames = {
     Login = "Login",
     Tavern = "Tavern",
     BattleArr = "BattleArr",
+    Hero = "Hero",
 
     Test = "Test"
 }
@@ -33,6 +34,7 @@ require "PixelFarm/Modules/Main/MainDefine"
 require "PixelFarm/Modules/Login/LoginDefine"
 require "PixelFarm/Modules/Tavern/TavernDefine"
 require "PixelFarm/Modules/BattleArr/BattleArrDefine"
+require "PixelFarm.Modules.Hero.HeroDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
 require "PixelFarm/Modules/Test/TestDefine"
 
