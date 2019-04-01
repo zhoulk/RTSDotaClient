@@ -117,6 +117,7 @@ end
 
 function _M:OnChapterClick()
     print("OnChapterClick click")
+    self.iCtrl:ShowChapter()
 end
 
 function _M:OnDestroy()

@@ -17,6 +17,7 @@ MoudleNames = {
     Hero = "Hero",
     Equip = "Equip",
     Skill = "Skill",
+    Chapter = "Chapter",
 
     Test = "Test"
 }
@@ -39,6 +40,7 @@ require "PixelFarm/Modules/BattleArr/BattleArrDefine"
 require "PixelFarm.Modules.Hero.HeroDefine"
 require "PixelFarm.Modules.Equip.EquipDefine"
 require "PixelFarm.Modules.Skill.SkillDefine"
+require "PixelFarm.Modules.Chapter.ChapterDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
 require "PixelFarm/Modules/Test/TestDefine"
 

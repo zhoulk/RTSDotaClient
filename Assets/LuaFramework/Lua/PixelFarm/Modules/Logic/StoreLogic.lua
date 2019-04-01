@@ -1,7 +1,9 @@
 local Player = require "PixelFarm.Modules.Data.Entry.Player"
 local Hero = require "PixelFarm.Modules.Data.Entry.Hero"
 local Skill = require "PixelFarm.Modules.Data.Entry.Skill"
+local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
+local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
 
 local _StoreLogic = class()
 
@@ -47,8 +49,8 @@ function _StoreLogic:AllHeros(cb)
     end
 end
 
-function _StoreLogic:AllOwnHeros(cb, force)
-    local heros = self:LoadOwnHeros()
+function _StoreLogic:AllOwnHeros(userId, cb, force)
+    local heros = self:LoadOwnHeros(userId)
     if force or heros == nil or #heros == 0 then
         HeroLogic:AllOwnHero(function(succeed, err, heros)
             if succeed then
@@ -60,7 +62,7 @@ function _StoreLogic:AllOwnHeros(cb, force)
                         table.insert(_heros, h)
                     end
                 end
-                self:SaveOwnHeros(_heros)
+                self:SaveOwnHeros(userId, _heros)
                 if cb then
                     cb(_heros)
                 end
@@ -69,6 +71,32 @@ function _StoreLogic:AllOwnHeros(cb, force)
     else
         if cb then
             cb(heros)
+        end
+    end
+end
+
+function _StoreLogic:AllChapters(userId, cb, force)
+    local chapters = self:LoadChapters(userId)
+    if force or chapters == nil or #chapters == 0 then
+        MapLogic:AllChapter(function(succeed, err, chapters)
+            if succeed then
+                local _chapters = {}
+                if chapters then
+                    for i,chapter in pairs(chapters) do
+                        local c = Chapter.new()
+                        c:Init(chapter)
+                        table.insert(_chapters, c)
+                    end
+                end
+                self:SaveChapters(userId, _chapters)
+                if cb then
+                    cb(_chapters)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(chapters)
         end
     end
 end
@@ -127,11 +155,11 @@ function _StoreLogic:LoadHeros()
     return _heros
 end
 
-function _StoreLogic:SaveOwnHeros(heros)
-    LocalDataManager:Save("local_OwnHeros", heros)
+function _StoreLogic:SaveOwnHeros(userId, heros)
+    LocalDataManager:Save("local_OwnHeros_" .. userId, heros)
 end
-function _StoreLogic:LoadOwnHeros()
-    local key = "local_OwnHeros"
+function _StoreLogic:LoadOwnHeros(userId)
+    local key = "local_OwnHeros_" .. userId
     local herosTab = LocalDataManager:Load(key)
     local _heros = {}
     if herosTab then
@@ -153,12 +181,29 @@ function _StoreLogic:LoadHeroSkills(heroId)
     local _skills = {}
     if skillsTab then
         for i,skill in pairs(skillsTab) do
-            local _s = Hero.new()
+            local _s = Skill.new()
             _s:Init(skill)
             table.insert(_skills, _s)
         end
     end
     return _skills
+end
+
+function _StoreLogic:SaveChapters(userId, chapters)
+    LocalDataManager:Save("local_Chapters_" .. userId, chapters)
+end
+function _StoreLogic:LoadChapters(userId)
+    local key = "local_Chapters_" .. userId
+    local chaptersTab = LocalDataManager:Load(key)
+    local _chapters = {}
+    if chaptersTab then
+        for i,chapter in pairs(chaptersTab) do
+            local _s = Chapter.new()
+            _s:Init(chapter)
+            table.insert(_chapters, _s)
+        end
+    end
+    return _chapters
 end
 
 return _StoreLogic

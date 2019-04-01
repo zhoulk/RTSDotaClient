@@ -176,10 +176,11 @@ function _M:UpdateHero(hero, pos)
         self.iCtrl:HeroSkills(hero.HeroId, function (skills)
             if skills then
                 for i, sk in pairs(skills) do
+                    print(skillStr(sk))
                     local skillBlock = self.heroBlock.skill.skills[i]
                     skillBlock.nameText.text = sk.Name
                     skillBlock.gameObject:SetOnClick(function ()
-                        self:ShowSkill(sk)
+                        self:ShowSkill(sk, hero)
                     end)
                 end
             end
@@ -222,8 +223,8 @@ function _M:ShowEquip(equip)
     self.iCtrl:ShowEquip(equip)
 end
 
-function _M:ShowSkill(skill)
-    self.iCtrl:ShowSkill(skill)
+function _M:ShowSkill(skill, hero)
+    self.iCtrl:ShowSkill(skill, hero)
 end
 
 function _M:OnBackClick()

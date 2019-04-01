@@ -10,6 +10,7 @@ function _M:Init(s)
 	self.IsOpen = s.IsOpen or false
 	self.HeroId = s.HeroId or ""
 	self.SkillId = s.SkillId or ""
+	self.LevelDesc = s.LevelDesc or {}
 end
 
 -- SkillTypeActive  int32 = 1

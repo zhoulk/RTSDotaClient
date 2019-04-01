@@ -55,6 +55,7 @@ function skillStr(skill)
         str = str .. ", Level : " .. skill.Level
         str = str .. ", Type : " .. skill.Type 
         str = str .. ", Desc : " .. (skill.Desc or "")
+        str = str .. ", LevelDesc : " .. tabStr(skill.LevelDesc)
         str = str .. ", IsOpen : " .. tostring(skill.IsOpen)
         str = str .. "},"
     end

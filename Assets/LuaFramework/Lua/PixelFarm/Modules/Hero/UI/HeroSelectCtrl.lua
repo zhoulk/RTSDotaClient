@@ -14,7 +14,8 @@ function _M:Close()
 end
 
 function _M:AllOwnHeros(cb)
-    StoreLogic:AllOwnHeros(function (heros)
+    local player = StoreLogic:CurrentPlayer()
+    StoreLogic:AllOwnHeros(player.UserId, function (heros)
         if cb then
             cb(heros)
         end
@@ -23,7 +24,7 @@ end
 
 function _M:SelectHero(item)
     CtrlManager:CloseCtrl(HeroCtrlNames.HeroSelect)
-    
+
     if self.selectFunc then
         self.selectFunc(item.data.HeroId)
     end

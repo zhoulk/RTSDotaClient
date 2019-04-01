@@ -14,7 +14,8 @@ function _M:Close()
 end
 
 function _M:AllOwnHeros(cb)
-    StoreLogic:AllOwnHeros(function (heros)
+    local player = StoreLogic:CurrentPlayer()
+    StoreLogic:AllOwnHeros(player.UserId, function (heros)
         if cb then
             cb(heros)
         end
@@ -34,7 +35,8 @@ function _M:ShowHeroSelect(pos, cb)
         print("select heroId = " .. heroId)
         HeroLogic:SelectHero(heroId,pos, function (succeed, err, heroIds)
             if succeed then
-                StoreLogic:AllOwnHeros(function (heros)
+                local player = StoreLogic:CurrentPlayer()
+                StoreLogic:AllOwnHeros(player.UserId, function (heros)
                     if cb then
                         cb()
                     end
@@ -51,8 +53,8 @@ function _M:ShowEquip(equip)
     CtrlManager:OpenCtrl(MoudleNames.Equip, EquipCtrlNames.Equip)
 end
 
-function _M:ShowSkill(skill)
-    CtrlManager:OpenCtrl(MoudleNames.Skill, SkillCtrlNames.Skill, skill)
+function _M:ShowSkill(skill, hero)
+    CtrlManager:OpenCtrl(MoudleNames.Skill, SkillCtrlNames.Skill, skill, hero)
 end
 
 return _M
