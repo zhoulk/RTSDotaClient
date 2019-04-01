@@ -1,3 +1,4 @@
+local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
 
 local _M = class(CtrlBase)
 
@@ -12,7 +13,7 @@ function _M:Close()
 end
 
 function _M:CurrentPlayer(cb)
-    local player = PlayerInterface:CurrentPlayer()
+    local player = StoreLogic:CurrentPlayer()
     LoginLogic:Login(player.uid, "", function (succeed, err, player)
         if cb then
             cb(player)

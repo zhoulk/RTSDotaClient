@@ -27,7 +27,7 @@ function _M:InitData()
 
         self:UpdatePosList(selectHeros)
         if #self.posItemCache == 0 then
-            self:UpdateHero()
+            self:UpdateHero(nil, 1)
         else
             self:SelectPos(1)
         end
@@ -73,7 +73,76 @@ function _M:InitHeroBlock(trans, path)
     block.roleImage = transform:Find("role"):GetComponent("Image")
     block.roleTipObj = transform:Find("role/label").gameObject
     block.nameText = transform:Find("name"):GetComponent("Text")
+    block.levelText = transform:Find("level"):GetComponent("Text")
+    block.powerText = transform:Find("power"):GetComponent("Text")
+    block.attr = self:InitAttrBlock(transform, "extend/bg/attr")
+    block.skill = self:InitSkillBlock(transform, "extend/bg/skill")
+    block.equip = self:InitEquipBlock(transform, "equip")
 
+    return block
+end
+
+function _M:InitAttrBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+
+    block.hpText = transform:Find("hp/label"):GetComponent("Text")
+    block.mpText = transform:Find("mp/label"):GetComponent("Text")
+    block.attackText = transform:Find("attack/label"):GetComponent("Text")
+    block.armorText = transform:Find("armor/label"):GetComponent("Text")
+    block.strengthText = transform:Find("strength/label"):GetComponent("Text")
+    block.agilityText = transform:Find("agility/label"):GetComponent("Text")
+    block.intelligentText = transform:Find("intelligent/label"):GetComponent("Text")
+
+    return block
+end
+
+function _M:InitSkillBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+
+    block.skills = {}
+    for i=1,4,1 do
+        block.skills[i] = self:InitOneSkillBlock(transform, i)
+    end
+
+    return block
+end
+
+function _M:InitOneSkillBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.nameText = transform:Find("bg/image/label"):GetComponent("Text")
+    
+    return block
+end
+
+function _M:InitEquipBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+
+    block.equips = {}
+    for i=1,6,1 do
+        block.equips[i] = self:InitOneEquipBlock(transform, i)
+    end
+
+    return block
+end
+
+function _M:InitOneEquipBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.nameText = transform:Find("bg/image/label"):GetComponent("Text")
+    
     return block
 end
 
@@ -91,9 +160,38 @@ function _M:UpdatePosList(heros)
     end
 end
 
-function _M:UpdateHero(hero)
+function _M:UpdateHero(hero, pos)
     if hero then
         self.heroBlock.nameText.text = hero.Name
+        self.heroBlock.levelText.text = "等级 " .. hero.Level
+        self.heroBlock.powerText.text = "战力 " .. 0
+        self.heroBlock.attr.hpText.text = hero.MaxBlood
+        self.heroBlock.attr.mpText.text = hero.MaxMP
+        self.heroBlock.attr.attackText.text = hero.AttackMin / 100 .. "~" .. hero.AttackMax / 100
+        self.heroBlock.attr.armorText.text = hero.Armor / 100
+        self.heroBlock.attr.strengthText.text = hero.Strength / 100 .. "(+" .. hero.StrengthStep / 100 .. ")"
+        self.heroBlock.attr.agilityText.text = hero.Agility / 100 .. "(+" .. hero.AgilityStep / 100 .. ")"
+        self.heroBlock.attr.intelligentText.text = hero.Intelligence / 100 .. "(+" .. hero.IntelligenceStep / 100 .. ")"
+
+        self.iCtrl:HeroSkills(hero.HeroId, function (skills)
+            if skills then
+                for i, sk in pairs(skills) do
+                    print(skillStr(sk))
+                    local skillBlock = self.heroBlock.skill.skills[i]
+                    skillBlock.nameText.text = sk.Name
+                    skillBlock.gameObject:SetOnClick(function ()
+                        self:ShowSkill(sk, hero)
+                    end)
+                end
+            end
+        end)
+
+        for i,equipBlock in pairs(self.heroBlock.equip.equips) do
+            equipBlock.gameObject:SetOnClick(function ()
+                self:ShowEquip(equipBlock.data)
+            end)
+        end
+
         self.heroBlock.roleTipObj:SetActive(false)
         self.heroBlock.roleObj:SetOnClick(function ()
             
@@ -101,7 +199,10 @@ function _M:UpdateHero(hero)
     else
         self.heroBlock.roleTipObj:SetActive(true)
         self.heroBlock.roleObj:SetOnClick(function ()
-            self.iCtrl:ShowHeroSelect()
+            self.iCtrl:ShowHeroSelect(pos, function ()
+                self:InitData()
+                self:SelectPos(pos)
+            end)
         end)
     end
 end
@@ -111,11 +212,19 @@ function _M:SelectPos(pos)
     for i, posItem in pairs(self.posItemCache) do
         if i == pos then
             posItem.selectObj:SetActive(true)
-            self:UpdateHero(posItem.data)
+            self:UpdateHero(posItem.data, pos)
         else
             posItem.selectObj:SetActive(false)
         end
     end
+end
+
+function _M:ShowEquip(equip)
+    self.iCtrl:ShowEquip(equip)
+end
+
+function _M:ShowSkill(skill, hero)
+    self.iCtrl:ShowSkill(skill, hero)
 end
 
 function _M:OnBackClick()

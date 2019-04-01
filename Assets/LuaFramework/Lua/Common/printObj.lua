@@ -61,3 +61,14 @@ function skillStr(skill)
     end
     return str
 end
+
+function chapterStr(chapter)
+    local str = ""
+    if chapter then
+        str = str .. "\n{Id : " .. chapter.Id
+        str = str .. ", Name : " .. chapter.Name
+        str = str .. ", IsOpen : " .. tostring(chapter.IsOpen)
+        str = str .. "},"
+    end
+    return str
+end

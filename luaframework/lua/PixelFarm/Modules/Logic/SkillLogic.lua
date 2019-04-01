@@ -59,7 +59,7 @@ function _SkillLogic:UpgradeSkill(skillId, cb)
         if decode.code == "SUCCESS" then
             -- self:SaveUid(decode.uid)
             if cb then
-                cb(true, nil)
+                cb(true, nil, decode.skill)
             end
         else
             if cb then

@@ -2,6 +2,7 @@ local Player = require "PixelFarm.Modules.Data.Entry.Player"
 local Hero = require "PixelFarm.Modules.Data.Entry.Hero"
 local Skill = require "PixelFarm.Modules.Data.Entry.Skill"
 local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
+local GuanKa = require "PixelFarm.Modules.Data.Entry.GuanKa"
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
 
@@ -97,6 +98,32 @@ function _StoreLogic:AllChapters(userId, cb, force)
     else
         if cb then
             cb(chapters)
+        end
+    end
+end
+
+function _StoreLogic:AllGuanKas(chapterId, cb, force)
+    local guanKas = self:LoadGuanKas(chapterId)
+    if force or guanKas == nil or #guanKas == 0 then
+        MapLogic:AllGuanKa(function(succeed, err, guanKas)
+            if succeed then
+                local _guanKas = {}
+                if guanKas then
+                    for i,gk in pairs(guanKas) do
+                        local c = GuanKa.new()
+                        c:Init(gk)
+                        table.insert(_guanKas, c)
+                    end
+                end
+                self:SaveGuanKas(chapterId, _guanKas)
+                if cb then
+                    cb(_guanKas)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(guanKas)
         end
     end
 end
@@ -204,6 +231,23 @@ function _StoreLogic:LoadChapters(userId)
         end
     end
     return _chapters
+end
+
+function _StoreLogic:SaveGuanKas(chapterId, guanKas)
+    LocalDataManager:Save("local_GuanKas_" .. chapterId, guanKas)
+end
+function _StoreLogic:LoadGuanKas(chapterId)
+    local key = "local_GuanKas_" .. chapterId
+    local guanKasTab = LocalDataManager:Load(key)
+    local _guanKas = {}
+    if guanKasTab then
+        for i,gk in pairs(guanKasTab) do
+            local _s = GuanKa.new()
+            _s:Init(gk)
+            table.insert(_guanKas, _s)
+        end
+    end
+    return _guanKas
 end
 
 return _StoreLogic

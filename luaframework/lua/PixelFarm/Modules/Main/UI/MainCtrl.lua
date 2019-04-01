@@ -27,4 +27,9 @@ function _M:ShowBattleArr()
     CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
+function _M:ShowChapter()
+    CtrlManager:OpenCtrl(MoudleNames.Chapter, ChapterCtrlNames.Chapter)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
+end
+
 return _M

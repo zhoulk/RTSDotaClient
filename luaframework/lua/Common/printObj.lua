@@ -46,3 +46,29 @@ function heroStr(hero)
     end
     return str
 end
+
+function skillStr(skill)
+    local str = ""
+    if skill then
+        str = str .. "\n{Id : " .. skill.Id
+        str = str .. ", Name : " .. skill.Name
+        str = str .. ", Level : " .. skill.Level
+        str = str .. ", Type : " .. skill.Type 
+        str = str .. ", Desc : " .. (skill.Desc or "")
+        str = str .. ", LevelDesc : " .. tabStr(skill.LevelDesc)
+        str = str .. ", IsOpen : " .. tostring(skill.IsOpen)
+        str = str .. "},"
+    end
+    return str
+end
+
+function chapterStr(chapter)
+    local str = ""
+    if chapter then
+        str = str .. "\n{Id : " .. chapter.Id
+        str = str .. ", Name : " .. chapter.Name
+        str = str .. ", IsOpen : " .. tostring(chapter.IsOpen)
+        str = str .. "},"
+    end
+    return str
+end
