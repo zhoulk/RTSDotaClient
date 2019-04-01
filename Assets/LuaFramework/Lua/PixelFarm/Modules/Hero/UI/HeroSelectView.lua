@@ -67,6 +67,10 @@ function _M:OnBackClick()
     self.iCtrl:Close()
 end
 
+function _M:SelectHero(item)
+    self.iCtrl:SelectHero(item)
+end
+
 function _M:OnDestroy()
 
 end

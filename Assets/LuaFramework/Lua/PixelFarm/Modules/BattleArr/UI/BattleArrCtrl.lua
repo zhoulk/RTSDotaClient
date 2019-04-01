@@ -1,4 +1,5 @@
 local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
+local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 
 local _M = class(CtrlBase)
 
@@ -20,8 +21,38 @@ function _M:AllOwnHeros(cb)
     end)
 end
 
-function _M:ShowHeroSelect()
-    CtrlManager:OpenCtrl(MoudleNames.Hero, HeroCtrlNames.HeroSelect)
+function _M:HeroSkills(heroId, cb)
+    StoreLogic:HeroSkills(heroId, function (skills)
+        if cb then
+            cb(skills)
+        end
+    end)
+end
+
+function _M:ShowHeroSelect(pos, cb)
+    local selectFunc = function (heroId)
+        print("select heroId = " .. heroId)
+        HeroLogic:SelectHero(heroId,pos, function (succeed, err, heroIds)
+            if succeed then
+                StoreLogic:AllOwnHeros(function (heros)
+                    if cb then
+                        cb()
+                    end
+                end, true)
+            else
+                toast(err.msg)
+            end
+        end)
+    end
+    CtrlManager:OpenCtrl(MoudleNames.Hero, HeroCtrlNames.HeroSelect, selectFunc)
+end
+
+function _M:ShowEquip(equip)
+    CtrlManager:OpenCtrl(MoudleNames.Equip, EquipCtrlNames.Equip)
+end
+
+function _M:ShowSkill(skill)
+    CtrlManager:OpenCtrl(MoudleNames.Skill, SkillCtrlNames.Skill, skill)
 end
 
 return _M

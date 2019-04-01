@@ -1,5 +1,6 @@
 local Player = require "PixelFarm.Modules.Data.Entry.Player"
 local Hero = require "PixelFarm.Modules.Data.Entry.Hero"
+local Skill = require "PixelFarm.Modules.Data.Entry.Skill"
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 
 local _StoreLogic = class()
@@ -46,9 +47,9 @@ function _StoreLogic:AllHeros(cb)
     end
 end
 
-function _StoreLogic:AllOwnHeros(cb)
+function _StoreLogic:AllOwnHeros(cb, force)
     local heros = self:LoadOwnHeros()
-    if heros == nil or #heros == 0 then
+    if force or heros == nil or #heros == 0 then
         HeroLogic:AllOwnHero(function(succeed, err, heros)
             if succeed then
                 local _heros = {}
@@ -68,6 +69,32 @@ function _StoreLogic:AllOwnHeros(cb)
     else
         if cb then
             cb(heros)
+        end
+    end
+end
+
+function _StoreLogic:HeroSkills(heroId, cb, force)
+    local skills = self:LoadHeroSkills(heroId)
+    if force or skills == nil or #skills == 0 then
+        HeroLogic:HeroSkills(heroId, function(succeed, err, skills)
+            if succeed then
+                local _skills = {}
+                if skills then
+                    for i,skill in pairs(skills) do
+                        local s = Skill.new()
+                        s:Init(skill)
+                        table.insert(_skills, s)
+                    end
+                end
+                self:SaveHeroSkills(heroId, _skills)
+                if cb then
+                    cb(_skills)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(skills)
         end
     end
 end
@@ -115,6 +142,23 @@ function _StoreLogic:LoadOwnHeros()
         end
     end
     return _heros
+end
+
+function _StoreLogic:SaveHeroSkills(heroId, skills)
+    LocalDataManager:Save("local_HeroSkills_" .. heroId, skills)
+end
+function _StoreLogic:LoadHeroSkills(heroId)
+    local key = "local_HeroSkills_" .. heroId
+    local skillsTab = LocalDataManager:Load(key)
+    local _skills = {}
+    if skillsTab then
+        for i,skill in pairs(skillsTab) do
+            local _s = Hero.new()
+            _s:Init(skill)
+            table.insert(_skills, _s)
+        end
+    end
+    return _skills
 end
 
 return _StoreLogic
