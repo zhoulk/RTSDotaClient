@@ -38,6 +38,12 @@ function _M:InitDetailBlock(trans, path)
     local transform = trans:Find(path)
     block.transform = transform
     block.gameObject = transform.gameObject
+
+    block.challengeBtn = transform:Find("content/challenge").gameObject
+
+    block.challengeBtn:SetOnClick(function ()
+        self:OnChallengeClick()
+    end)
     
     block.gameObject:SetOnClick(function ()
         block.gameObject:SetActive(false)
@@ -66,7 +72,12 @@ function _M:UpdateGuanKaList(guanKas)
 end
 
 function _M:OnGuanKaClick(gk)
+    self.detailBlock.data = gk
     self.detailBlock.gameObject:SetActive(true)
+end
+
+function _M:OnChallengeClick()
+    self.iCtrl:ShowBattle(self.detailBlock.data)
 end
 
 function _M:OnBackClick()

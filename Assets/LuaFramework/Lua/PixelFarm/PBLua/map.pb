@@ -1,16 +1,19 @@
 
-≈
+ê
 	map.protomsg	err.proto"
 ChapterRequest"Ä
 ChapterResponse%
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr(
-chapters (2.msg.ChapterRchapters"E
+chapters (2.msg.ChapterRchapters"è
 Chapter
 Id (RId
 Name (	RName
-IsOpen (RIsOpen"
+IsOpen (RIsOpen
+Star (RStar
+Status (RStatus
+	GuanKaNum (R	GuanKaNum"
 GuanKaRequest"|
 GuanKaResponse%
 code (2.msg.ResponseCodeRcode

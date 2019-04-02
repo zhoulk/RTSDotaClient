@@ -41,7 +41,7 @@ function _M:UpdateChapterList(chapters)
             chapterObj:SetActive(true)
 
             chapterObj.transform:Find("bg/name"):GetComponent("Text").text = chapter.Name
-            chapterObj.transform:Find("bg/status"):GetComponent("Text").text = chapter:StatusStr()
+            chapterObj.transform:Find("bg/status"):GetComponent("Text").text = chapterStatusStr(chapter.Status)
 
             chapterObj.transform:GetComponent("Button").onClick:AddListener(function ()
                 self:OnChapterClick(chapter)

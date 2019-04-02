@@ -30,6 +30,11 @@ namespace LuaFramework {
             Application.targetFrameRate = AppConst.GameFrameRate;
         }
 
+        public void InitGameData(string battleId)
+        {
+            GameData.g_battleId = battleId;
+        }
+
         /// <summary>
         /// 释放资源
         /// </summary>

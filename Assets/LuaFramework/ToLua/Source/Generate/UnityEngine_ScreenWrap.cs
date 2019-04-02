@@ -12,6 +12,7 @@ public class UnityEngine_ScreenWrap
 		L.RegVar("currentResolution", get_currentResolution, null);
 		L.RegVar("width", get_width, null);
 		L.RegVar("height", get_height, null);
+		L.RegVar("safeArea", get_safeArea, null);
 		L.RegVar("dpi", get_dpi, null);
 		L.RegVar("fullScreen", get_fullScreen, set_fullScreen);
 		L.RegVar("autorotateToPortrait", get_autorotateToPortrait, set_autorotateToPortrait);
@@ -106,6 +107,20 @@ public class UnityEngine_ScreenWrap
 		try
 		{
 			LuaDLL.lua_pushinteger(L, UnityEngine.Screen.height);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_safeArea(IntPtr L)
+	{
+		try
+		{
+			ToLua.PushValue(L, UnityEngine.Screen.safeArea);
 			return 1;
 		}
 		catch (Exception e)

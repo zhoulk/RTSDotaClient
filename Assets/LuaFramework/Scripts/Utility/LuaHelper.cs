@@ -29,6 +29,11 @@ namespace LuaFramework {
             return AppFacade.Instance.GetManager<PanelManager>(ManagerName.Panel);
         }
 
+        public static GameManager GetGameManager()
+        {
+            return AppFacade.Instance.GetManager<GameManager>(ManagerName.Game);
+        }
+
         /// <summary>
         /// 资源管理器
         /// </summary>

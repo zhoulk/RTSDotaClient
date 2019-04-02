@@ -9,6 +9,7 @@ using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
 using System.Reflection;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public static class CustomSettings
 {
@@ -120,6 +121,7 @@ public static class CustomSettings
         _GT(typeof(AsyncOperation)).SetBaseType(typeof(System.Object)),        
         _GT(typeof(LightType)),
         _GT(typeof(SleepTimeout)),
+        _GT(typeof(SceneManager)),
 #if UNITY_5_3_OR_NEWER && !UNITY_5_6_OR_NEWER
         _GT(typeof(UnityEngine.Experimental.Director.DirectorPlayer)),
 #endif

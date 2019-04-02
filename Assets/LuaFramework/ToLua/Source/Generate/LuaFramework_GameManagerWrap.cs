@@ -7,11 +7,29 @@ public class LuaFramework_GameManagerWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(LuaFramework.GameManager), typeof(Manager));
+		L.RegFunction("InitGameData", InitGameData);
 		L.RegFunction("CheckExtractResource", CheckExtractResource);
 		L.RegFunction("OnResourceInited", OnResourceInited);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitGameData(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			LuaFramework.GameManager obj = (LuaFramework.GameManager)ToLua.CheckObject<LuaFramework.GameManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			obj.InitGameData(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
