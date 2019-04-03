@@ -44,6 +44,7 @@ public class BattleLogic
     // @return none
     public void frameLockLogic()
     {
+        //UnityTools.Log("frameLockLogic " + GameData.g_uGameLogicFrame);
         //如果是回放模式
         if (GameData.g_bRplayMode)
         {
@@ -72,6 +73,12 @@ public class BattleLogic
         for (int i = 0; i < GameData.g_listSoldier.Count; i++)
         {
             GameData.g_listSoldier[i].updateLogic();
+        }
+
+        // 英雄
+        for (int i = 0; i < GameData.g_listHero.Count; i++)
+        {
+            GameData.g_listHero[i].updateLogic();
         }
 
         if (m_bFireWar && GameData.g_listSoldier.Count == 0)
@@ -149,11 +156,11 @@ public class BattleLogic
         }
 
         GameData.g_uGameLogicFrame = 0;
-        TowerStandState.s_fixTestCount = (Fix64)0;
-        TowerStandState.s_scTestContent = "";
+        //TowerStandState.s_fixTestCount = (Fix64)0;
+        //TowerStandState.s_scTestContent = "";
 
-        //创建塔
-        createTowers();
+        ////创建塔
+        //createTowers();
     }
 
     /// <summary>

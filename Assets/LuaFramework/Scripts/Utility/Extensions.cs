@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using static UGUIEventListener;
 using Component = UnityEngine.Component;
 
 public static class Extensions
@@ -520,6 +521,18 @@ public static class Extensions
         };
     }
 
+    public static void SetOnDragStart(this GameObject obj, VoidDelegate callback, object args = null)
+    {
+        UGUIEventListener.Get(obj).onDragStart = (evt, go, my_args) =>
+        {
+            if (callback != null)
+            {
+                callback(evt, go, args);
+                //callback = null;
+            }
+        };
+    }
+
     public static void SetOnDrag(this GameObject obj, LuaFunction callback, object args = null)
     {
         UGUIEventListener.Get(obj).onDrag = (evt, go, data, my_args) =>
@@ -532,6 +545,18 @@ public static class Extensions
         };
     }
 
+    public static void SetOnDrag(this GameObject obj, VectorDelegate callback, object args = null)
+    {
+        UGUIEventListener.Get(obj).onDrag = (evt, go, data, my_args) =>
+        {
+            if (callback != null)
+            {
+                callback(evt, go, data, args);
+                //callback = null;
+            }
+        };
+    }
+
     public static void SetOnDragEnd(this GameObject obj, LuaFunction callback, object args = null)
     {
         UGUIEventListener.Get(obj).onDragEnd = (evt, go, my_args) =>
@@ -539,6 +564,18 @@ public static class Extensions
             if (callback != null)
             {
                 callback.Call(obj, evt, go, args);
+                //callback = null;
+            }
+        };
+    }
+
+    public static void SetOnDragEnd(this GameObject obj, VoidDelegate callback, object args = null)
+    {
+        UGUIEventListener.Get(obj).onDragEnd = (evt, go, my_args) =>
+        {
+            if (callback != null)
+            {
+                callback(evt, go, args);
                 //callback = null;
             }
         };

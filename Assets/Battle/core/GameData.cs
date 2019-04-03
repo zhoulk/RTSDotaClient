@@ -14,7 +14,13 @@ using System.IO;
 
 public class GameData {
 
+    public static NetManager g_netManager;
+    public static BattleView g_battleView;
+
     public static string g_battleId = "";
+
+    // 英雄队列
+    public static List<BaseHero> g_listHero = new List<BaseHero>();
 
     //所有士兵的队列
     public static List<BaseSoldier> g_listSoldier = new List<BaseSoldier>();

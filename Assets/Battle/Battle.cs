@@ -22,13 +22,18 @@ namespace Battle
             AppConst.SocketAddress = "127.0.0.1";
             AppConst.SocketPort = 7000;
             UnityTools.Log("battleId ==== " + GameData.g_battleId);
+
+            GameData.g_netManager = transform.GetComponent<NetManager>();
+            GameData.g_battleView = GameObject.Find("Canvas/BattleView").transform.GetComponent<BattleView>();
+            UnityTools.Log(GameData.g_battleView);
         }
 
         // Use this for initialization
         void Start()
         {
 #if _CLIENTLOGIC_
-        battleLogic.init();
+            battleLogic.init();
+            battleLogic.startBattle();
 #else
             GameData.g_uGameLogicFrame = 0;
             GameData.g_bRplayMode = true;
