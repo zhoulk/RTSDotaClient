@@ -99,7 +99,9 @@ public class BattleView : MonoBehaviour {
             if (i == 0)
             {
                 baseHero.group = Fix64.One;
-                baseHero.skills.Add(ConvertMsgSkillToSkill((Skill)m_skills[0]));
+                BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[0]);
+                skill.level = 2;
+                baseHero.skills.Add(skill);
 
                 HeroItem item = friendHeroItems[0];
                 item.InitData(hero, baseHero);
@@ -124,6 +126,8 @@ public class BattleView : MonoBehaviour {
     BaseHero ConvertMsgHeroToHero(Hero h)
     {
         BaseHero hero = new BaseHero();
+        hero.heroId = h.HeroId;
+        hero.name = h.Name;
         hero.hp = new Fix64(h.Blood);
         hero.maxHp = new Fix64(h.MaxBlood);
         hero.mp = new Fix64(h.MP);
@@ -135,10 +139,11 @@ public class BattleView : MonoBehaviour {
 
     BaseSkill ConvertMsgSkillToSkill(Skill sk)
     {
-        BaseSkill skill = new BaseSkill();
+        BaseSkill skill = BaseSkill.Create(sk.Id);
         skill.id = sk.Id;
+        skill.name = sk.Name;
         skill.level = sk.Level;
-        skill.type = sk.Type;
+        skill.type = (SkillType)sk.Type;
         skill.isOpen = sk.IsOpen;
         return skill;
     }
