@@ -143,16 +143,16 @@ public class UnityEngine_InputWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
+			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
 			{
-				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
+				string arg0 = ToLua.ToString(L, 1);
 				bool o = UnityEngine.Input.GetKey(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			else if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
 			{
-				string arg0 = ToLua.ToString(L, 1);
+				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
 				bool o = UnityEngine.Input.GetKey(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
@@ -175,16 +175,16 @@ public class UnityEngine_InputWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
+			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
 			{
-				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
+				string arg0 = ToLua.ToString(L, 1);
 				bool o = UnityEngine.Input.GetKeyDown(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			else if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
 			{
-				string arg0 = ToLua.ToString(L, 1);
+				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
 				bool o = UnityEngine.Input.GetKeyDown(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
@@ -207,16 +207,16 @@ public class UnityEngine_InputWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
+			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
 			{
-				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
+				string arg0 = ToLua.ToString(L, 1);
 				bool o = UnityEngine.Input.GetKeyUp(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;
 			}
-			else if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			else if (count == 1 && TypeChecker.CheckTypes<UnityEngine.KeyCode>(L, 1))
 			{
-				string arg0 = ToLua.ToString(L, 1);
+				UnityEngine.KeyCode arg0 = (UnityEngine.KeyCode)ToLua.ToObject(L, 1);
 				bool o = UnityEngine.Input.GetKeyUp(arg0);
 				LuaDLL.lua_pushboolean(L, o);
 				return 1;

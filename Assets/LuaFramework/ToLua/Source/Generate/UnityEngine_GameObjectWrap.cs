@@ -117,18 +117,18 @@ public class UnityEngine_GameObjectWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
+			if (count == 2 && TypeChecker.CheckTypes<System.Type>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				string arg0 = ToLua.ToString(L, 2);
+				System.Type arg0 = (System.Type)ToLua.ToObject(L, 2);
 				UnityEngine.Component o = obj.GetComponent(arg0);
 				ToLua.Push(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<System.Type>(L, 2))
+			else if (count == 2 && TypeChecker.CheckTypes<string>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				System.Type arg0 = (System.Type)ToLua.ToObject(L, 2);
+				string arg0 = ToLua.ToString(L, 2);
 				UnityEngine.Component o = obj.GetComponent(arg0);
 				ToLua.Push(L, o);
 				return 1;
@@ -854,17 +854,32 @@ public class UnityEngine_GameObjectWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2)
+			if (count == 2 && TypeChecker.CheckTypes<UGUIEventListener.VoidDelegate>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				UGUIEventListener.VoidDelegate arg0 = (UGUIEventListener.VoidDelegate)ToLua.ToObject(L, 2);
 				obj.SetOnDragEnd(arg0);
 				return 0;
 			}
-			else if (count == 3)
+			else if (count == 2 && TypeChecker.CheckTypes<LuaInterface.LuaFunction>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
+				obj.SetOnDragEnd(arg0);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<UGUIEventListener.VoidDelegate, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				UGUIEventListener.VoidDelegate arg0 = (UGUIEventListener.VoidDelegate)ToLua.ToObject(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDragEnd(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<LuaInterface.LuaFunction, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
 				object arg1 = ToLua.ToVarObject(L, 3);
 				obj.SetOnDragEnd(arg0, arg1);
 				return 0;
@@ -887,17 +902,32 @@ public class UnityEngine_GameObjectWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2)
+			if (count == 2 && TypeChecker.CheckTypes<UGUIEventListener.VectorDelegate>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				UGUIEventListener.VectorDelegate arg0 = (UGUIEventListener.VectorDelegate)ToLua.ToObject(L, 2);
 				obj.SetOnDrag(arg0);
 				return 0;
 			}
-			else if (count == 3)
+			else if (count == 2 && TypeChecker.CheckTypes<LuaInterface.LuaFunction>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
+				obj.SetOnDrag(arg0);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<UGUIEventListener.VectorDelegate, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				UGUIEventListener.VectorDelegate arg0 = (UGUIEventListener.VectorDelegate)ToLua.ToObject(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDrag(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<LuaInterface.LuaFunction, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
 				object arg1 = ToLua.ToVarObject(L, 3);
 				obj.SetOnDrag(arg0, arg1);
 				return 0;
@@ -920,17 +950,32 @@ public class UnityEngine_GameObjectWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2)
+			if (count == 2 && TypeChecker.CheckTypes<UGUIEventListener.VoidDelegate>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				UGUIEventListener.VoidDelegate arg0 = (UGUIEventListener.VoidDelegate)ToLua.ToObject(L, 2);
 				obj.SetOnDragStart(arg0);
 				return 0;
 			}
-			else if (count == 3)
+			else if (count == 2 && TypeChecker.CheckTypes<LuaInterface.LuaFunction>(L, 2))
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-				LuaFunction arg0 = ToLua.CheckLuaFunction(L, 2);
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
+				obj.SetOnDragStart(arg0);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<UGUIEventListener.VoidDelegate, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				UGUIEventListener.VoidDelegate arg0 = (UGUIEventListener.VoidDelegate)ToLua.ToObject(L, 2);
+				object arg1 = ToLua.ToVarObject(L, 3);
+				obj.SetOnDragStart(arg0, arg1);
+				return 0;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<LuaInterface.LuaFunction, object>(L, 2))
+			{
+				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+				LuaFunction arg0 = ToLua.ToLuaFunction(L, 2);
 				object arg1 = ToLua.ToVarObject(L, 3);
 				obj.SetOnDragStart(arg0, arg1);
 				return 0;

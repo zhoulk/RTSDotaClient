@@ -86,20 +86,20 @@ public class DG_Tweening_TweenerWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 3 && TypeChecker.CheckTypes<bool>(L, 3))
-			{
-				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.CheckObject<DG.Tweening.Tweener>(L, 1);
-				object arg0 = ToLua.ToVarObject(L, 2);
-				bool arg1 = LuaDLL.lua_toboolean(L, 3);
-				DG.Tweening.Tweener o = obj.ChangeEndValue(arg0, arg1);
-				ToLua.PushObject(L, o);
-				return 1;
-			}
 			else if (count == 3 && TypeChecker.CheckTypes<float>(L, 3))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.CheckObject<DG.Tweening.Tweener>(L, 1);
 				object arg0 = ToLua.ToVarObject(L, 2);
 				float arg1 = (float)LuaDLL.lua_tonumber(L, 3);
+				DG.Tweening.Tweener o = obj.ChangeEndValue(arg0, arg1);
+				ToLua.PushObject(L, o);
+				return 1;
+			}
+			else if (count == 3 && TypeChecker.CheckTypes<bool>(L, 3))
+			{
+				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.CheckObject<DG.Tweening.Tweener>(L, 1);
+				object arg0 = ToLua.ToVarObject(L, 2);
+				bool arg1 = LuaDLL.lua_toboolean(L, 3);
 				DG.Tweening.Tweener o = obj.ChangeEndValue(arg0, arg1);
 				ToLua.PushObject(L, o);
 				return 1;
@@ -286,18 +286,18 @@ public class DG_Tweening_TweenerWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.Tween>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.TweenParams>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				DG.Tweening.Tween arg0 = (DG.Tweening.Tween)ToLua.ToObject(L, 2);
+				DG.Tweening.TweenParams arg0 = (DG.Tweening.TweenParams)ToLua.ToObject(L, 2);
 				DG.Tweening.Tween o = obj.SetAs(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.TweenParams>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.Tween>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				DG.Tweening.TweenParams arg0 = (DG.Tweening.TweenParams)ToLua.ToObject(L, 2);
+				DG.Tweening.Tween arg0 = (DG.Tweening.Tween)ToLua.ToObject(L, 2);
 				DG.Tweening.Tween o = obj.SetAs(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
@@ -482,18 +482,18 @@ public class DG_Tweening_TweenerWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, bool>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.UpdateType>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				bool arg0 = LuaDLL.lua_toboolean(L, 2);
+				DG.Tweening.UpdateType arg0 = (DG.Tweening.UpdateType)ToLua.ToObject(L, 2);
 				DG.Tweening.Tween o = obj.SetUpdate(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.UpdateType>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, bool>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				DG.Tweening.UpdateType arg0 = (DG.Tweening.UpdateType)ToLua.ToObject(L, 2);
+				bool arg0 = LuaDLL.lua_toboolean(L, 2);
 				DG.Tweening.Tween o = obj.SetUpdate(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
@@ -558,10 +558,10 @@ public class DG_Tweening_TweenerWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.Ease>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.EaseFunction>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				DG.Tweening.Ease arg0 = (DG.Tweening.Ease)ToLua.ToObject(L, 2);
+				DG.Tweening.EaseFunction arg0 = (DG.Tweening.EaseFunction)ToLua.ToObject(L, 2);
 				DG.Tweening.Tween o = obj.SetEase(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
@@ -574,10 +574,10 @@ public class DG_Tweening_TweenerWrap
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.EaseFunction>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, DG.Tweening.Ease>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				DG.Tweening.EaseFunction arg0 = (DG.Tweening.EaseFunction)ToLua.ToObject(L, 2);
+				DG.Tweening.Ease arg0 = (DG.Tweening.Ease)ToLua.ToObject(L, 2);
 				DG.Tweening.Tween o = obj.SetEase(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
@@ -672,18 +672,18 @@ public class DG_Tweening_TweenerWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, string>(L, 1))
+			if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, int>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				string arg0 = ToLua.ToString(L, 2);
+				int arg0 = (int)LuaDLL.lua_tonumber(L, 2);
 				DG.Tweening.Tween o = obj.SetId(arg0);
 				ToLua.PushObject(L, o);
 				return 1;
 			}
-			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, int>(L, 1))
+			else if (count == 2 && TypeChecker.CheckTypes<DG.Tweening.Tween, string>(L, 1))
 			{
 				DG.Tweening.Tweener obj = (DG.Tweening.Tweener)ToLua.ToObject(L, 1);
-				int arg0 = (int)LuaDLL.lua_tonumber(L, 2);
+				string arg0 = ToLua.ToString(L, 2);
 				DG.Tweening.Tween o = obj.SetId(arg0);
 				ToLua.PushObject(L, o);
 				return 1;

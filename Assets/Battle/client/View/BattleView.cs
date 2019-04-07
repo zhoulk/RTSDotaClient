@@ -25,13 +25,13 @@ public class BattleView : MonoBehaviour {
         for (int i = 0; i < friendHeroItems.Length; i++)
         {
             friendHeroItems[i] = new HeroItem();
-            friendHeroItems[i].Init(transform.Find("friend/heros/" + (i + 1)));
+            friendHeroItems[i].Init(transform.Find("friend/heros/" + (i + 1) + "/heroItem"));
         }
 
         for (int i = 0; i < enermyHeroItems.Length; i++)
         {
             enermyHeroItems[i] = new HeroItem();
-            enermyHeroItems[i].Init(transform.Find("enermy/heros/" + (i + 1)));
+            enermyHeroItems[i].Init(transform.Find("enermy/heros/" + (i + 1) + "/heroItem"));
         }
 
         for (int i=0; i<headItems.Length; i++)

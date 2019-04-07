@@ -40,12 +40,12 @@ public class LuaFramework_ResourceManagerWrap
 		{
 			int count = LuaDLL.lua_gettop(L);
 
-			if (count == 4 && TypeChecker.CheckTypes<string[], LuaInterface.LuaFunction>(L, 3))
+			if (count == 4 && TypeChecker.CheckTypes<string, System.Action<UnityEngine.Object[]>>(L, 3))
 			{
 				LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
-				string[] arg1 = ToLua.ToStringArray(L, 3);
-				LuaFunction arg2 = ToLua.ToLuaFunction(L, 4);
+				string arg1 = ToLua.ToString(L, 3);
+				System.Action<UnityEngine.Object[]> arg2 = (System.Action<UnityEngine.Object[]>)ToLua.ToObject(L, 4);
 				obj.LoadPrefab(arg0, arg1, arg2);
 				return 0;
 			}
@@ -58,12 +58,12 @@ public class LuaFramework_ResourceManagerWrap
 				obj.LoadPrefab(arg0, arg1, arg2);
 				return 0;
 			}
-			else if (count == 4 && TypeChecker.CheckTypes<string, System.Action<UnityEngine.Object[]>>(L, 3))
+			else if (count == 4 && TypeChecker.CheckTypes<string[], LuaInterface.LuaFunction>(L, 3))
 			{
 				LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
 				string arg0 = ToLua.CheckString(L, 2);
-				string arg1 = ToLua.ToString(L, 3);
-				System.Action<UnityEngine.Object[]> arg2 = (System.Action<UnityEngine.Object[]>)ToLua.ToObject(L, 4);
+				string[] arg1 = ToLua.ToStringArray(L, 3);
+				LuaFunction arg2 = ToLua.ToLuaFunction(L, 4);
 				obj.LoadPrefab(arg0, arg1, arg2);
 				return 0;
 			}
