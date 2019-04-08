@@ -5,6 +5,7 @@
 //===================================================
 
 using Msg;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -112,6 +113,9 @@ public class BattleView : MonoBehaviour {
             else if (i == 1)
             {
                 baseHero.group = Fix64.One * 2;
+                BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[4]);
+                skill.level = 4;
+                baseHero.skills.Add(skill);
 
                 HeroItem item = enermyHeroItems[0];
                 item.InitData(hero, baseHero);
@@ -127,6 +131,7 @@ public class BattleView : MonoBehaviour {
     {
         BaseHero hero = new BaseHero();
         hero.heroId = h.HeroId;
+        hero.heroId = Guid.NewGuid().ToString();
         hero.name = h.Name;
         hero.hp = new Fix64(h.Blood);
         hero.maxHp = new Fix64(h.MaxBlood);

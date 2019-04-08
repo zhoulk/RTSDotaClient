@@ -4,16 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum ActionType
+public enum HeroActionType
 {
     Attack = 1,
-    Hurt = 2
+    Hurt = 2,
+    Skill = 3,
 }
 
 public class HeroAction
 {
-    public ActionType action;
+    public HeroActionType action;
     public object[] args;
+}
+
+public enum BuffType
+{
+    Dizzy = 1
+}
+
+public class Buff
+{
+    public BuffType type;
+    public Fix64 start;
+    public Fix64 duration;
 }
 
 public class BaseHero : UnityObject
@@ -22,11 +35,17 @@ public class BaseHero : UnityObject
 
     public List<BaseSkill> skills = new List<BaseSkill>();
 
-    //- ÿ֡ѭ��
+    public List<Buff> buffs = new List<Buff>();
+
     // 
     // @return none
     virtual public void updateLogic()
     {
+        if (!CheckBuff())
+        {
+            return;
+        }
+
         if (SkillAttack())
         {
             return;
@@ -35,6 +54,31 @@ public class BaseHero : UnityObject
         {
             normalAttack();
         }
+    }
+
+    bool CheckBuff()
+    {
+        bool res = true;
+        Fix64 timer = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+        for (int i= buffs.Count-1; i>=0; i--)
+        {
+            Buff buff = buffs[i];
+            if (buff.start + buff.duration <= timer)
+            {
+                buffs.Remove(buff);
+            }
+            else
+            {
+                switch (buff.type)
+                {
+                    case BuffType.Dizzy:
+                        UnityTools.Log(name + "被眩晕");
+                        res = false;
+                        break;
+                }
+            }
+        }
+        return res;
     }
 
     bool SkillAttack()
@@ -72,7 +116,7 @@ public class BaseHero : UnityObject
         if (target != null)
         {
             HeroAction action = new HeroAction();
-            action.action = ActionType.Attack;
+            action.action = HeroActionType.Attack;
             action.args = new object[] { target };
             actions.Enqueue(action);
 
@@ -81,7 +125,7 @@ public class BaseHero : UnityObject
             target.hp = target.hp - reduce;
 
             HeroAction hurtAction = new HeroAction();
-            hurtAction.action = ActionType.Hurt;
+            hurtAction.action = HeroActionType.Hurt;
             hurtAction.args = new object[] { reduce };
             target.actions.Enqueue(hurtAction);
         }

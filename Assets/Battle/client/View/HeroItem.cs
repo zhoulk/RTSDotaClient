@@ -15,7 +15,9 @@ public class HeroItem {
     Text flagText;
     Image headImage;
     Text upText;
+    Text skillText;
     Animator animator;
+    Text[] skills = new Text[4];
 
     BaseHero baseHero;
 
@@ -25,7 +27,12 @@ public class HeroItem {
         flagText = trans.Find("flag").GetComponent<Text>();
         headImage = trans.Find("head").GetComponent<Image>();
         upText = trans.Find("up").GetComponent<Text>();
+        skillText = trans.Find("skill").GetComponent<Text>();
         animator = trans.GetComponent<Animator>();
+        for(int i=0; i<skills.Length; i++)
+        {
+            skills[i] = trans.Find("skills/skill" + (i+1) + "/name").GetComponent<Text>();
+        }
     }
 
     public void InitData(Hero hero, BaseHero baseH)
@@ -33,6 +40,7 @@ public class HeroItem {
         baseHero = baseH;
         flagText.text = hero.Name;
         headImage.gameObject.SetActive(true);
+
     }
 
     public void Update()
@@ -46,13 +54,16 @@ public class HeroItem {
                 {
                     switch (action.action)
                     {
-                        case ActionType.Attack:
+                        case HeroActionType.Attack:
                             Attack();
                             break;
-                        case ActionType.Hurt:
+                        case HeroActionType.Hurt:
                             Fix64 reduce = (Fix64)action.args[0];
                             ShowUp("-" + (int)reduce);
                             //Hurt();
+                            break;
+                        case HeroActionType.Skill:
+                            Skill(action.args);
                             break;
                         default:
                             break;
@@ -64,22 +75,43 @@ public class HeroItem {
 
     void Attack()
     {
-        UnityTools.Log("Attack ");
+        //UnityTools.Log("Attack ");
         animator.Play("attack", 0, 0);
     }
 
     void Hurt()
     {
-        UnityTools.Log("Hurt ");
+        //UnityTools.Log("Hurt ");
         animator.Play("hurt", 0, 0);
     }
 
     void ShowUp(string str)
     {
-        UnityTools.Log("ShowUp " + str);
+        //UnityTools.Log("ShowUp " + str);
         upText.text = str;
         upText.fontSize = 32;
         animator.Play("show_up", 1, 0);
+    }
+
+    void ShowSkill(string str)
+    {
+        skillText.text = str;
+        skillText.fontSize = 32;
+        animator.Play("skill", 2, 0);
+    }
+
+    void Skill(object[] args)
+    {
+        BaseHero from = (BaseHero)args[0];
+        BaseHero to = (BaseHero)args[1];
+        BaseSkill skill = (BaseSkill)args[2];
+        SkillAction skillAction = (SkillAction)args[3];
+
+        if (from.heroId == baseHero.heroId)
+        {
+            //UnityTools.Log(from.heroId + " == " + baseHero.heroId);
+            ShowSkill(skill.name);
+        }
     }
 
     public void Show()

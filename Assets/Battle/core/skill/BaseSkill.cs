@@ -10,6 +10,20 @@ public enum SkillType
     Passive = 2
 }
 
+public enum SkillActionType
+{
+    AddHP = 1,
+    MiniHP = 2,
+    AddMP = 3,
+    MiniMP = 4
+}
+
+public class SkillAction
+{
+    public SkillActionType action;
+    public object[] args;
+}
+
 public class BaseSkill : UnityObject
 {
     public static BaseSkill Create(int id)
@@ -19,6 +33,9 @@ public class BaseSkill : UnityObject
         {
             case 1:
                 sk = new Skill001();
+                break;
+            case 6:
+                sk = new Skill006();
                 break;
         }
         return sk;

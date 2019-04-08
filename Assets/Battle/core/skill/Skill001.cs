@@ -143,6 +143,23 @@ public class Skill001 : BaseSkill
     {
         from.hp = from.hp - expend;
         hero.hp = hero.hp + treatHP;
+        UnityTools.Log(from.name + " 使用 " + name + " 治愈 " + hero.name + " 造成 " + attackHP + " 点补给，消耗 " + expend + "点血量");
+
+        HeroAction treatAction = new HeroAction();
+        treatAction.action = HeroActionType.Skill;
+        SkillAction skillAction = new SkillAction();
+        skillAction.action = SkillActionType.MiniHP;
+        skillAction.args = new object[] {expend};
+        treatAction.args = new object[] {from, hero, this, skillAction};
+        from.actions.Enqueue(treatAction);
+
+        HeroAction treatAction1 = new HeroAction();
+        treatAction1.action = HeroActionType.Skill;
+        SkillAction skillAction1 = new SkillAction();
+        skillAction1.action = SkillActionType.AddHP;
+        skillAction1.args = new object[] { treatHP };
+        treatAction1.args = new object[] { from, hero, this, skillAction1 };
+        hero.actions.Enqueue(treatAction1);
     }
 
     void AttackTo(BaseHero from, BaseHero hero)
@@ -150,5 +167,21 @@ public class Skill001 : BaseSkill
         from.hp = from.hp - expend;
         hero.hp = hero.hp + attackHP;
         UnityTools.Log(from.name + " 使用 " + name + " 攻击 " + hero.name + " 造成 " + attackHP + " 点伤害，消耗 " + expend + "点血量");
+
+        HeroAction treatAction = new HeroAction();
+        treatAction.action = HeroActionType.Skill;
+        SkillAction skillAction = new SkillAction();
+        skillAction.action = SkillActionType.MiniHP;
+        skillAction.args = new object[] { expend };
+        treatAction.args = new object[] { from, hero, this, skillAction };
+        from.actions.Enqueue(treatAction);
+
+        HeroAction treatAction1 = new HeroAction();
+        treatAction1.action = HeroActionType.Skill;
+        SkillAction skillAction1 = new SkillAction();
+        skillAction1.action = SkillActionType.MiniHP;
+        skillAction1.args = new object[] { attackHP };
+        treatAction1.args = new object[] { from, hero, this, skillAction1 };
+        hero.actions.Enqueue(treatAction1);
     }
 }
