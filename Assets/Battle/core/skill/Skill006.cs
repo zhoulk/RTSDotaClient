@@ -106,8 +106,8 @@ public class Skill006 : BaseSkill
 
     void AttackTo(BaseHero from, BaseHero hero)
     {
-        from.mp = from.mp - expend;
-        hero.hp = hero.hp - attackHP;
+        from.ReduceMP(expend);
+        hero.ReduceHP(attackHP);
         UnityTools.Log(from.name + " 使用 " + name + " 攻击 " + hero.name + " 造成 " + attackHP + " 点伤害，眩晕" + dizzDuration +"毫秒，消耗 " + expend + "点MP");
 
         HeroAction treatAction = new HeroAction();

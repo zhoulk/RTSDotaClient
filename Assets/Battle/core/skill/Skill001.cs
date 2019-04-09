@@ -141,8 +141,8 @@ public class Skill001 : BaseSkill
 
     void TreatTo(BaseHero from, BaseHero hero)
     {
-        from.hp = from.hp - expend;
-        hero.hp = hero.hp + treatHP;
+        from.ReduceHP(expend, true);
+        hero.AddHP(treatHP);
         UnityTools.Log(from.name + " 使用 " + name + " 治愈 " + hero.name + " 造成 " + attackHP + " 点补给，消耗 " + expend + "点血量");
 
         HeroAction treatAction = new HeroAction();
@@ -164,8 +164,8 @@ public class Skill001 : BaseSkill
 
     void AttackTo(BaseHero from, BaseHero hero)
     {
-        from.hp = from.hp - expend;
-        hero.hp = hero.hp + attackHP;
+        from.ReduceHP(expend, true);
+        hero.ReduceHP(attackHP);
         UnityTools.Log(from.name + " 使用 " + name + " 攻击 " + hero.name + " 造成 " + attackHP + " 点伤害，消耗 " + expend + "点血量");
 
         HeroAction treatAction = new HeroAction();

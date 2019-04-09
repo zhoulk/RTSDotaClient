@@ -19,7 +19,8 @@ public class HeroAction
 
 public enum BuffType
 {
-    Dizzy = 1
+    Dizzy = 1, // 眩晕
+    Cover1 = 2, // 无光之盾
 }
 
 public class Buff
@@ -27,6 +28,8 @@ public class Buff
     public BuffType type;
     public Fix64 start;
     public Fix64 duration;
+    public Fix64 arg1;
+    public Fix64 arg2;
 }
 
 public class BaseHero : UnityObject
@@ -41,7 +44,9 @@ public class BaseHero : UnityObject
     // @return none
     virtual public void updateLogic()
     {
-        if (!CheckBuff())
+        CheckBuff();
+
+        if (!CanAttack())
         {
             return;
         }
@@ -50,15 +55,14 @@ public class BaseHero : UnityObject
         {
             return;
         }
-        if (CanAttack())
+        if (CanNormalAttack())
         {
             normalAttack();
         }
     }
 
-    bool CheckBuff()
+    void CheckBuff()
     {
-        bool res = true;
         Fix64 timer = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
         for (int i= buffs.Count-1; i>=0; i--)
         {
@@ -67,15 +71,21 @@ public class BaseHero : UnityObject
             {
                 buffs.Remove(buff);
             }
-            else
+        }
+    }
+
+    bool CanAttack()
+    {
+        bool res = true;
+        for (int i = buffs.Count - 1; i >= 0; i--)
+        {
+            Buff buff = buffs[i];
+            switch (buff.type)
             {
-                switch (buff.type)
-                {
-                    case BuffType.Dizzy:
-                        UnityTools.Log(name + "被眩晕");
-                        res = false;
-                        break;
-                }
+                case BuffType.Dizzy:
+                    //UnityTools.Log(name + "被眩晕");
+                    res = false;
+                    break;
             }
         }
         return res;
@@ -92,7 +102,7 @@ public class BaseHero : UnityObject
     }
 
     Fix64 coolTimer = Fix64.Zero;
-    bool CanAttack()
+    bool CanNormalAttack()
     {
         Fix64 timer = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
         if(coolTimer + 1700 < timer)
@@ -122,13 +132,63 @@ public class BaseHero : UnityObject
 
             uint randAttack = GameData.g_srand.Next((uint)(attackMax - attackMin));
             Fix64 reduce = (attackMin + randAttack) / 100;
-            target.hp = target.hp - reduce;
-
-            HeroAction hurtAction = new HeroAction();
-            hurtAction.action = HeroActionType.Hurt;
-            hurtAction.args = new object[] { reduce };
-            target.actions.Enqueue(hurtAction);
+            target.ReduceHP(reduce);
         }
+    }
+
+    public void ReduceHP(Fix64 offset, bool force = false)
+    {
+        if (!force)
+        {
+            for (int i = buffs.Count - 1; i >= 0; i--)
+            {
+                Buff buff = buffs[i];
+                switch (buff.type)
+                {
+                    case BuffType.Cover1:
+                        buff.arg1 += offset;
+                        if (buff.arg1 >= buff.arg2)
+                        {
+                            offset = buff.arg1 - buff.arg2;
+                            buffs.Remove(buff);
+                            foreach (var hero in GameData.g_listHero)
+                            {
+                                if (hero.group != group)
+                                {
+                                    hero.ReduceHP(buff.arg2 / 5);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            offset = Fix64.Zero;
+                        }
+                        break;
+                }
+            }
+        }
+        
+        hp -= offset;
+
+        HeroAction hurtAction = new HeroAction();
+        hurtAction.action = HeroActionType.Hurt;
+        hurtAction.args = new object[] { offset };
+        actions.Enqueue(hurtAction);
+    }
+
+    public void AddHP(Fix64 offset)
+    {
+        hp += offset;
+    }
+
+    public void ReduceMP(Fix64 offset)
+    {
+        mp -= offset;
+    }
+
+    public void AddMP(Fix64 offset)
+    {
+        mp += offset;
     }
 
     Fix64 m_level = Fix64.Zero;

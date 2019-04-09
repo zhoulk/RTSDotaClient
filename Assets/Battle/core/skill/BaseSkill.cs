@@ -34,6 +34,9 @@ public class BaseSkill : UnityObject
             case 1:
                 sk = new Skill001();
                 break;
+            case 2:
+                sk = new Skill002();
+                break;
             case 6:
                 sk = new Skill006();
                 break;

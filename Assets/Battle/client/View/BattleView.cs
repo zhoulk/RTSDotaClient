@@ -103,6 +103,9 @@ public class BattleView : MonoBehaviour {
                 BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[0]);
                 skill.level = 2;
                 baseHero.skills.Add(skill);
+                BaseSkill skill2 = ConvertMsgSkillToSkill((Skill)m_skills[1]);
+                skill2.level = 2;
+                baseHero.skills.Add(skill2);
 
                 HeroItem item = friendHeroItems[0];
                 item.InitData(hero, baseHero);

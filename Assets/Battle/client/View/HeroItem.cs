@@ -58,9 +58,7 @@ public class HeroItem {
                             Attack();
                             break;
                         case HeroActionType.Hurt:
-                            Fix64 reduce = (Fix64)action.args[0];
-                            ShowUp("-" + (int)reduce);
-                            //Hurt();
+                            Hurt(action.args);
                             break;
                         case HeroActionType.Skill:
                             Skill(action.args);
@@ -79,9 +77,11 @@ public class HeroItem {
         animator.Play("attack", 0, 0);
     }
 
-    void Hurt()
+    void Hurt(object[] args)
     {
-        //UnityTools.Log("Hurt ");
+        Fix64 reduce = (Fix64)args[0];
+        ShowUp("-" + (int)reduce);
+        UnityTools.Log(baseHero.name + " Hurt " + reduce);
         animator.Play("hurt", 0, 0);
     }
 
@@ -105,7 +105,12 @@ public class HeroItem {
         BaseHero from = (BaseHero)args[0];
         BaseHero to = (BaseHero)args[1];
         BaseSkill skill = (BaseSkill)args[2];
-        SkillAction skillAction = (SkillAction)args[3];
+
+        SkillAction skillAction;
+        if (args.Length > 3)
+        {
+            skillAction = (SkillAction)args[3];
+        }
 
         if (from.heroId == baseHero.heroId)
         {
