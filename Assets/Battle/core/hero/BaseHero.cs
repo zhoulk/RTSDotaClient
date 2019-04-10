@@ -21,6 +21,12 @@ public enum BuffType
 {
     Dizzy = 1, // 眩晕
     Cover1 = 2, // 无光之盾
+    Slow1 = 3, // 霜之哀伤
+    LiftSpeed = 4, // 提升攻速
+    Change1 = 5, // 回光返照
+    ReduceArmor = 6, // 减甲
+    GiftAttackPercent = 7, // 比例增加攻击
+    Focus = 8, // 集火
 }
 
 public class Buff
@@ -28,23 +34,28 @@ public class Buff
     public BuffType type;
     public Fix64 start;
     public Fix64 duration;
+    public Fix64 duration2;
     public Fix64 arg1;
     public Fix64 arg2;
 }
 
 public class BaseHero : UnityObject
 {
-    public Queue<HeroAction> actions = new Queue<HeroAction>();
+    Queue<HeroAction> actions = new Queue<HeroAction>();
 
     public List<BaseSkill> skills = new List<BaseSkill>();
 
-    public List<Buff> buffs = new List<Buff>();
+    List<Buff> buffs = new List<Buff>();
+
+    public static Fix64 BASE_BAT = (Fix64)1700;
 
     // 
     // @return none
     virtual public void updateLogic()
     {
         CheckBuff();
+
+        EffectBuff();
 
         if (!CanAttack())
         {
@@ -67,11 +78,43 @@ public class BaseHero : UnityObject
         for (int i= buffs.Count-1; i>=0; i--)
         {
             Buff buff = buffs[i];
-            if (buff.start + buff.duration <= timer)
+            if (buff.duration > Fix64.Zero && buff.start + buff.duration <= timer)
             {
                 buffs.Remove(buff);
             }
         }
+    }
+
+    void EffectBuff()
+    {
+        Fix64 slowPercent = Fix64.Zero;
+        Fix64 giftPercent = Fix64.Zero;
+        Fix64 effectArmor = Fix64.Zero;
+        Fix64 attackPercent = Fix64.Zero;
+        for (int i = buffs.Count - 1; i >= 0; i--)
+        {
+            Buff buff = buffs[i];
+            switch(buff.type)
+            {
+                case BuffType.Slow1:
+                    slowPercent += buff.arg1;
+                    break;
+                case BuffType.LiftSpeed:
+                    giftPercent += buff.arg1;
+                    break;
+                case BuffType.ReduceArmor:
+                    effectArmor -= buff.arg1;
+                    break;
+                case BuffType.GiftAttackPercent:
+                    attackPercent += buff.arg1;
+                    break;
+            }
+        }
+
+        BAT = BASE_BAT * (100 - slowPercent + giftPercent) / 100;
+        armor = originArmor + effectArmor;
+        attackMin = originAttackMin * (Fix64.One + attackPercent / 100);
+        attackMax = originAttackMax * (Fix64.One + attackPercent / 100);
     }
 
     bool CanAttack()
@@ -105,7 +148,7 @@ public class BaseHero : UnityObject
     bool CanNormalAttack()
     {
         Fix64 timer = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
-        if(coolTimer + 1700 < timer)
+        if(coolTimer + BAT < timer)
         {
             coolTimer = timer;
             return true;
@@ -132,8 +175,89 @@ public class BaseHero : UnityObject
 
             uint randAttack = GameData.g_srand.Next((uint)(attackMax - attackMin));
             Fix64 reduce = (attackMin + randAttack) / 100;
+
+            if (armor >= Fix64.Zero)
+            {
+                Fix64 percent = (target.armor / 100 * 6) / (100 + target.armor / 100 * 6);
+                reduce = reduce * (Fix64.One - percent);
+            }
+            else
+            {
+                Fix64 deeper = (Fix64)2 - Fix64.Pow((Fix64)0.94, (int)(Fix64.Abs(target.armor) / 100));
+                reduce = reduce * deeper;
+            }
+
             target.ReduceHP(reduce);
+            target.BeAttack(this);
         }
+    }
+
+    public void BeAttack(BaseHero from)
+    {
+        for (int i = buffs.Count - 1; i >= 0; i--)
+        {
+            Buff buff = buffs[i];
+            switch (buff.type)
+            {
+                case BuffType.Slow1:
+
+                    Buff liftBuff = new Buff();
+                    liftBuff.type = BuffType.LiftSpeed;
+                    liftBuff.start = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+                    liftBuff.duration = buff.duration2;
+                    liftBuff.arg1 = buff.arg2;
+                    from.AddBuff(liftBuff);
+
+                    break;
+            }
+        }
+    }
+
+    public void AddBuff(Buff buff)
+    {
+        foreach (var buf in buffs)
+        {
+            if (buf.type == buff.type)
+            {
+                return;
+            }
+        }
+
+        buffs.Add(buff);
+    }
+
+    public void AddAction(HeroAction action)
+    {
+        if (action.action == HeroActionType.Skill && action.args.Length > 2)
+        {
+            foreach (var act in actions)
+            {
+                if (act.action == HeroActionType.Skill)
+                {
+                    if (act.args.Length > 2)
+                    {
+                        BaseSkill skill = (BaseSkill)act.args[2];
+                        BaseSkill skill2 = (BaseSkill)action.args[2];
+                        if (skill.type == skill2.type)
+                        {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        actions.Enqueue(action);
+    }
+
+    public int ActionCnt()
+    {
+        return actions.Count;
+    }
+
+    public HeroAction GetAction()
+    {
+        return actions.Dequeue();
     }
 
     public void ReduceHP(Fix64 offset, bool force = false)
@@ -164,6 +288,9 @@ public class BaseHero : UnityObject
                             offset = Fix64.Zero;
                         }
                         break;
+                    case BuffType.Change1:
+                        offset = offset * -1;
+                        break;
                 }
             }
         }
@@ -174,6 +301,12 @@ public class BaseHero : UnityObject
         hurtAction.action = HeroActionType.Hurt;
         hurtAction.args = new object[] { offset };
         actions.Enqueue(hurtAction);
+
+        if (hp <= Fix64.Zero)
+        {
+            UnityTools.Log("hp ======= " + hp);
+            IsDied = true;
+        }
     }
 
     public void AddHP(Fix64 offset)
@@ -206,11 +339,20 @@ public class BaseHero : UnityObject
     Fix64 m_armor = Fix64.Zero;
     public Fix64 armor { get { return m_armor; } set { m_armor = value; } }
 
+    Fix64 m_originArmor = Fix64.Zero;
+    public Fix64 originArmor { get { return m_originArmor; } set { m_originArmor = value; } }
+
     Fix64 m_attackMin = Fix64.Zero;
     public Fix64 attackMin { get { return m_attackMin; } set { m_attackMin = value; } }
 
     Fix64 m_attackMax = Fix64.Zero;
     public Fix64 attackMax { get { return m_attackMax; } set { m_attackMax = value; } }
+
+    Fix64 m_originAttackMin = Fix64.Zero;
+    public Fix64 originAttackMin { get { return m_originAttackMin; } set { m_originAttackMin = value; } }
+
+    Fix64 m_originAttackMax = Fix64.Zero;
+    public Fix64 originAttackMax { get { return m_originAttackMax; } set { m_originAttackMax = value; } }
 
     Fix64 m_hp = Fix64.Zero;
     public Fix64 hp { get { return m_hp; } set { m_hp = value; } }
@@ -230,9 +372,15 @@ public class BaseHero : UnityObject
     Fix64 m_group = Fix64.Zero;
     public Fix64 group { get { return m_group; } set { m_group = value; } }
 
+    Fix64 m_BAT = BASE_BAT;
+    public Fix64 BAT { get { return m_BAT; } set { m_BAT = value; } }
+
     string m_heroId = "";
     public string heroId { get { return m_heroId; } set { m_heroId = value; } }
 
     string m_name = "";
     public string name { get { return m_name; } set { m_name = value; } }
+
+    bool m_IsDied = false;
+    public bool IsDied { get { return m_IsDied; } set { m_IsDied = value; } }
 }

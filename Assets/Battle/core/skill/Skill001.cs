@@ -35,6 +35,11 @@ public class Skill001 : BaseSkill
                 return false;
             }
 
+            if (from.hp <= expend)
+            {
+                return false;
+            }
+
             BaseHero needTreatHero = FindTreatHero(from);
             if (needTreatHero != null)
             {
@@ -151,7 +156,7 @@ public class Skill001 : BaseSkill
         skillAction.action = SkillActionType.MiniHP;
         skillAction.args = new object[] {expend};
         treatAction.args = new object[] {from, hero, this, skillAction};
-        from.actions.Enqueue(treatAction);
+        from.AddAction(treatAction);
 
         HeroAction treatAction1 = new HeroAction();
         treatAction1.action = HeroActionType.Skill;
@@ -159,7 +164,7 @@ public class Skill001 : BaseSkill
         skillAction1.action = SkillActionType.AddHP;
         skillAction1.args = new object[] { treatHP };
         treatAction1.args = new object[] { from, hero, this, skillAction1 };
-        hero.actions.Enqueue(treatAction1);
+        hero.AddAction(treatAction1);
     }
 
     void AttackTo(BaseHero from, BaseHero hero)
@@ -174,7 +179,7 @@ public class Skill001 : BaseSkill
         skillAction.action = SkillActionType.MiniHP;
         skillAction.args = new object[] { expend };
         treatAction.args = new object[] { from, hero, this, skillAction };
-        from.actions.Enqueue(treatAction);
+        from.AddAction(treatAction);
 
         HeroAction treatAction1 = new HeroAction();
         treatAction1.action = HeroActionType.Skill;
@@ -182,6 +187,6 @@ public class Skill001 : BaseSkill
         skillAction1.action = SkillActionType.MiniHP;
         skillAction1.args = new object[] { attackHP };
         treatAction1.args = new object[] { from, hero, this, skillAction1 };
-        hero.actions.Enqueue(treatAction1);
+        hero.AddAction(treatAction1);
     }
 }

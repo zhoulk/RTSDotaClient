@@ -25,6 +25,7 @@ namespace Battle
 
             GameData.g_netManager = transform.GetComponent<NetManager>();
             GameData.g_battleView = GameObject.Find("Canvas/BattleView").transform.GetComponent<BattleView>();
+            GameData.g_battleLogic = battleLogic;
             UnityTools.Log(GameData.g_battleView);
         }
 
@@ -33,7 +34,7 @@ namespace Battle
         {
 #if _CLIENTLOGIC_
             battleLogic.init();
-            battleLogic.startBattle();
+            //battleLogic.startBattle();
 #else
             GameData.g_uGameLogicFrame = 0;
             GameData.g_bRplayMode = true;

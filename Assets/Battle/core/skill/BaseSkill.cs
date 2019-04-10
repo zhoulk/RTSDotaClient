@@ -37,8 +37,23 @@ public class BaseSkill : UnityObject
             case 2:
                 sk = new Skill002();
                 break;
+            case 3:
+                sk = new Skill003();
+                break;
+            case 4:
+                sk = new Skill004();
+                break;
             case 6:
                 sk = new Skill006();
+                break;
+            case 7:
+                sk = new Skill007();
+                break;
+            case 8:
+                sk = new Skill008();
+                break;
+            case 9:
+                sk = new Skill009();
                 break;
         }
         return sk;
@@ -52,13 +67,31 @@ public class BaseSkill : UnityObject
     Fix64 coolTimer = Fix64.Zero;
     protected bool CanAttack(int coolDuration)
     {
-        Fix64 timer = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+        Fix64 timer = now;
         if (coolTimer + coolDuration < timer)
         {
             coolTimer = timer;
             return true;
         }
         return false;
+    }
+
+    protected bool CanAttackFrom(Fix64 fromTimer, int coolDuration)
+    {
+        Fix64 timer = now;
+        if (fromTimer + coolDuration < timer)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public Fix64 now
+    {
+        get
+        {
+            return GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+        }
     }
 
     int m_id;

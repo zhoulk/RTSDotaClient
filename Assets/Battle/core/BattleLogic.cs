@@ -30,6 +30,8 @@ public class BattleLogic
     // @return value description.
     // @author
     public void updateLogic() {
+        //UnityTools.Log("frameLockLogic " + GameData.g_uGameLogicFrame + m_bIsBattlePause);
+
         //如果战斗逻辑暂停则不再运行
         if (m_bIsBattlePause) {
             return;
@@ -57,31 +59,35 @@ public class BattleLogic
         //动作管理器update
         GameData.g_actionMainManager.updateLogic();
 
-        //塔
-        for (int i = 0; i < GameData.g_listTower.Count; i++)
-        {
-            GameData.g_listTower[i].updateLogic();
-        }
-
-        //子弹
-        for (int i = 0; i < GameData.g_listBullet.Count; i++)
-        {
-            GameData.g_listBullet[i].updateLogic();
-        }
-
-        //士兵
-        for (int i = 0; i < GameData.g_listSoldier.Count; i++)
-        {
-            GameData.g_listSoldier[i].updateLogic();
-        }
-
         // 英雄
+        int selfLiveCnt = 0;
+        int otherLiveCnt = 0;
         for (int i = 0; i < GameData.g_listHero.Count; i++)
         {
-            GameData.g_listHero[i].updateLogic();
+            BaseHero baseHero = GameData.g_listHero[i];
+            //UnityTools.Log("baseHero.IsDied ====== " + baseHero.IsDied);
+            if (!baseHero.IsDied)
+            {
+                baseHero.updateLogic();
+            }
+
+            if (baseHero.group == Fix64.One)
+            {
+                if (!baseHero.IsDied)
+                {
+                    selfLiveCnt++;
+                }
+            }
+            else if (baseHero.group == Fix64.One * 2)
+            {
+                if (!baseHero.IsDied)
+                {
+                    otherLiveCnt++;
+                }
+            }
         }
 
-        if (m_bFireWar && GameData.g_listSoldier.Count == 0)
+        if (selfLiveCnt == 0 || otherLiveCnt == 0)
         {
             stopBattle();
         }

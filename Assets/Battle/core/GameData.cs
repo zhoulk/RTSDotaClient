@@ -16,6 +16,7 @@ public class GameData {
 
     public static NetManager g_netManager;
     public static BattleView g_battleView;
+    public static BattleLogic g_battleLogic;
 
     public static string g_battleId = "";
 

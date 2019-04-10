@@ -23,9 +23,10 @@ using UnityEngine;
 
 public class Skill003 : BaseSkill
 {
-    Fix64 expend = Fix64.Zero;
-    Fix64 converDuration = Fix64.Zero;
-    Fix64 converDamage = Fix64.Zero;
+    Fix64 slowDuration = Fix64.Zero;
+    Fix64 giftDuration = Fix64.Zero;
+    Fix64 slowPercent = Fix64.Zero;
+    Fix64 liftPercent = Fix64.Zero;
 
     public override bool Attack(BaseHero from)
     {
@@ -36,10 +37,10 @@ public class Skill003 : BaseSkill
                 return false;
             }
 
-            BaseHero converHero = FindCoverHero(from);
-            if (converHero != null)
+            BaseHero slowHero = FindSlowHero(from);
+            if (slowHero != null)
             {
-                CoverTo(from, converHero);
+                SlowTo(from, slowHero);
                 return true;
             }
         }
@@ -52,24 +53,28 @@ public class Skill003 : BaseSkill
         switch (level)
         {
             case 1:
-                expend = (Fix64)100;
-                converDuration = (Fix64)15000;
-                converDamage = (Fix64)110;
+                slowDuration = (Fix64)2500;
+                giftDuration = (Fix64)4500;
+                slowPercent = (Fix64)5;
+                liftPercent = (Fix64)10;
                 break;
             case 2:
-                expend = (Fix64)105;
-                converDuration = (Fix64)15000;
-                converDamage = (Fix64)140;
+                slowDuration = (Fix64)2500;
+                giftDuration = (Fix64)4500;
+                slowPercent = (Fix64)10;
+                liftPercent = (Fix64)20;
                 break;
             case 3:
-                expend = (Fix64)110;
-                converDuration = (Fix64)15000;
-                converDamage = (Fix64)170;
+                slowDuration = (Fix64)2500;
+                giftDuration = (Fix64)4500;
+                slowPercent = (Fix64)15;
+                liftPercent = (Fix64)30;
                 break;
             case 4:
-                expend = (Fix64)115;
-                converDuration = (Fix64)15000;
-                converDamage = (Fix64)200;
+                slowDuration = (Fix64)2500;
+                giftDuration = (Fix64)4500;
+                slowPercent = (Fix64)20;
+                liftPercent = (Fix64)40;
                 break;
             default:
                 UnityTools.Log("技能等级异常 " + name + " level=" + level);
@@ -79,7 +84,7 @@ public class Skill003 : BaseSkill
         return res;
     }
 
-    BaseHero FindCoverHero(BaseHero from)
+    BaseHero FindSlowHero(BaseHero from)
     {
         BaseHero target = null;
         foreach (var hero in GameData.g_listHero)
@@ -95,7 +100,7 @@ public class Skill003 : BaseSkill
             }
             else
             {
-                if (hero.hp < target.hp)
+                if (hero.attackMax > target.attackMax)
                 {
                     target = hero;
                 }
@@ -104,22 +109,22 @@ public class Skill003 : BaseSkill
         return target;
     }
 
-    void CoverTo(BaseHero from, BaseHero hero)
+    void SlowTo(BaseHero from, BaseHero hero)
     {
-        from.ReduceMP(expend);
-        UnityTools.Log(from.name + " 对 " + hero.name + " 使用 " + name + "消耗 " + expend + "点MP");
+        UnityTools.Log(from.name + " 对 " + hero.name + " 使用 " + name);
 
         HeroAction treatAction1 = new HeroAction();
         treatAction1.action = HeroActionType.Skill;
         treatAction1.args = new object[] { from, hero, this };
-        hero.actions.Enqueue(treatAction1);
+        hero.AddAction(treatAction1);
 
         Buff buff = new Buff();
-        buff.type = BuffType.Cover1;
-        buff.start = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
-        buff.duration = converDuration;
-        buff.arg1 = Fix64.Zero;
-        buff.arg2 = converDamage;
-        hero.buffs.Add(buff);
+        buff.type = BuffType.Slow1;
+        buff.start = now;
+        buff.duration = slowDuration;
+        buff.duration2 = giftDuration;
+        buff.arg1 = slowPercent;
+        buff.arg2 = liftPercent;
+        hero.AddBuff(buff);
     }
 }

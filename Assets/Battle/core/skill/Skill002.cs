@@ -135,14 +135,14 @@ public class Skill002 : BaseSkill
         HeroAction treatAction1 = new HeroAction();
         treatAction1.action = HeroActionType.Skill;
         treatAction1.args = new object[] { from, hero, this };
-        hero.actions.Enqueue(treatAction1);
+        hero.AddAction(treatAction1);
 
         Buff buff = new Buff();
         buff.type = BuffType.Cover1;
-        buff.start = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+        buff.start = now;
         buff.duration = converDuration;
         buff.arg1 = Fix64.Zero;
         buff.arg2 = converDamage;
-        hero.buffs.Add(buff);
+        hero.AddBuff(buff);
     }
 }

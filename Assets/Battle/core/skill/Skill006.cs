@@ -116,7 +116,7 @@ public class Skill006 : BaseSkill
         skillAction.action = SkillActionType.MiniMP;
         skillAction.args = new object[] { expend };
         treatAction.args = new object[] { from, hero, this, skillAction };
-        from.actions.Enqueue(treatAction);
+        from.AddAction(treatAction);
 
         HeroAction treatAction1 = new HeroAction();
         treatAction1.action = HeroActionType.Skill;
@@ -124,12 +124,12 @@ public class Skill006 : BaseSkill
         skillAction1.action = SkillActionType.MiniHP;
         skillAction1.args = new object[] { attackHP };
         treatAction1.args = new object[] { from, hero, this, skillAction1 };
-        hero.actions.Enqueue(treatAction1);
+        hero.AddAction(treatAction1);
 
         Buff buff = new Buff();
         buff.type = BuffType.Dizzy;
-        buff.start = GameData.g_uGameLogicFrame * GameData.g_fixFrameLen * 1000;
+        buff.start = now;
         buff.duration = dizzDuration;
-        hero.buffs.Add(buff);
+        hero.AddBuff(buff);
     }
 }

@@ -18,6 +18,10 @@ public class HeroItem {
     Text skillText;
     Animator animator;
     Text[] skills = new Text[4];
+    GameObject HPPercentObj;
+    GameObject MPPercentObj;
+    Image HPPercentFontImage;
+    Image MPPercentFontImage;
 
     BaseHero baseHero;
 
@@ -33,6 +37,11 @@ public class HeroItem {
         {
             skills[i] = trans.Find("skills/skill" + (i+1) + "/name").GetComponent<Text>();
         }
+
+        HPPercentObj = trans.Find("HPProgress").gameObject;
+        MPPercentObj = trans.Find("MPProgress").gameObject;
+        HPPercentFontImage = trans.Find("HPProgress/font").GetComponent<Image>();
+        MPPercentFontImage = trans.Find("MPProgress/font").GetComponent<Image>();
     }
 
     public void InitData(Hero hero, BaseHero baseH)
@@ -41,15 +50,17 @@ public class HeroItem {
         flagText.text = hero.Name;
         headImage.gameObject.SetActive(true);
 
+        HPPercentObj.SetActive(true);
+        MPPercentObj.SetActive(true);
     }
 
     public void Update()
     {
         if (baseHero != null)
         {
-            if (baseHero.actions.Count > 0)
+            if (baseHero.ActionCnt() > 0)
             {
-                HeroAction action = baseHero.actions.Dequeue();
+                HeroAction action = baseHero.GetAction();
                 if (action != null)
                 {
                     switch (action.action)
@@ -68,6 +79,9 @@ public class HeroItem {
                     }
                 }
             }
+
+            HPPercentFontImage.fillAmount = (float)(baseHero.hp / baseHero.maxHp);
+            MPPercentFontImage.fillAmount = (float)(baseHero.mp / baseHero.maxMp);
         }
     }
 
@@ -80,8 +94,15 @@ public class HeroItem {
     void Hurt(object[] args)
     {
         Fix64 reduce = (Fix64)args[0];
-        ShowUp("-" + (int)reduce);
-        UnityTools.Log(baseHero.name + " Hurt " + reduce);
+        if (reduce < Fix64.Zero)
+        {
+            ShowUp("+" + (int)reduce * -1);
+        }
+        else
+        {
+            ShowUp("-" + (int)reduce);
+        }
+        UnityTools.Log(baseHero.name + " Hurt " + reduce + " frame " + GameData.g_uGameLogicFrame);
         animator.Play("hurt", 0, 0);
     }
 

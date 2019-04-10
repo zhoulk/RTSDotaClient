@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class HeadItem {
     public GameObject gameObject;
+    GameObject itemObj;
     Text nameText;
     Image hpFontImage;
     Image mpFontImage;
@@ -20,9 +21,10 @@ public class HeadItem {
     public void Init(Transform trans)
     {
         gameObject = trans.gameObject;
-        nameText = trans.Find("head/name").GetComponent<Text>();
-        hpFontImage = trans.Find("HPProgress/font").GetComponent<Image>();
-        mpFontImage = trans.Find("MPProgress/font").GetComponent<Image>();
+        itemObj = trans.Find("headItem").gameObject;
+        nameText = trans.Find("headItem/head/name").GetComponent<Text>();
+        hpFontImage = trans.Find("headItem/HPProgress/font").GetComponent<Image>();
+        mpFontImage = trans.Find("headItem/MPProgress/font").GetComponent<Image>();
     }
 
     public void InitData(Hero hero, BaseHero baseH)
@@ -45,6 +47,7 @@ public class HeadItem {
     public void Show()
     {
         gameObject.SetActive(true);
+        itemObj.SetActive(true);
     }
 
     public void Hide()

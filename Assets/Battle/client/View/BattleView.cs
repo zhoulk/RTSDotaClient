@@ -106,6 +106,12 @@ public class BattleView : MonoBehaviour {
                 BaseSkill skill2 = ConvertMsgSkillToSkill((Skill)m_skills[1]);
                 skill2.level = 2;
                 baseHero.skills.Add(skill2);
+                BaseSkill skill3 = ConvertMsgSkillToSkill((Skill)m_skills[2]);
+                skill3.level = 2;
+                baseHero.skills.Add(skill3);
+                BaseSkill skill4 = ConvertMsgSkillToSkill((Skill)m_skills[3]);
+                skill4.level = 2;
+                baseHero.skills.Add(skill4);
 
                 HeroItem item = friendHeroItems[0];
                 item.InitData(hero, baseHero);
@@ -119,6 +125,15 @@ public class BattleView : MonoBehaviour {
                 BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[4]);
                 skill.level = 4;
                 baseHero.skills.Add(skill);
+                BaseSkill skill1 = ConvertMsgSkillToSkill((Skill)m_skills[5]);
+                skill1.level = 4;
+                baseHero.skills.Add(skill1);
+                BaseSkill skill2 = ConvertMsgSkillToSkill((Skill)m_skills[6]);
+                skill2.level = 4;
+                baseHero.skills.Add(skill2);
+                BaseSkill skill3 = ConvertMsgSkillToSkill((Skill)m_skills[7]);
+                skill3.level = 1;
+                baseHero.skills.Add(skill3);
 
                 HeroItem item = enermyHeroItems[0];
                 item.InitData(hero, baseHero);
@@ -128,6 +143,8 @@ public class BattleView : MonoBehaviour {
 
             i++;
         }
+
+        GameData.g_battleLogic.startBattle();
     }
 
     BaseHero ConvertMsgHeroToHero(Hero h)
@@ -140,8 +157,12 @@ public class BattleView : MonoBehaviour {
         hero.maxHp = new Fix64(h.MaxBlood);
         hero.mp = new Fix64(h.MP);
         hero.maxMp = new Fix64(h.MaxMP);
+        hero.originAttackMin = new Fix64(h.AttackMin);
         hero.attackMin = new Fix64(h.AttackMin);
+        hero.originAttackMax = new Fix64(h.AttackMax);
         hero.attackMax = new Fix64(h.AttackMax);
+        hero.originArmor = new Fix64(h.Armor);
+        hero.armor = new Fix64(h.Armor);
         return hero;
     }
 
