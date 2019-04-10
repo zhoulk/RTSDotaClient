@@ -109,6 +109,7 @@ public static class LuaBinder
 		UnityEngine_Color32Wrap.Register(L);
 		L.BeginModule("SceneManagement");
 		UnityEngine_SceneManagement_SceneManagerWrap.Register(L);
+		UnityEngine_SceneManagement_LoadSceneModeWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("UI");
 		UnityEngine_UI_TextWrap.Register(L);

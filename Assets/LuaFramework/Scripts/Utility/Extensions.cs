@@ -458,6 +458,18 @@ public static class Extensions
         };
     }
 
+    public static void SetOnClick(this GameObject obj, VoidDelegate callback, object args = null)
+    {
+        UGUIEventListener.Get(obj).onClick = (evt, go, my_args) =>
+        {
+            if (callback != null)
+            {
+                callback(evt, go, args);
+                //callback = null;
+            }
+        };
+    }
+
     public static void SetOnHover(this GameObject obj, LuaFunction callback, object args = null)
     {
         UGUIEventListener.Get(obj).onHover = (evt, go, state, my_args) =>

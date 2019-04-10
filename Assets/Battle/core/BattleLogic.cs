@@ -327,6 +327,8 @@ public class BattleLogic
                 //SimpleSocket socket = new SimpleSocket();
                 //socket.Init();
                 //socket.sendBattleRecordToServer(UnityTools.playerPrefsGetString("battleRecord"));
+
+                GameData.g_netManager.SendRecord();
 #endif
             }
 

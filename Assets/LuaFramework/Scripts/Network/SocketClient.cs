@@ -47,6 +47,7 @@ public class SocketClient {
     /// 连接服务器
     /// </summary>
     void ConnectServer(string host, int port) {
+        Debug.Log("Connect Server " + host + port);
         client = null;
         try {
             IPAddress[] address = Dns.GetHostAddresses(host);

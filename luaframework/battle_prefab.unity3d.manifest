@@ -1,0 +1,59 @@
+ManifestFileVersion: 0
+CRC: 2511649445
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9723b61060213f8117463615bee2b501
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2bc768dad66b8631b43d9e7a95d9892a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 919eeefc92338254db250878de9f8679, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+Assets:
+- Assets/PixelFarmResources/Battle/UIPrefabs/BattleView.prefab
+- Assets/PixelFarmResources/Battle/UIPrefabs/headItem.prefab
+- Assets/PixelFarmResources/Battle/UIPrefabs/heroItem.prefab
+- Assets/PixelFarmResources/Battle/UIPrefabs/battleResultItem.prefab
+Dependencies: []

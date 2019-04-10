@@ -31,6 +31,7 @@ public class AppFacade : Facade
     /// 启动框架
     /// </summary>
     public void StartUp() {
+        Debug.Log("Start Up");
         SendMessageCommand(NotiConst.START_UP);
         RemoveMultiCommand(NotiConst.START_UP);
     }

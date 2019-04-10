@@ -20,4 +20,13 @@ function _M:AllGuanKas(chapterId, cb)
     end)
 end
 
+function _M:ShowBattle(guanKa)
+    gameMgr:InitGameData("1234567890")
+
+    CtrlManager:OpenCtrl(MoudleNames.Battle, BattleCtrlNames.Battle)
+    CtrlManager:CloseCtrl(ChapterCtrlNames.ChapterDetail)
+
+    -- SceneManager.LoadSceneAsync("battle")
+end
+
 return _M

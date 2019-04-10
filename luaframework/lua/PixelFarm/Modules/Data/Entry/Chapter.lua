@@ -5,9 +5,9 @@ function _M:Init(c)
     self.Id = c.Id or 0
 	self.Name = c.Name or ""
     self.IsOpen = c.IsOpen or false
-	-- self.Star = c.Star or 0
-	-- self.Status = c.Status or 1
-	-- self.GuanKaNum = c.GuanKaNum or 0
+	self.Star = c.Star or 0
+	self.Status = c.Status or 1
+	self.GuanKaNum = c.GuanKaNum or 0
 end
 
 function _M:StatusStr()

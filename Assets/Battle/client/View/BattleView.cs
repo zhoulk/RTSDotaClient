@@ -8,6 +8,8 @@ using Msg;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleView : MonoBehaviour {
@@ -17,12 +19,15 @@ public class BattleView : MonoBehaviour {
     HeroItem[] enermyHeroItems = new HeroItem[9];
     GameObject selectItem;
     Text selectItemNameText;
+    GameObject resultObj;
 
     ArrayList m_skills;
     ArrayList m_heros;
 
     private void Awake()
     {
+        UnityTools.Log("battleView Awake");
+
         for (int i = 0; i < friendHeroItems.Length; i++)
         {
             friendHeroItems[i] = new HeroItem();
@@ -43,6 +48,9 @@ public class BattleView : MonoBehaviour {
 
         selectItem = transform.Find("selectItem").gameObject;
         selectItemNameText = selectItem.transform.Find("name").GetComponent<Text>();
+
+        resultObj = transform.Find("result").gameObject;
+        resultObj.SetOnClick(OnResultClick);
     }
 
     // Use this for initialization
@@ -64,6 +72,17 @@ public class BattleView : MonoBehaviour {
         {
             heroItem.Update();
         }
+    }
+
+    public void ShowResult()
+    {
+        resultObj.SetActive(true);
+    }
+
+    void OnResultClick(BaseEventData go, GameObject targetObj, params object[] eventArgs)
+    {
+
+        SceneManager.UnloadSceneAsync("battle");
     }
 
     public void InitSkills(ArrayList skills)

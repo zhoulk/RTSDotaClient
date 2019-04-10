@@ -26,6 +26,7 @@ resMgr = LuaHelper.GetResManager()
 panelMgr = LuaHelper.GetPanelManager()
 soundMgr = LuaHelper.GetSoundManager()
 networkMgr = LuaHelper.GetNetManager()
+gameMgr = LuaHelper.GetGameManager()
 
 WWW = UnityEngine.WWW
 GameObject = UnityEngine.GameObject
@@ -33,3 +34,4 @@ PlayerPrefs = UnityEngine.PlayerPrefs
 Application = UnityEngine.Application
 Color = UnityEngine.Color
 Screen = UnityEngine.Screen
+SceneManager = UnityEngine.SceneManagement.SceneManager

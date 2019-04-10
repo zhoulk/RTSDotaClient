@@ -28,6 +28,7 @@ namespace LuaFramework {
             CheckExtractResource(); //释放资源
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             Application.targetFrameRate = AppConst.GameFrameRate;
+
         }
 
         public void InitGameData(string battleId)

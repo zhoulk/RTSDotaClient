@@ -18,8 +18,14 @@ public class NetManager : MonoBehaviour {
     void Start () {
         AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(CSSocketCommand));
 
-        networkManager = transform.GetComponent<NetworkManager>();
+        networkManager = AppFacade.Instance.GetManager<NetworkManager>(ManagerName.Network);
+
         networkManager.SendConnect();
+    }
+
+    public void SendRecord()
+    {
+        GameData.g_battleView.ShowResult();
     }
 
     public void OnSocket(int key, ByteBuffer byteBuffer)
@@ -85,6 +91,11 @@ public class NetManager : MonoBehaviour {
     void Update () {
 		
 	}
+
+    private void OnDestroy()
+    {
+        AppFacade.Instance.RemoveCommand(NotiConst.DISPATCH_MESSAGE);
+    }
 }
 
 public class CSSocketCommand : ControllerCommand

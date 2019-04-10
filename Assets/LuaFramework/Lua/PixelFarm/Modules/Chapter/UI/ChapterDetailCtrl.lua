@@ -8,7 +8,7 @@ function _M:StartView()
 end
 
 function _M:Close()
-    CtrlManager:OpenCtrl(MoudleNames.Chapter, ChapterViewNames.Chapter)
+    CtrlManager:OpenCtrl(MoudleNames.Chapter, ChapterCtrlNames.Chapter)
     CtrlManager:CloseCtrl(ChapterCtrlNames.ChapterDetail)
 end
 
@@ -21,11 +21,12 @@ function _M:AllGuanKas(chapterId, cb)
 end
 
 function _M:ShowBattle(guanKa)
+    gameMgr:InitGameData("1234567890")
+
     -- CtrlManager:OpenCtrl(MoudleNames.Battle, BattleCtrlNames.Battle)
     -- CtrlManager:CloseCtrl(ChapterCtrlNames.ChapterDetail)
 
-    gameMgr:InitGameData("1234567890")
-    SceneManager.LoadSceneAsync("battle")
+    SceneManager.LoadSceneAsync("battle", LoadSceneMode.Additive)
 end
 
 return _M
