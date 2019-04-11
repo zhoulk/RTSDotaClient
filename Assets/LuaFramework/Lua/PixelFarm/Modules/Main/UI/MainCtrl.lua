@@ -32,4 +32,17 @@ function _M:ShowChapter()
     CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
+function _M:ShowGroup()
+    local player = StoreLogic:CurrentPlayer()
+    StoreLogic:OwnGroup(player.UserId, function (group)
+        print(group)
+        if group == nil then
+            CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupList)
+        else
+            CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupMain, group)
+            CtrlManager:CloseCtrl(MainCtrlNames.Main)
+        end
+    end)
+end
+
 return _M

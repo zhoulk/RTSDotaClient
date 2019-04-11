@@ -20,12 +20,41 @@ public class NetManager : MonoBehaviour {
 
         networkManager = AppFacade.Instance.GetManager<NetworkManager>(ManagerName.Network);
 
-        networkManager.SendConnect();
+        //networkManager.SendConnect();
+        loadData();
     }
 
     public void SendRecord()
     {
-        GameData.g_battleView.ShowResult();
+        BattleResultRequest battleResultRequest = new BattleResultRequest();
+        battleResultRequest.BattleId = GameData.g_battleId;
+        battleResultRequest.Result = 1;
+        ByteBuffer buffer = new ByteBuffer();
+        buffer.WriteShort(134);
+        buffer.WriteBytes(battleResultRequest.ToByteArray());
+        networkManager.SendMessage(buffer);
+    }
+
+    void loadData()
+    {
+        BattleStartRequest battleStartRequest = new BattleStartRequest();
+        battleStartRequest.BattleId = GameData.g_battleId;
+        ByteBuffer buffer = new ByteBuffer();
+        buffer.WriteShort(132);
+        buffer.WriteBytes(battleStartRequest.ToByteArray());
+        networkManager.SendMessage(buffer);
+
+        SkillRequest skillRequest = new SkillRequest();
+        ByteBuffer skillBuffer = new ByteBuffer();
+        skillBuffer.WriteShort(110);
+        skillBuffer.WriteBytes(skillRequest.ToByteArray());
+        networkManager.SendMessage(skillBuffer);
+
+        ItemRequest itemRequest = new ItemRequest();
+        ByteBuffer itemBuffer = new ByteBuffer();
+        itemBuffer.WriteShort(112);
+        itemBuffer.WriteBytes(itemRequest.ToByteArray());
+        networkManager.SendMessage(itemBuffer);
     }
 
     public void OnSocket(int key, ByteBuffer byteBuffer)
@@ -33,24 +62,7 @@ public class NetManager : MonoBehaviour {
         UnityTools.Log(key);
         if(key == 11)
         {
-            BattleStartRequest battleStartRequest = new BattleStartRequest();
-            battleStartRequest.BattleId = GameData.g_battleId;
-            ByteBuffer buffer = new ByteBuffer();
-            buffer.WriteShort(132);
-            buffer.WriteBytes(battleStartRequest.ToByteArray());
-            networkManager.SendMessage(buffer);
-
-            SkillRequest skillRequest = new SkillRequest();
-            ByteBuffer skillBuffer = new ByteBuffer();
-            skillBuffer.WriteShort(110);
-            skillBuffer.WriteBytes(skillRequest.ToByteArray());
-            networkManager.SendMessage(skillBuffer);
-
-            ItemRequest itemRequest = new ItemRequest();
-            ByteBuffer itemBuffer = new ByteBuffer();
-            itemBuffer.WriteShort(112);
-            itemBuffer.WriteBytes(itemRequest.ToByteArray());
-            networkManager.SendMessage(itemBuffer);
+            loadData();
         }
         else if(key == 133)
         {
@@ -62,6 +74,15 @@ public class NetManager : MonoBehaviour {
                 UnityTools.Log(hero.ToString());
             }
             GameData.g_battleView.InitHeros(battleStartResponse.Heros.ToArrayList());
+        }
+        else if (key == 135)
+        {
+            byteBuffer.ReadShort();
+            BattleResultResponse battleResultResponse = new BattleResultResponse();
+            battleResultResponse.MergeFrom(byteBuffer.ReadBytes());
+            UnityTools.Log(battleResultResponse.Earn);
+
+            GameData.g_battleView.ShowResult(battleResultResponse.Earn);
         }
         else if (key == 111)
         {
@@ -94,7 +115,8 @@ public class NetManager : MonoBehaviour {
 
     private void OnDestroy()
     {
-        AppFacade.Instance.RemoveCommand(NotiConst.DISPATCH_MESSAGE);
+        //AppFacade.Instance.RemoveCommand(NotiConst.DISPATCH_MESSAGE);
+        AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
     }
 }
 

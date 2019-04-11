@@ -19,7 +19,8 @@ public class BattleView : MonoBehaviour {
     HeroItem[] enermyHeroItems = new HeroItem[9];
     GameObject selectItem;
     Text selectItemNameText;
-    GameObject resultObj;
+
+    ResultItem resultItem = new ResultItem();
 
     ArrayList m_skills;
     ArrayList m_heros;
@@ -49,8 +50,8 @@ public class BattleView : MonoBehaviour {
         selectItem = transform.Find("selectItem").gameObject;
         selectItemNameText = selectItem.transform.Find("name").GetComponent<Text>();
 
-        resultObj = transform.Find("result").gameObject;
-        resultObj.SetOnClick(OnResultClick);
+        resultItem.Init(transform.Find("result"));
+        resultItem.gameObject.SetOnClick(OnResultClick);
     }
 
     // Use this for initialization
@@ -74,9 +75,10 @@ public class BattleView : MonoBehaviour {
         }
     }
 
-    public void ShowResult()
+    public void ShowResult(Earn earn)
     {
-        resultObj.SetActive(true);
+        resultItem.InitData(earn);
+        resultItem.gameObject.SetActive(true);
     }
 
     void OnResultClick(BaseEventData go, GameObject targetObj, params object[] eventArgs)
