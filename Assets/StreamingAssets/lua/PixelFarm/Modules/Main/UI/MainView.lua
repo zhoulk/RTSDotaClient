@@ -117,6 +117,7 @@ end
 
 function _M:OnGroupClick()
     print("OnGroupClick click")
+    self.iCtrl:ShowGroup()
 end
 
 function _M:OnBagClick()

@@ -35,3 +35,4 @@ Application = UnityEngine.Application
 Color = UnityEngine.Color
 Screen = UnityEngine.Screen
 SceneManager = UnityEngine.SceneManagement.SceneManager
+LoadSceneMode = UnityEngine.SceneManagement.LoadSceneMode

@@ -3,8 +3,11 @@ local Hero = require "PixelFarm.Modules.Data.Entry.Hero"
 local Skill = require "PixelFarm.Modules.Data.Entry.Skill"
 local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
 local GuanKa = require "PixelFarm.Modules.Data.Entry.GuanKa"
+local Group = require "PixelFarm.Modules.Data.Entry.Group"
+
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
+local GroupLogic = require "PixelFarm.Modules.Logic.GroupLogic"
 
 local _StoreLogic = class()
 
@@ -154,6 +157,30 @@ function _StoreLogic:HeroSkills(heroId, cb, force)
     end
 end
 
+function _StoreLogic:OwnGroup(userId, cb, force)
+    local group = self:LoadOwnGroup(userId)
+    if force or group == nil then
+        GroupLogic:GroupOwn(function(succeed, err, gp)
+            print(gp)
+            if succeed then
+                local _group = nil
+                if group then
+                    _group = Group.new()
+                    _group:Init(gp)
+                    self:SaveOwnGroup(userId, _group)
+                end
+                if cb then
+                    cb(_group)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(group)
+        end
+    end
+end
+
 function _StoreLogic:SavePlayer(player)
     LocalDataManager:Save("local_Player", player)
 end
@@ -248,6 +275,21 @@ function _StoreLogic:LoadGuanKas(chapterId)
         end
     end
     return _guanKas
+end
+
+function _StoreLogic:SaveOwnGroup(userId, group)
+    LocalDataManager:Save("local_OwnGroup_" .. userId, group)
+end
+
+function _StoreLogic:LoadOwnGroup(userId)
+    local key = "local_OwnGroup_" .. userId
+    local groupTab = LocalDataManager:Load(key)
+    local _group = nil
+    if groupTab then
+        _group = Group.new()
+        _group:Init(groupTab)
+    end
+    return _group
 end
 
 return _StoreLogic

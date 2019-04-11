@@ -40,6 +40,7 @@ function _M:InitBtns()
     self.battleArrBtn = self.transform:Find("bg/battleArrBtn").gameObject
     self.heroBtn = self.transform:Find("bg/heroBtn").gameObject
     self.bagBtn = self.transform:Find("bg/bagBtn").gameObject
+    self.groupBtn = self.transform:Find("bg/groupBtn").gameObject
     self.chapterBtn = self.transform:Find("bg/chapterBtn").gameObject
 
     self.tavernBtn:SetOnClick(function ()
@@ -53,6 +54,9 @@ function _M:InitBtns()
     end)
     self.bagBtn:SetOnClick(function ()
         self:OnBagClick()
+    end)
+    self.groupBtn:SetOnClick(function ()
+        self:OnGroupClick()
     end)
     self.chapterBtn:SetOnClick(function ()
         self:OnChapterClick()
@@ -109,6 +113,11 @@ end
 
 function _M:OnHeroClick()
     print("OnHeroClick click")
+end
+
+function _M:OnGroupClick()
+    print("OnGroupClick click")
+    self.iCtrl:ShowGroup()
 end
 
 function _M:OnBagClick()

@@ -12,6 +12,7 @@ function _PBManager:Init()
     self:Registe("map.pb")
     self:Registe("hero.pb")
     self:Registe("battle.pb")
+    self:Registe("group.pb")
 end
 
 function _PBManager:Registe(luaName)
