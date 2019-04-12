@@ -164,7 +164,7 @@ function _StoreLogic:OwnGroup(userId, cb, force)
             print(gp)
             if succeed then
                 local _group = nil
-                if group then
+                if gp then
                     _group = Group.new()
                     _group:Init(gp)
                     self:SaveOwnGroup(userId, _group)
@@ -286,6 +286,7 @@ function _StoreLogic:LoadOwnGroup(userId)
     local groupTab = LocalDataManager:Load(key)
     local _group = nil
     if groupTab then
+        print(tabStr(groupTab))
         _group = Group.new()
         _group:Init(groupTab)
     end

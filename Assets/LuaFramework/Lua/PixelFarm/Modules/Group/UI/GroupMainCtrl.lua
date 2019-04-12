@@ -8,7 +8,12 @@ function _M:StartView()
 end
 
 function _M:Close()
+    CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
     CtrlManager:CloseCtrl(GroupCtrlNames.GroupMain)
+end
+
+function _M:ShowMember()
+    CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupMember)
 end
 
 return _M

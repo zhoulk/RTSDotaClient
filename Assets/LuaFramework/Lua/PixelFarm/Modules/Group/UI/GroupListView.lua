@@ -33,8 +33,15 @@ function _M:InitCreateBlock(trans, path)
     block.transform = transform
     block.gameObject = transform.gameObject
 
+    block.nameInput = transform:Find("content/nameInput"):GetComponent("InputField")
+    block.createBtn = transform:Find("content/create").gameObject
+
     block.gameObject:SetOnClick(function ()
         block.gameObject:SetActive(false)
+    end)
+
+    block.createBtn:SetOnClick(function ()
+        self:OnCreateCreateClick()
     end)
 
     return block
@@ -42,6 +49,14 @@ end
 
 function _M:OnCreateClick()
     self.createBlock.gameObject:SetActive(true)
+end
+
+function _M:OnCreateCreateClick()
+    if #self.createBlock.nameInput.text == 0 then
+        toast("请输入军团名称")
+    else
+        self.iCtrl:CreateGroup(self.createBlock.nameInput.text)
+    end
 end
 
 function _M:OnBackClick()

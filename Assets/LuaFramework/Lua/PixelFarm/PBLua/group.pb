@@ -1,5 +1,6 @@
 
-ý	
+é
+
 group.protomsg	err.proto"2
 GroupCreateRequest
 	groupName (	R	groupName"|
@@ -36,20 +37,25 @@
 GroupOperResponse%
 code (2.msg.ResponseCodeRcode
 err (2
-.msg.ErrorRerr"Í
+.msg.ErrorRerr"¹
 Group
-groupId (	RgroupId
-	groupName (	R	groupName 
-groupLeader (	RgroupLeader*
-groupDeclaration (	RgroupDeclaration
-	memberCnt (R	memberCnt 
-memberTotal (RmemberTotal"Ý
+GroupId (	RGroupId
+	GroupName (	R	GroupName 
+GroupLeader (	RGroupLeader*
+GroupDeclaration (	RGroupDeclaration
+	MemberCnt (R	MemberCnt 
+MemberTotal (RMemberTotal
+
+GroupLevel (R
+GroupLevel$
+ContriCurrent (RContriCurrent$
+ContriLevelUp	 (RContriLevelUp"Ý
 GroupMember
-userId (	RuserId
-name (	Rname
-level (Rlevel
-power (Rpower 
-contriToday (RcontriToday 
-contriTotal (RcontriTotal
-job (Rjob 
-offLineTime (RoffLineTimebproto3
+UserId (	RUserId
+Name (	RName
+Level (RLevel
+Power (RPower 
+ContriToday (RContriToday 
+ContriTotal (RContriTotal
+Job (RJob 
+OffLineTime (ROffLineTimebproto3
