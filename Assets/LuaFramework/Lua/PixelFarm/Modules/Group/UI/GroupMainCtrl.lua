@@ -12,8 +12,8 @@ function _M:Close()
     CtrlManager:CloseCtrl(GroupCtrlNames.GroupMain)
 end
 
-function _M:ShowMember()
-    CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupMember)
+function _M:ShowMember(group)
+    CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupMember, group)
 end
 
 return _M

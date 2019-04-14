@@ -24,14 +24,14 @@ LocalDataManager = _M.Instance()
 
 function _M:Save(key, data)
     local str = tabStr(data)
-    print("[LocalDataManager.Save] str = " .. str)
+    print("[LocalDataManager.Save] key = " .. key .. " str = " .. str)
 
     PlayerPrefs.SetString(key, str)
 end
 
 function _M:Load(key)
     local str = PlayerPrefs.GetString(key)
-    print("[LocalDataManager.Load] str = " .. str)
+    print("[LocalDataManager.Load] key = " .. key .. " str = " .. str)
     if str == nil or #str == 0 then
         return nil
     else

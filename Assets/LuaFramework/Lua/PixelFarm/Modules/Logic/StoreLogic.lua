@@ -4,6 +4,7 @@ local Skill = require "PixelFarm.Modules.Data.Entry.Skill"
 local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
 local GuanKa = require "PixelFarm.Modules.Data.Entry.GuanKa"
 local Group = require "PixelFarm.Modules.Data.Entry.Group"
+local GroupMember = require "PixelFarm.Modules.Data.Entry.GroupMember"
 
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
@@ -164,7 +165,7 @@ function _StoreLogic:OwnGroup(userId, cb, force)
             print(gp)
             if succeed then
                 local _group = nil
-                if gp then
+                if gp and #gp.GroupId > 0 then
                     _group = Group.new()
                     _group:Init(gp)
                     self:SaveOwnGroup(userId, _group)
@@ -177,6 +178,32 @@ function _StoreLogic:OwnGroup(userId, cb, force)
     else
         if cb then
             cb(group)
+        end
+    end
+end
+
+function _StoreLogic:GroupMembers(groupId, cb, force)
+    local members = self:LoadGroupMembers(groupId)
+    if force or members == nil or #members == 0 then
+        GroupLogic:GroupMembers(groupId, function(succeed, err, mbs)
+            if succeed then
+                local _members = {}
+                if mbs then
+                    for i,mem in pairs(mbs) do
+                        local m = GroupMember.new()
+                        m:Init(mem)
+                        table.insert(_members, m)
+                    end
+                end
+                self:SaveGroupMembers(groupId, _members)
+                if cb then
+                    cb(_members)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(members)
         end
     end
 end
@@ -280,7 +307,6 @@ end
 function _StoreLogic:SaveOwnGroup(userId, group)
     LocalDataManager:Save("local_OwnGroup_" .. userId, group)
 end
-
 function _StoreLogic:LoadOwnGroup(userId)
     local key = "local_OwnGroup_" .. userId
     local groupTab = LocalDataManager:Load(key)
@@ -291,6 +317,23 @@ function _StoreLogic:LoadOwnGroup(userId)
         _group:Init(groupTab)
     end
     return _group
+end
+
+function _StoreLogic:SaveGroupMembers(groupId, members)
+    LocalDataManager:Save("local_GroupMembers_" .. groupId, members)
+end
+function _StoreLogic:LoadGroupMembers(groupId)
+    local key = "local_GroupMembers_" .. groupId
+    local membersTab = LocalDataManager:Load(key)
+    local _members = {}
+    if membersTab then
+        for i,mem in pairs(membersTab) do
+            local _m = GroupMember.new()
+            _m:Init(mem)
+            table.insert(_members, _m)
+        end
+    end
+    return _members
 end
 
 return _StoreLogic

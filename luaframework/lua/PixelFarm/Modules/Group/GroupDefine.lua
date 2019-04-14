@@ -1,12 +1,14 @@
 
 GroupCtrlNames = {
    GroupMain = "GroupMainCtrl",
-   GroupList = "GroupListCtrl"
+   GroupList = "GroupListCtrl",
+   GroupMember = "GroupMembersCtrl"
 }
 
 GroupViewNames = {
    GroupMain = "GroupMainView",
-   GroupList = "GroupListView"
+   GroupList = "GroupListView",
+   GroupMember = "GroupMembersView"
 }
 
 

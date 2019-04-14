@@ -78,4 +78,41 @@ function _GroupLogic:GroupCreate(name, cb)
     networkMgr:SendMessage(buffer)
 end
 
+function _GroupLogic:GroupMembers(gid, cb)
+
+    if GroupMembersResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("GroupMemberResponse"), GroupMembersResponseFunc) 
+    end
+    GroupMembersResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[GroupLogic.GroupMembers] response")
+
+        local decode = protobuf.decode("msg.GroupMemberResponse", data)
+
+        print("[GroupLogic.GroupMembers] response = " .. tabStr(decode))
+
+        if decode.code == "SUCCESS" then
+            -- self:SaveUid(decode.uid)
+            if cb then
+                cb(true, nil, decode.members)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("GroupMemberResponse"), GroupMembersResponseFunc) 
+
+    local requestParams = {
+        groupId = gid
+    }
+    local code = protobuf.encode("msg.GroupMembersRequest", requestParams)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("GroupMembersRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
 return _GroupLogic

@@ -35,7 +35,7 @@ end
 function _M:ShowGroup()
     local player = StoreLogic:CurrentPlayer()
     StoreLogic:OwnGroup(player.UserId, function (group)
-        print(group)
+        print(tabStr(group))
         if group == nil then
             CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupList)
         else

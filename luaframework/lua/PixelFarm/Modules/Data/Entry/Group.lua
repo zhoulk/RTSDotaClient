@@ -8,6 +8,9 @@ function _M:Init(c)
 	self.GroupDeclaration = c.GroupDeclaration or ""
 	self.MemberCnt = c.MemberCnt or 0
 	self.MemberTotal = c.MemberTotal or 0
+	self.GroupLevel = c.GroupLevel or 0
+	self.ContriCurrent = c.ContriCurrent or 0
+	self.ContriLevelUp = c.ContriLevelUp or 0
 end
 
 return _M

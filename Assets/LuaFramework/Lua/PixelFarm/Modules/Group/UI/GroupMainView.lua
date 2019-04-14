@@ -56,7 +56,7 @@ function _M:OnBackClick()
 end
 
 function _M:OnMemberClick()
-    self.iCtrl:ShowMember()
+    self.iCtrl:ShowMember(self.group)
 end
 
 function _M:OnDestroy()

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1739032492
+CRC: 3945707932
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 09b8fb27e4d69655deb6f4f29c791a87
+    Hash: ffebf2c36a9fe0373bd17b3cf351b5b8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 71da3621eba34c72415c5f34d2d3daf8
@@ -46,4 +46,5 @@ ClassTypes:
 Assets:
 - Assets/PixelFarmResources/Group/UIPrefabs/GroupMainView.prefab
 - Assets/PixelFarmResources/Group/UIPrefabs/GroupListView.prefab
+- Assets/PixelFarmResources/Group/UIPrefabs/GroupMembersView.prefab
 Dependencies: []
