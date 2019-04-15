@@ -10,6 +10,42 @@ local heroSelectResponseFunc
 local heroUnSelectResponseFunc
 local heroSkillsResponseFunc
 local heroItemsResponseFunc
+local heroLotteryResponseFunc
+
+function _HeroLogic:HeroLottery(cb)
+
+    if heroLotteryResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("HeroLotteryResponse"), heroLotteryResponseFunc) 
+    end
+    heroLotteryResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[HeroLogic.HeroLottery] response")
+
+        local decode = protobuf.decode("msg.HeroLotteryResponse", data)
+
+        print("[HeroLogic.HeroLottery] response = " .. tabStr(decode))
+
+        if decode.code == "SUCCESS" then
+            if cb then
+                cb(true, nil, decode.heroLottery)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("HeroLotteryResponse"), heroLotteryResponseFunc) 
+
+    local heroParams = {
+    }
+    local code = protobuf.encode("msg.HeroLotteryRequest", heroParams)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("HeroLotteryRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
 
 function _HeroLogic:AllHero(cb)
 

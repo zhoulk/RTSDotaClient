@@ -4,10 +4,10 @@ local _M = class(ViewBase)
 function _M:OnCreate()
     print("_MainView oncreate  ~~~~~~~")
 
-    self.playerBlock = self:InitPlayerBlock(self.transform, "bg/player")
-    self.powerBlock = self:InitPowerBlock(self.transform, "bg/power")
-    self.coinBlock = self:InitCoinBlock(self.transform, "bg/coin")
-    self.diamondBlock = self:InitDiamondBlock(self.transform, "bg/diamond")
+    self.playerBlock = self:InitPlayerBlock(self.transform, "bg/top/player")
+    self.powerBlock = self:InitPowerBlock(self.transform, "bg/top/power")
+    self.coinBlock = self:InitCoinBlock(self.transform, "bg/top/coin")
+    self.diamondBlock = self:InitDiamondBlock(self.transform, "bg/top/diamond")
 
     self:InitBtns()
     self:InitData()
@@ -36,12 +36,13 @@ function _M:InitPlayerBlock(trans, path)
 end
 
 function _M:InitBtns()
-    self.tavernBtn = self.transform:Find("bg/tavernBtn").gameObject
-    self.battleArrBtn = self.transform:Find("bg/battleArrBtn").gameObject
-    self.heroBtn = self.transform:Find("bg/heroBtn").gameObject
-    self.bagBtn = self.transform:Find("bg/bagBtn").gameObject
-    self.groupBtn = self.transform:Find("bg/groupBtn").gameObject
-    self.chapterBtn = self.transform:Find("bg/chapterBtn").gameObject
+    self.tavernBtn = self.transform:Find("bg/center/tavernBtn").gameObject
+    self.battleArrBtn = self.transform:Find("bg/bottom/battleArrBtn").gameObject
+    self.heroBtn = self.transform:Find("bg/bottom/heroBtn").gameObject
+    self.bagBtn = self.transform:Find("bg/bottom/bagBtn").gameObject
+    self.groupBtn = self.transform:Find("bg/bottom/groupBtn").gameObject
+    self.challengeBtn = self.transform:Find("bg/bottom/challengeBtn").gameObject
+    self.chapterBtn = self.transform:Find("bg/bottom/chapterBtn").gameObject
 
     self.tavernBtn:SetOnClick(function ()
         self:OnTavernClick()
@@ -57,6 +58,9 @@ function _M:InitBtns()
     end)
     self.groupBtn:SetOnClick(function ()
         self:OnGroupClick()
+    end)
+    self.challengeBtn:SetOnClick(function ()
+        self:OnChallengeClick()
     end)
     self.chapterBtn:SetOnClick(function ()
         self:OnChapterClick()
@@ -122,6 +126,11 @@ end
 
 function _M:OnBagClick()
     print("OnBagClick click")
+end
+
+function _M:OnChallengeClick()
+    print("OnChallengeClick click")
+    self.iCtrl:ShowChallenge()
 end
 
 function _M:OnChapterClick()

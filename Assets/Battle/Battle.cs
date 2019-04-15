@@ -20,9 +20,9 @@ namespace Battle
         {
             UnityTools.Log("battle Awake");
 
-            GameData.g_battleId = "1234567890";
-            AppConst.SocketAddress = "127.0.0.1";
-            AppConst.SocketPort = 7000;
+            //GameData.g_battleId = "1234567890";
+            //AppConst.SocketAddress = "127.0.0.1";
+            //AppConst.SocketPort = 7000;
             UnityTools.Log("battleId ==== " + GameData.g_battleId);
 
             GameData.g_netManager = transform.GetComponent<NetManager>();
