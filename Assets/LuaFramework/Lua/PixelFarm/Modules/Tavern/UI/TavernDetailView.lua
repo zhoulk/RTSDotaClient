@@ -17,6 +17,10 @@ function _M:OnCreate()
 
     self.gainBlock = self:InitGainBlock(self.transform, "gain")
 
+    self.updatFunc = Timer.New(function()
+        self:UpdateLottery()
+    end, 1, -1)
+
     self:InitData()
 end
 
@@ -31,31 +35,40 @@ function _M:InitData()
     end)
 
     self.iCtrl:HeroLottery(function (lottery)
-        if self.level == 1 then
-            self.tipsText.text = "在抽取" .. lottery.NeedGoodLotteryCnt - lottery.GoodLotteryCnt .. "可获得3星英雄"
-            self:UpdateGoodLotteryInfo(lottery)
-        elseif self.level == 2 then
-            self.tipsText.text = "在抽取" .. lottery.NeedBetterLotteryCnt - lottery.BetterLotteryCnt .. "可获得5星英雄"
-            self:UpdateBetterLotteryInfo(lottery)
-        end
+        self.lottery = lottery
+        self:UpdateLottery()
     end)
+end
+
+function _M:UpdateLottery()
+    if self.lottery == nil then
+        return 
+    end
+
+    if self.level == 1 then
+        self.tipsText.text = "在抽取" .. self.lottery.NeedGoodLotteryCnt - self.lottery.GoodLotteryCnt .. "可获得3星英雄"
+        self:UpdateGoodLotteryInfo(self.lottery)
+    elseif self.level == 2 then
+        self.tipsText.text = "在抽取" .. self.lottery.NeedBetterLotteryCnt - self.lottery.BetterLotteryCnt .. "可获得5星英雄"
+        self:UpdateBetterLotteryInfo(self.lottery)
+    end
 end
 
 function _M:UpdateGoodLotteryInfo(lottery)
     if lottery.FreeGoodLottery == 0 then
         self.btnsBlock.oneTipText.text = "金币 10000"
     else
+        print(lottery.NextGoodLotteryStamp .. "  " .. os.time())
         if lottery.NextGoodLotteryStamp <= os.time() then
             self.btnsBlock.oneTipText.text = "本次免费"
+
+            self.updatFunc:Stop()
         else
             local seconds = lottery.NextGoodLotteryStamp - os.time()
-            local str = ""
-            if seconds >= 60 then
-                str = str .. seconds/60 .. "分"
-            else
-                str = str .. seconds .. "秒"
-            end
+            local str = self:FormatSeconds(seconds)
             self.btnsBlock.oneTipText.text =  str .. "后免费"
+
+            self.updatFunc:Start()
         end
     end
     self.btnsBlock.moreTipText.text = "9折 金币 9000"
@@ -67,27 +80,33 @@ function _M:UpdateBetterLotteryInfo(lottery)
     else
         if lottery.NextBetterLotteryStamp <= os.time() then
             self.btnsBlock.oneTipText.text = "本次免费"
+            
+            self.updatFunc:Stop()
         else
             local seconds = lottery.NextBetterLotteryStamp - os.time()
-            local str = ""
-
-            local t1,t2 = math.modf(seconds/3600)
-            str = str .. t1 .. "小时"
-
-            if seconds >= 3600 then
-                local t1,t2 = math.modf(seconds/3600)
-                str = str .. t1 .. "小时"
-                seconds = seconds - seconds/3600 * 3600
-            elseif seconds >= 60 then
-                str = str .. seconds/60 .. "分"
-                seconds = seconds - seconds/60 * 60
-            else
-                str = str .. seconds .. "秒"
-            end
+            local str = self:FormatSeconds(seconds)
             self.btnsBlock.oneTipText.text =  str .. "后免费"
+
+            self.updatFunc:Start()
         end
     end
     self.btnsBlock.moreTipText.text = "9折 钻石 1800"
+end
+
+function _M:FormatSeconds(seconds)
+    local str = ""
+    local t1 = math.floor(seconds/3600)
+    local t2 = seconds - t1 * 3600
+    if t1 > 0 then
+        str = str .. t1 .. "小时"
+    end
+    t1 = math.floor(t2/60)
+    t2 = t2 - t1 * 60
+    if t1 > 0 then
+        str = str .. t1 .. "分"
+    end
+    str = str .. t2 .. "秒"
+    return str
 end
 
 function _M:InitHerosBlock(trans, path)
@@ -186,7 +205,7 @@ function _M:FormatHeroType(hero)
 end
 
 function _M:OnDestroy()
-    
+    self.updatFunc:Stop()
 end
 
 return _M
