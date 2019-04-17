@@ -1,5 +1,5 @@
 
-ê
+Ú
 	map.protomsg	err.proto"
 ChapterRequest"Ä
 ChapterResponse%
@@ -19,14 +19,21 @@
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr%
-guanKas (2.msg.GuanKaRguanKas"¶
+guanKas (2.msg.GuanKaRguanKas"à
 GuanKa
 Id (RId
 Name (	RName
 	ChapterId (R	ChapterId
 Earn (2	.msg.EarnREarn#
 Expend (2.msg.ExpendRExpend
-IsOpen (RIsOpen"l
+IsOpen (RIsOpen
+Star (RStar
+Status (RStatus
+Times	 (RTimes
+
+TotalTimes
+ (R
+TotalTimes"l
 Earn
 ItemIds (	RItemIds
 HeroExp (RHeroExp

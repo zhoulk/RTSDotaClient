@@ -69,9 +69,9 @@ function _MapLogic:AllGuanKa(cb)
     end
     Event.AddListener(Protocal.KeyOf("GuanKaResponse"), guanKaResponseFunc) 
 
-    local heroParams = {
+    local requestParams = {
     }
-    local code = protobuf.encode("msg.GuanKaRequest", heroParams)
+    local code = protobuf.encode("msg.GuanKaRequest", requestParams)
     local buffer = ByteBuffer.New()
     buffer:WriteShort(Protocal.KeyOf("GuanKaRequest"))
     buffer:WriteBuffer(code)

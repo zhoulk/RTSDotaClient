@@ -6,9 +6,28 @@ function _M:Init(g)
 	self.Name = g.Name or ""
     self.IsOpen = g.IsOpen or false
     self.ChapterId = g.ChapterId
-	-- self.Star = c.Star or 0
-	-- self.Status = c.Status or 1
-	-- self.GuanKaNum = c.GuanKaNum or 0
+	self.Star = g.Star or 0
+    self.Status = g.Status or 1
+	self.Times = g.Times or 0
+    self.TotalTimes = g.TotalTimes or 0
+    
+    self.Expend = {}
+    if g.Expend then
+        self.Expend.Power = g.Expend.Power or 0
+    else
+        self.Expend.Power = 0
+    end
+
+    self.Earn = {}
+    if g.Earn then
+        self.Earn.PlayerExp = g.Earn.PlayerExp or 0
+        self.Earn.Gold = g.Earn.Gold or 0
+        self.Earn.ItemIds = g.Earn.ItemIds or {}
+    else
+        self.Earn.PlayerExp = 0
+        self.Earn.Gold = 0
+        self.Earn.ItemIds = {}
+    end
 end
 
 function _M:StatusStr()

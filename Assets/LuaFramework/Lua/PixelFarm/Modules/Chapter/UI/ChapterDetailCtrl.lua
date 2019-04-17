@@ -18,7 +18,7 @@ function _M:AllGuanKas(chapterId, cb)
         if cb then
             cb(guanKas)
         end
-    end)
+    end, true)
 end
 
 function _M:ShowBattle(guanKa)
