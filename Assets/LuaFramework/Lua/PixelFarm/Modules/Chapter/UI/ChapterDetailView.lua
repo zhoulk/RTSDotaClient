@@ -5,6 +5,8 @@ function _M:OnCreate()
     print("ChapterDetailView oncreate  ~~~~~~~")
     self.chapter = self.args[1]
 
+    self.itemCache = {}
+
     self.backBtn = self.transform:Find("backBtn").gameObject
     self.backBtn:SetOnClick(function ()
         self:OnBackClick()
@@ -82,9 +84,11 @@ function _M:UpdateGuanKaList(guanKas)
             gkObj.transform:Find("bg/name"):GetComponent("Text").text = gk.Name
             gkObj.transform:Find("bg/status"):GetComponent("Text").text = gk:StatusStr()
 
-            gkObj.transform:GetComponent("Button").onClick:AddListener(function ()
-                self:OnGuanKaClick(gk)
-            end)
+            if guanKaCanEnter(gk.Status) then
+                gkObj.transform:GetComponent("Button").onClick:AddListener(function ()
+                    self:OnGuanKaClick(gk)
+                end)
+            end
         end
     end
 end
@@ -96,13 +100,26 @@ function _M:UpdateGuanKaDetail(gk)
     self.detailBlock.starsText.text = "星  " .. gk.Star .. "/3"
     self.detailBlock.powerText.text = gk.Expend.Power
     self.detailBlock.earnText.text = "金币 " .. gk.Earn.Gold .. "   经验  " .. gk.Earn.PlayerExp
-    for itemId in pairs(gk.Earn.ItemIds) do
-        local itemObj = newObject(self.detailBlock.items.item)
-        itemObj.transform:SetParent(self.detailBlock.items.list.transform, false)
-        itemObj.transform.localScale = Vector3(1,1,1)
-        itemObj:SetActive(true)
+    for i, itemId in pairs(gk.Earn.ItemIds) do
+        local item = {}
+        if i <= #self.itemCache then
+            item = self.itemCache[i]
+        else
+            local itemObj = newObject(self.detailBlock.items.item)
+            itemObj.transform:SetParent(self.detailBlock.items.list.transform, false)
+            itemObj.transform.localScale = Vector3(1,1,1)
+            item.obj = itemObj
+            item.nameText = itemObj.transform:Find("label"):GetComponent("Text")
+            table.insert(self.itemCache, item)
+        end
+        
+        item.obj:SetActive(true)
+        item.nameText.text = itemId
+    end
 
-        itemObj.transform:Find("label"):GetComponent("Text").text = itemId
+    for i=#gk.Earn.ItemIds + 1,#self.itemCache,1 do
+        local item = self.itemCache[i]
+        item.obj:SetActive(false)
     end
 end
 

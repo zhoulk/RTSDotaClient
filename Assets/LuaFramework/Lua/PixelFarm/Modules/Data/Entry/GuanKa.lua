@@ -46,4 +46,12 @@ function guanKaStatusStr(type)
     return m[type]
 end
 
+function guanKaCanEnter(type)
+    if type == 2 or type == 3 then
+        return true
+    else
+        return false
+    end
+end
+
 return _M
