@@ -81,14 +81,14 @@ end
 function _GroupLogic:GroupMembers(gid, cb)
 
     if GroupMembersResponseFunc then
-        Event.RemoveListener(Protocal.KeyOf("GroupMemberResponse"), GroupMembersResponseFunc) 
+        Event.RemoveListener(Protocal.KeyOf("GroupMembersResponse"), GroupMembersResponseFunc) 
     end
     GroupMembersResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
         print("[GroupLogic.GroupMembers] response")
 
-        local decode = protobuf.decode("msg.GroupMemberResponse", data)
+        local decode = protobuf.decode("msg.GroupMembersResponse", data)
 
         print("[GroupLogic.GroupMembers] response = " .. tabStr(decode))
 
@@ -103,7 +103,7 @@ function _GroupLogic:GroupMembers(gid, cb)
             end
         end
     end
-    Event.AddListener(Protocal.KeyOf("GroupMemberResponse"), GroupMembersResponseFunc) 
+    Event.AddListener(Protocal.KeyOf("GroupMembersResponse"), GroupMembersResponseFunc) 
 
     local requestParams = {
         groupId = gid

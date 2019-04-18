@@ -1,5 +1,5 @@
 
-é
+ê
 
 group.protomsg	err.proto"2
 GroupCreateRequest
@@ -25,8 +25,8 @@
 groups (2
 .msg.GroupRgroups"/
 GroupMembersRequest
-groupId (	RgroupId"†
-GroupMemberResponse%
+groupId (	RgroupId"‡
+GroupMembersResponse%
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr*

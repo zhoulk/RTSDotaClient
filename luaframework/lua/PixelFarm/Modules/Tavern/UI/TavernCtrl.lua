@@ -1,4 +1,5 @@
 local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
+local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 
 local _M = class(CtrlBase)
 
@@ -21,9 +22,21 @@ function _M:CurrentPlayer(cb)
     end)
 end
 
-function _M:ShowTavernDetail()
-    CtrlManager:OpenCtrl(MoudleNames.Tavern, TavernCtrlNames.TavernDetail)
+function _M:ShowTavernDetail(camp, level)
+    CtrlManager:OpenCtrl(MoudleNames.Tavern, TavernCtrlNames.TavernDetail, camp, level)
     CtrlManager:CloseCtrl(TavernCtrlNames.Tavern)
+end
+
+function _M:HeroLottery(cb)
+    HeroLogic:HeroLottery(function(succeed, err, heroLottery)
+        if succeed then
+            if cb then
+                cb(heroLottery)
+            end
+        else
+            toast(err.msg)
+        end
+    end)
 end
 
 return _M

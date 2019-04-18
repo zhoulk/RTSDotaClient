@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3945707932
+CRC: 3866129180
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ffebf2c36a9fe0373bd17b3cf351b5b8
+    Hash: b5497e7e71dc374298f18632955f1435
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 71da3621eba34c72415c5f34d2d3daf8
+    Hash: ad80db09e064eaf469d040d2bd4c06dd
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,6 +21,8 @@ ClassTypes:
   Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -405508275, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
   Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
@@ -44,6 +46,7 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 Assets:
+- Assets/PixelFarmResources/Group/UIPrefabs/GroupCopyView.prefab
 - Assets/PixelFarmResources/Group/UIPrefabs/GroupMainView.prefab
 - Assets/PixelFarmResources/Group/UIPrefabs/GroupListView.prefab
 - Assets/PixelFarmResources/Group/UIPrefabs/GroupMembersView.prefab

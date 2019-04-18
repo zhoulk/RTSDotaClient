@@ -114,9 +114,11 @@ function _StoreLogic:AllGuanKas(chapterId, cb, force)
                 local _guanKas = {}
                 if guanKas then
                     for i,gk in pairs(guanKas) do
-                        local c = GuanKa.new()
-                        c:Init(gk)
-                        table.insert(_guanKas, c)
+                        if gk.ChapterId == chapterId then
+                            local c = GuanKa.new()
+                            c:Init(gk)
+                            table.insert(_guanKas, c)
+                        end
                     end
                 end
                 self:SaveGuanKas(chapterId, _guanKas)

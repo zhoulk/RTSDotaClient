@@ -1,4 +1,5 @@
 local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
+local BattleLogic = require "PixelFarm.Modules.Logic.BattleLogic"
 
 local _M = class(CtrlBase)
 
@@ -17,16 +18,22 @@ function _M:AllGuanKas(chapterId, cb)
         if cb then
             cb(guanKas)
         end
-    end)
+    end, true)
 end
 
 function _M:ShowBattle(guanKa)
-    gameMgr:InitGameData("1234567890")
+    BattleLogic:BattleCreate(1,{guanKa.Id}, function (succeed, err, battelId)
+        if succeed then
+            gameMgr:InitGameData(battelId)
 
-    -- CtrlManager:OpenCtrl(MoudleNames.Battle, BattleCtrlNames.Battle)
-    -- CtrlManager:CloseCtrl(ChapterCtrlNames.ChapterDetail)
-
-    SceneManager.LoadSceneAsync("battle", LoadSceneMode.Additive)
+            -- CtrlManager:OpenCtrl(MoudleNames.Battle, BattleCtrlNames.Battle)
+            -- CtrlManager:CloseCtrl(ChapterCtrlNames.ChapterDetail)
+        
+            SceneManager.LoadSceneAsync("battle", LoadSceneMode.Additive)
+        else
+            toast(err.msg)
+        end
+    end)
 end
 
 return _M

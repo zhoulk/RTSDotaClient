@@ -1,8 +1,16 @@
 
-à
+˜
 battle.protomsg	err.proto	map.proto
 hero.protoskill.proto
-item.proto"0
+item.proto"=
+BattleCreateRequest
+type (Rtype
+args (	Rargs"w
+BattleCreateResponse%
+code (2.msg.ResponseCodeRcode
+err (2
+.msg.ErrorRerr
+battleId (	RbattleId"0
 BattleStartRequest
 battleId (	RbattleId"À
 BattleStartResponse%

@@ -54,12 +54,36 @@ function _M:RefreshMembers()
     
                 memberItem.obj = memberObj
                 memberItem.nameText = memberObj.transform:Find("name"):GetComponent("Text")
+                memberItem.levelText = memberObj.transform:Find("level"):GetComponent("Text")
+                memberItem.offlineText = memberObj.transform:Find("offlineTime"):GetComponent("Text")
+                memberItem.onlineObj = memberObj.transform:Find("online").gameObject
+                memberItem.powerText = memberObj.transform:Find("power/label"):GetComponent("Text")
+                memberItem.contriText = memberObj.transform:Find("contri/label"):GetComponent("Text")
+                memberItem.contriTotalText = memberObj.transform:Find("contriTotal/label"):GetComponent("Text")
+                memberItem.statusText = memberObj.transform:Find("status"):GetComponent("Text")
+                memberItem.detailBtn = memberObj.transform:Find("detailBtn").gameObject
 
                 table.insert(self.memberItemCache, memberItem)
             end
 
             memberItem.data = member
             memberItem.nameText.text = member.Name
+            memberItem.levelText.text = "LV." .. member.Level
+            if member.OffLineTime <= 0 then
+                memberItem.onlineObj:SetActive(true)
+                memberItem.offlineText.gameObject:SetActive(false)
+            else
+                memberItem.onlineObj:SetActive(false)
+                memberItem.offlineText.text = member.OffLineTime .. "分钟前在线"
+            end
+            memberItem.powerText.text = member.Power
+            memberItem.contriText.text = member.ContriToday
+            memberItem.contriTotalText.text = member.ContriTotal
+            if member.ContriToday <= 0 then
+                memberItem.statusText.text = "今天还未捐献"
+            else
+                memberItem.statusText.text = "今日捐献" .. member.ContriToday
+            end
         end
 
         for i=#self.members+1 ,#self.memberItemCache,1 do
