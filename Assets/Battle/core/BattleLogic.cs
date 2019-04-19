@@ -62,6 +62,7 @@ public class BattleLogic
         // 英雄
         int selfLiveCnt = 0;
         int otherLiveCnt = 0;
+        int selfTotalCnt = 0;
         for (int i = 0; i < GameData.g_listHero.Count; i++)
         {
             BaseHero baseHero = GameData.g_listHero[i];
@@ -73,6 +74,7 @@ public class BattleLogic
 
             if (baseHero.group == Fix64.One)
             {
+                selfTotalCnt++;
                 if (!baseHero.IsDied)
                 {
                     selfLiveCnt++;
@@ -89,6 +91,22 @@ public class BattleLogic
 
         if (selfLiveCnt == 0 || otherLiveCnt == 0)
         {
+            if(selfLiveCnt == 0)
+            {
+                GameData.g_battleResult = 0;
+            }
+            else if (selfTotalCnt - selfLiveCnt == 0)
+            {
+                GameData.g_battleResult = 3;
+            }
+            else if (selfTotalCnt - selfLiveCnt == 1)
+            {
+                GameData.g_battleResult = 2;
+            }
+            else if (selfTotalCnt - selfLiveCnt >= 2)
+            {
+                GameData.g_battleResult = 1;
+            }
             stopBattle();
         }
     }

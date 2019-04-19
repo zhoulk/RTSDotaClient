@@ -42,6 +42,7 @@ function _M:UpdateChapterList(chapters)
 
             chapterObj.transform:Find("bg/name"):GetComponent("Text").text = chapter.Name
             chapterObj.transform:Find("bg/status"):GetComponent("Text").text = chapterStatusStr(chapter.Status)
+            chapterObj.transform:Find("bg/star"):GetComponent("Text").text = "星 " .. chapter.Star .. "/" .. chapter.GuanKaNum*3
 
             if chapterCanEnter(chapter.Status) then
                 chapterObj.transform:GetComponent("Button").onClick:AddListener(function ()

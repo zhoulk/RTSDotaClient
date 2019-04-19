@@ -27,43 +27,54 @@ namespace Msg {
             "CgpoZXJvLnByb3RvEgNtc2caCWVyci5wcm90bxoLc2tpbGwucHJvdG8aCml0",
             "ZW0ucHJvdG8iDQoLSGVyb1JlcXVlc3QiYgoMSGVyb1Jlc3BvbnNlEh8KBGNv",
             "ZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1z",
-            "Zy5FcnJvchIYCgVoZXJvcxgDIAMoCzIJLm1zZy5IZXJvIjgKEUhlcm9SYW5k",
-            "b21SZXF1ZXN0EiMKBUxldmVsGAEgASgOMhQubXNnLkhlcm9SYW5kb21MZXZl",
-            "bCJnChJIZXJvUmFuZG9tUmVzcG9uc2USHwoEY29kZRgBIAEoDjIRLm1zZy5S",
-            "ZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNnLkVycm9yEhcKBGhlcm8Y",
-            "AyABKAsyCS5tc2cuSGVybyIQCg5IZXJvT3duUmVxdWVzdCJlCg9IZXJvT3du",
-            "UmVzcG9uc2USHwoEY29kZRgBIAEoDjIRLm1zZy5SZXNwb25zZUNvZGUSFwoD",
-            "ZXJyGAIgASgLMgoubXNnLkVycm9yEhgKBWhlcm9zGAMgAygLMgkubXNnLkhl",
-            "cm8iMAoRSGVyb1NlbGVjdFJlcXVlc3QSDgoGaGVyb0lkGAEgASgJEgsKA3Bv",
-            "cxgCIAEoBSJfChJIZXJvU2VsZWN0UmVzcG9uc2USHwoEY29kZRgBIAEoDjIR",
-            "Lm1zZy5SZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNnLkVycm9yEg8K",
-            "B2hlcm9JZHMYAyADKAkiJQoTSGVyb1VuU2VsZWN0UmVxdWVzdBIOCgZoZXJv",
-            "SWQYASABKAkiYQoUSGVyb1VuU2VsZWN0UmVzcG9uc2USHwoEY29kZRgBIAEo",
-            "DjIRLm1zZy5SZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNnLkVycm9y",
-            "Eg8KB2hlcm9JZHMYAyADKAkiIwoRSGVyb1NraWxsc1JlcXVlc3QSDgoGaGVy",
-            "b0lkGAEgASgJImoKEkhlcm9Ta2lsbHNSZXNwb25zZRIfCgRjb2RlGAEgASgO",
-            "MhEubXNnLlJlc3BvbnNlQ29kZRIXCgNlcnIYAiABKAsyCi5tc2cuRXJyb3IS",
-            "GgoGc2tpbGxzGAMgAygLMgoubXNnLlNraWxsIiIKEEhlcm9JdGVtc1JlcXVl",
-            "c3QSDgoGaGVyb0lkGAEgASgJImcKEUhlcm9JdGVtc1Jlc3BvbnNlEh8KBGNv",
+            "Zy5FcnJvchIYCgVoZXJvcxgDIAMoCzIJLm1zZy5IZXJvIhQKEkhlcm9Mb3R0",
+            "ZXJ5UmVxdWVzdCJ2ChNIZXJvTG90dGVyeVJlc3BvbnNlEh8KBGNvZGUYASAB",
+            "KA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJv",
+            "chIlCgtoZXJvTG90dGVyeRgDIAEoCzIQLm1zZy5IZXJvTG90dGVyeSI4ChFI",
+            "ZXJvUmFuZG9tUmVxdWVzdBIjCgVMZXZlbBgBIAEoDjIULm1zZy5IZXJvUmFu",
+            "ZG9tTGV2ZWwiZwoSSGVyb1JhbmRvbVJlc3BvbnNlEh8KBGNvZGUYASABKA4y",
+            "ES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJvchIX",
+            "CgRoZXJvGAMgASgLMgkubXNnLkhlcm8iEAoOSGVyb093blJlcXVlc3QiZQoP",
+            "SGVyb093blJlc3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9uc2VD",
+            "b2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJvchIYCgVoZXJvcxgDIAMoCzIJ",
+            "Lm1zZy5IZXJvIjAKEUhlcm9TZWxlY3RSZXF1ZXN0Eg4KBmhlcm9JZBgBIAEo",
+            "CRILCgNwb3MYAiABKAUiXwoSSGVyb1NlbGVjdFJlc3BvbnNlEh8KBGNvZGUY",
+            "ASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5F",
+            "cnJvchIPCgdoZXJvSWRzGAMgAygJIiUKE0hlcm9VblNlbGVjdFJlcXVlc3QS",
+            "DgoGaGVyb0lkGAEgASgJImEKFEhlcm9VblNlbGVjdFJlc3BvbnNlEh8KBGNv",
             "ZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1z",
-            "Zy5FcnJvchIYCgVpdGVtcxgDIAMoCzIJLm1zZy5JdGVtIsUDCgRIZXJvEgoK",
-            "AklkGAEgASgFEgwKBE5hbWUYAiABKAkSDQoFTGV2ZWwYAyABKAUSEAoIU3Ry",
-            "ZW5ndGgYBCABKAUSDwoHQWdpbGl0eRgFIAEoBRIUCgxJbnRlbGxpZ2VuY2UY",
-            "BiABKAUSDQoFQXJtb3IYByABKAUSEQoJQXR0YWNrTWluGAggASgFEhEKCUF0",
-            "dGFja01heBgJIAEoBRINCgVCbG9vZBgKIAEoBRIMCgRUeXBlGAsgASgFEhQK",
-            "DFN0cmVuZ3RoU3RlcBgMIAEoBRITCgtBZ2lsaXR5U3RlcBgNIAEoBRIYChBJ",
-            "bnRlbGxpZ2VuY2VTdGVwGA4gASgFEhAKCFNraWxsSWRzGA8gAygJEg4KBkhl",
-            "cm9JZBgQIAEoCRIQCghQbGF5ZXJJZBgRIAEoCRIQCghJc1NlbGVjdBgSIAEo",
-            "CBILCgNQb3MYEyABKAUSCgoCTVAYFCABKAUSEAoITWF4Qmxvb2QYFSABKAUS",
-            "DQoFTWF4TVAYFiABKAUSEgoKU2tpbGxQb2ludBgXIAEoBRILCgNFeHAYGCAB",
-            "KAUSEgoKTGV2ZWxVcEV4cBgZIAEoBRIPCgdJdGVtSWRzGBogAygJKjEKD0hl",
-            "cm9SYW5kb21MZXZlbBIICgRHT09EEAASCgoGQkVUVEVSEAESCAoEQkVTVBAC",
-            "YgZwcm90bzM="));
+            "Zy5FcnJvchIPCgdoZXJvSWRzGAMgAygJIiMKEUhlcm9Ta2lsbHNSZXF1ZXN0",
+            "Eg4KBmhlcm9JZBgBIAEoCSJqChJIZXJvU2tpbGxzUmVzcG9uc2USHwoEY29k",
+            "ZRgBIAEoDjIRLm1zZy5SZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNn",
+            "LkVycm9yEhoKBnNraWxscxgDIAMoCzIKLm1zZy5Ta2lsbCIiChBIZXJvSXRl",
+            "bXNSZXF1ZXN0Eg4KBmhlcm9JZBgBIAEoCSJnChFIZXJvSXRlbXNSZXNwb25z",
+            "ZRIfCgRjb2RlGAEgASgOMhEubXNnLlJlc3BvbnNlQ29kZRIXCgNlcnIYAiAB",
+            "KAsyCi5tc2cuRXJyb3ISGAoFaXRlbXMYAyADKAsyCS5tc2cuSXRlbSLFAwoE",
+            "SGVybxIKCgJJZBgBIAEoBRIMCgROYW1lGAIgASgJEg0KBUxldmVsGAMgASgF",
+            "EhAKCFN0cmVuZ3RoGAQgASgFEg8KB0FnaWxpdHkYBSABKAUSFAoMSW50ZWxs",
+            "aWdlbmNlGAYgASgFEg0KBUFybW9yGAcgASgFEhEKCUF0dGFja01pbhgIIAEo",
+            "BRIRCglBdHRhY2tNYXgYCSABKAUSDQoFQmxvb2QYCiABKAUSDAoEVHlwZRgL",
+            "IAEoBRIUCgxTdHJlbmd0aFN0ZXAYDCABKAUSEwoLQWdpbGl0eVN0ZXAYDSAB",
+            "KAUSGAoQSW50ZWxsaWdlbmNlU3RlcBgOIAEoBRIQCghTa2lsbElkcxgPIAMo",
+            "CRIOCgZIZXJvSWQYECABKAkSEAoIUGxheWVySWQYESABKAkSEAoISXNTZWxl",
+            "Y3QYEiABKAgSCwoDUG9zGBMgASgFEgoKAk1QGBQgASgFEhAKCE1heEJsb29k",
+            "GBUgASgFEg0KBU1heE1QGBYgASgFEhIKClNraWxsUG9pbnQYFyABKAUSCwoD",
+            "RXhwGBggASgFEhIKCkxldmVsVXBFeHAYGSABKAUSDwoHSXRlbUlkcxgaIAMo",
+            "CSKlAgoLSGVyb0xvdHRlcnkSFwoPRnJlZUdvb2RMb3R0ZXJ5GAEgASgFEhkK",
+            "EUZyZWVCZXR0ZXJMb3R0ZXJ5GAIgASgFEhwKFE5leHRHb29kTG90dGVyeVN0",
+            "YW1wGAMgASgDEh4KFk5leHRCZXR0ZXJMb3R0ZXJ5U3RhbXAYBCABKAMSGgoS",
+            "TWF4RnJlZUdvb2RMb3R0ZXJ5GAUgASgFEhwKFE1heEZyZWVCZXR0ZXJMb3R0",
+            "ZXJ5GAYgASgFEhYKDkdvb2RMb3R0ZXJ5Q250GAcgASgFEhgKEEJldHRlckxv",
+            "dHRlcnlDbnQYCCABKAUSGgoSTmVlZEdvb2RMb3R0ZXJ5Q250GAkgASgFEhwK",
+            "FE5lZWRCZXR0ZXJMb3R0ZXJ5Q250GAogASgFKjEKD0hlcm9SYW5kb21MZXZl",
+            "bBIICgRHT09EEAASCgoGQkVUVEVSEAESCAoEQkVTVBACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Msg.ErrReflection.Descriptor, global::Msg.SkillReflection.Descriptor, global::Msg.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Msg.HeroRandomLevel), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroRequest), global::Msg.HeroRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroResponse), global::Msg.HeroResponse.Parser, new[]{ "Code", "Err", "Heros" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroLotteryRequest), global::Msg.HeroLotteryRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroLotteryResponse), global::Msg.HeroLotteryResponse.Parser, new[]{ "Code", "Err", "HeroLottery" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroRandomRequest), global::Msg.HeroRandomRequest.Parser, new[]{ "Level" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroRandomResponse), global::Msg.HeroRandomResponse.Parser, new[]{ "Code", "Err", "Hero" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroOwnRequest), global::Msg.HeroOwnRequest.Parser, null, null, null, null),
@@ -76,7 +87,8 @@ namespace Msg {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroSkillsResponse), global::Msg.HeroSkillsResponse.Parser, new[]{ "Code", "Err", "Skills" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroItemsRequest), global::Msg.HeroItemsRequest.Parser, new[]{ "HeroId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroItemsResponse), global::Msg.HeroItemsResponse.Parser, new[]{ "Code", "Err", "Items" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Hero), global::Msg.Hero.Parser, new[]{ "Id", "Name", "Level", "Strength", "Agility", "Intelligence", "Armor", "AttackMin", "AttackMax", "Blood", "Type", "StrengthStep", "AgilityStep", "IntelligenceStep", "SkillIds", "HeroId", "PlayerId", "IsSelect", "Pos", "MP", "MaxBlood", "MaxMP", "SkillPoint", "Exp", "LevelUpExp", "ItemIds" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Hero), global::Msg.Hero.Parser, new[]{ "Id", "Name", "Level", "Strength", "Agility", "Intelligence", "Armor", "AttackMin", "AttackMax", "Blood", "Type", "StrengthStep", "AgilityStep", "IntelligenceStep", "SkillIds", "HeroId", "PlayerId", "IsSelect", "Pos", "MP", "MaxBlood", "MaxMP", "SkillPoint", "Exp", "LevelUpExp", "ItemIds" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroLottery), global::Msg.HeroLottery.Parser, new[]{ "FreeGoodLottery", "FreeBetterLottery", "NextGoodLotteryStamp", "NextBetterLotteryStamp", "MaxFreeGoodLottery", "MaxFreeBetterLottery", "GoodLotteryCnt", "BetterLotteryCnt", "NeedGoodLotteryCnt", "NeedBetterLotteryCnt" }, null, null, null)
           }));
     }
     #endregion
@@ -376,6 +388,304 @@ namespace Msg {
 
   }
 
+  public sealed partial class HeroLotteryRequest : pb::IMessage<HeroLotteryRequest> {
+    private static readonly pb::MessageParser<HeroLotteryRequest> _parser = new pb::MessageParser<HeroLotteryRequest>(() => new HeroLotteryRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<HeroLotteryRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryRequest(HeroLotteryRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryRequest Clone() {
+      return new HeroLotteryRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as HeroLotteryRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(HeroLotteryRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(HeroLotteryRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class HeroLotteryResponse : pb::IMessage<HeroLotteryResponse> {
+    private static readonly pb::MessageParser<HeroLotteryResponse> _parser = new pb::MessageParser<HeroLotteryResponse>(() => new HeroLotteryResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<HeroLotteryResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryResponse(HeroLotteryResponse other) : this() {
+      code_ = other.code_;
+      err_ = other.err_ != null ? other.err_.Clone() : null;
+      heroLottery_ = other.heroLottery_ != null ? other.heroLottery_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLotteryResponse Clone() {
+      return new HeroLotteryResponse(this);
+    }
+
+    /// <summary>Field number for the "code" field.</summary>
+    public const int CodeFieldNumber = 1;
+    private global::Msg.ResponseCode code_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Msg.ResponseCode Code {
+      get { return code_; }
+      set {
+        code_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "err" field.</summary>
+    public const int ErrFieldNumber = 2;
+    private global::Msg.Error err_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Msg.Error Err {
+      get { return err_; }
+      set {
+        err_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "heroLottery" field.</summary>
+    public const int HeroLotteryFieldNumber = 3;
+    private global::Msg.HeroLottery heroLottery_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Msg.HeroLottery HeroLottery {
+      get { return heroLottery_; }
+      set {
+        heroLottery_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as HeroLotteryResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(HeroLotteryResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Code != other.Code) return false;
+      if (!object.Equals(Err, other.Err)) return false;
+      if (!object.Equals(HeroLottery, other.HeroLottery)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (err_ != null) hash ^= Err.GetHashCode();
+      if (heroLottery_ != null) hash ^= HeroLottery.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Code != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Code);
+      }
+      if (err_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Err);
+      }
+      if (heroLottery_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(HeroLottery);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Code);
+      }
+      if (err_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Err);
+      }
+      if (heroLottery_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HeroLottery);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(HeroLotteryResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Code != 0) {
+        Code = other.Code;
+      }
+      if (other.err_ != null) {
+        if (err_ == null) {
+          err_ = new global::Msg.Error();
+        }
+        Err.MergeFrom(other.Err);
+      }
+      if (other.heroLottery_ != null) {
+        if (heroLottery_ == null) {
+          heroLottery_ = new global::Msg.HeroLottery();
+        }
+        HeroLottery.MergeFrom(other.HeroLottery);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            code_ = (global::Msg.ResponseCode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (err_ == null) {
+              err_ = new global::Msg.Error();
+            }
+            input.ReadMessage(err_);
+            break;
+          }
+          case 26: {
+            if (heroLottery_ == null) {
+              heroLottery_ = new global::Msg.HeroLottery();
+            }
+            input.ReadMessage(heroLottery_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class HeroRandomRequest : pb::IMessage<HeroRandomRequest> {
     private static readonly pb::MessageParser<HeroRandomRequest> _parser = new pb::MessageParser<HeroRandomRequest>(() => new HeroRandomRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -384,7 +694,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -513,7 +823,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -710,7 +1020,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -811,7 +1121,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -994,7 +1304,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1151,7 +1461,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1334,7 +1644,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1463,7 +1773,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1646,7 +1956,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1775,7 +2085,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1958,7 +2268,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2087,7 +2397,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2270,7 +2580,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3067,6 +3377,387 @@ namespace Msg {
           }
           case 210: {
             itemIds_.AddEntriesFrom(input, _repeated_itemIds_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class HeroLottery : pb::IMessage<HeroLottery> {
+    private static readonly pb::MessageParser<HeroLottery> _parser = new pb::MessageParser<HeroLottery>(() => new HeroLottery());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<HeroLottery> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.HeroReflection.Descriptor.MessageTypes[17]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLottery() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLottery(HeroLottery other) : this() {
+      freeGoodLottery_ = other.freeGoodLottery_;
+      freeBetterLottery_ = other.freeBetterLottery_;
+      nextGoodLotteryStamp_ = other.nextGoodLotteryStamp_;
+      nextBetterLotteryStamp_ = other.nextBetterLotteryStamp_;
+      maxFreeGoodLottery_ = other.maxFreeGoodLottery_;
+      maxFreeBetterLottery_ = other.maxFreeBetterLottery_;
+      goodLotteryCnt_ = other.goodLotteryCnt_;
+      betterLotteryCnt_ = other.betterLotteryCnt_;
+      needGoodLotteryCnt_ = other.needGoodLotteryCnt_;
+      needBetterLotteryCnt_ = other.needBetterLotteryCnt_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public HeroLottery Clone() {
+      return new HeroLottery(this);
+    }
+
+    /// <summary>Field number for the "FreeGoodLottery" field.</summary>
+    public const int FreeGoodLotteryFieldNumber = 1;
+    private int freeGoodLottery_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FreeGoodLottery {
+      get { return freeGoodLottery_; }
+      set {
+        freeGoodLottery_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FreeBetterLottery" field.</summary>
+    public const int FreeBetterLotteryFieldNumber = 2;
+    private int freeBetterLottery_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FreeBetterLottery {
+      get { return freeBetterLottery_; }
+      set {
+        freeBetterLottery_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NextGoodLotteryStamp" field.</summary>
+    public const int NextGoodLotteryStampFieldNumber = 3;
+    private long nextGoodLotteryStamp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long NextGoodLotteryStamp {
+      get { return nextGoodLotteryStamp_; }
+      set {
+        nextGoodLotteryStamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NextBetterLotteryStamp" field.</summary>
+    public const int NextBetterLotteryStampFieldNumber = 4;
+    private long nextBetterLotteryStamp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long NextBetterLotteryStamp {
+      get { return nextBetterLotteryStamp_; }
+      set {
+        nextBetterLotteryStamp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MaxFreeGoodLottery" field.</summary>
+    public const int MaxFreeGoodLotteryFieldNumber = 5;
+    private int maxFreeGoodLottery_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MaxFreeGoodLottery {
+      get { return maxFreeGoodLottery_; }
+      set {
+        maxFreeGoodLottery_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MaxFreeBetterLottery" field.</summary>
+    public const int MaxFreeBetterLotteryFieldNumber = 6;
+    private int maxFreeBetterLottery_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MaxFreeBetterLottery {
+      get { return maxFreeBetterLottery_; }
+      set {
+        maxFreeBetterLottery_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GoodLotteryCnt" field.</summary>
+    public const int GoodLotteryCntFieldNumber = 7;
+    private int goodLotteryCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int GoodLotteryCnt {
+      get { return goodLotteryCnt_; }
+      set {
+        goodLotteryCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BetterLotteryCnt" field.</summary>
+    public const int BetterLotteryCntFieldNumber = 8;
+    private int betterLotteryCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int BetterLotteryCnt {
+      get { return betterLotteryCnt_; }
+      set {
+        betterLotteryCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NeedGoodLotteryCnt" field.</summary>
+    public const int NeedGoodLotteryCntFieldNumber = 9;
+    private int needGoodLotteryCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int NeedGoodLotteryCnt {
+      get { return needGoodLotteryCnt_; }
+      set {
+        needGoodLotteryCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NeedBetterLotteryCnt" field.</summary>
+    public const int NeedBetterLotteryCntFieldNumber = 10;
+    private int needBetterLotteryCnt_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int NeedBetterLotteryCnt {
+      get { return needBetterLotteryCnt_; }
+      set {
+        needBetterLotteryCnt_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as HeroLottery);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(HeroLottery other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FreeGoodLottery != other.FreeGoodLottery) return false;
+      if (FreeBetterLottery != other.FreeBetterLottery) return false;
+      if (NextGoodLotteryStamp != other.NextGoodLotteryStamp) return false;
+      if (NextBetterLotteryStamp != other.NextBetterLotteryStamp) return false;
+      if (MaxFreeGoodLottery != other.MaxFreeGoodLottery) return false;
+      if (MaxFreeBetterLottery != other.MaxFreeBetterLottery) return false;
+      if (GoodLotteryCnt != other.GoodLotteryCnt) return false;
+      if (BetterLotteryCnt != other.BetterLotteryCnt) return false;
+      if (NeedGoodLotteryCnt != other.NeedGoodLotteryCnt) return false;
+      if (NeedBetterLotteryCnt != other.NeedBetterLotteryCnt) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FreeGoodLottery != 0) hash ^= FreeGoodLottery.GetHashCode();
+      if (FreeBetterLottery != 0) hash ^= FreeBetterLottery.GetHashCode();
+      if (NextGoodLotteryStamp != 0L) hash ^= NextGoodLotteryStamp.GetHashCode();
+      if (NextBetterLotteryStamp != 0L) hash ^= NextBetterLotteryStamp.GetHashCode();
+      if (MaxFreeGoodLottery != 0) hash ^= MaxFreeGoodLottery.GetHashCode();
+      if (MaxFreeBetterLottery != 0) hash ^= MaxFreeBetterLottery.GetHashCode();
+      if (GoodLotteryCnt != 0) hash ^= GoodLotteryCnt.GetHashCode();
+      if (BetterLotteryCnt != 0) hash ^= BetterLotteryCnt.GetHashCode();
+      if (NeedGoodLotteryCnt != 0) hash ^= NeedGoodLotteryCnt.GetHashCode();
+      if (NeedBetterLotteryCnt != 0) hash ^= NeedBetterLotteryCnt.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FreeGoodLottery != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FreeGoodLottery);
+      }
+      if (FreeBetterLottery != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(FreeBetterLottery);
+      }
+      if (NextGoodLotteryStamp != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(NextGoodLotteryStamp);
+      }
+      if (NextBetterLotteryStamp != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(NextBetterLotteryStamp);
+      }
+      if (MaxFreeGoodLottery != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(MaxFreeGoodLottery);
+      }
+      if (MaxFreeBetterLottery != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(MaxFreeBetterLottery);
+      }
+      if (GoodLotteryCnt != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(GoodLotteryCnt);
+      }
+      if (BetterLotteryCnt != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(BetterLotteryCnt);
+      }
+      if (NeedGoodLotteryCnt != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(NeedGoodLotteryCnt);
+      }
+      if (NeedBetterLotteryCnt != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(NeedBetterLotteryCnt);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FreeGoodLottery != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FreeGoodLottery);
+      }
+      if (FreeBetterLottery != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FreeBetterLottery);
+      }
+      if (NextGoodLotteryStamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextGoodLotteryStamp);
+      }
+      if (NextBetterLotteryStamp != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextBetterLotteryStamp);
+      }
+      if (MaxFreeGoodLottery != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxFreeGoodLottery);
+      }
+      if (MaxFreeBetterLottery != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxFreeBetterLottery);
+      }
+      if (GoodLotteryCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GoodLotteryCnt);
+      }
+      if (BetterLotteryCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BetterLotteryCnt);
+      }
+      if (NeedGoodLotteryCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NeedGoodLotteryCnt);
+      }
+      if (NeedBetterLotteryCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NeedBetterLotteryCnt);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(HeroLottery other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FreeGoodLottery != 0) {
+        FreeGoodLottery = other.FreeGoodLottery;
+      }
+      if (other.FreeBetterLottery != 0) {
+        FreeBetterLottery = other.FreeBetterLottery;
+      }
+      if (other.NextGoodLotteryStamp != 0L) {
+        NextGoodLotteryStamp = other.NextGoodLotteryStamp;
+      }
+      if (other.NextBetterLotteryStamp != 0L) {
+        NextBetterLotteryStamp = other.NextBetterLotteryStamp;
+      }
+      if (other.MaxFreeGoodLottery != 0) {
+        MaxFreeGoodLottery = other.MaxFreeGoodLottery;
+      }
+      if (other.MaxFreeBetterLottery != 0) {
+        MaxFreeBetterLottery = other.MaxFreeBetterLottery;
+      }
+      if (other.GoodLotteryCnt != 0) {
+        GoodLotteryCnt = other.GoodLotteryCnt;
+      }
+      if (other.BetterLotteryCnt != 0) {
+        BetterLotteryCnt = other.BetterLotteryCnt;
+      }
+      if (other.NeedGoodLotteryCnt != 0) {
+        NeedGoodLotteryCnt = other.NeedGoodLotteryCnt;
+      }
+      if (other.NeedBetterLotteryCnt != 0) {
+        NeedBetterLotteryCnt = other.NeedBetterLotteryCnt;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            FreeGoodLottery = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            FreeBetterLottery = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            NextGoodLotteryStamp = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            NextBetterLotteryStamp = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            MaxFreeGoodLottery = input.ReadInt32();
+            break;
+          }
+          case 48: {
+            MaxFreeBetterLottery = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            GoodLotteryCnt = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            BetterLotteryCnt = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            NeedGoodLotteryCnt = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            NeedBetterLotteryCnt = input.ReadInt32();
             break;
           }
         }

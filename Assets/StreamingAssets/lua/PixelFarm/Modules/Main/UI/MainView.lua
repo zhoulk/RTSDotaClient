@@ -98,7 +98,7 @@ function _M:UpdatePlayerUI(player)
 
     local expPercent = player.BaseInfo.Exp / player.BaseInfo.LevelUpExp
     self.playerBlock.expFontImage.fillAmount = expPercent
-    self.playerBlock.expPercentText.text = string.format("%.2f", expPercent) .. "%"
+    self.playerBlock.expPercentText.text = string.format("%.2f", expPercent * 100) .. "%"
 
     self.powerBlock.powerText.text = "体力 "..player.BaseInfo.Power
     self.coinBlock.coinText.text = "金币 "..player.BaseInfo.Gold

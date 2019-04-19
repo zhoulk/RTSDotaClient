@@ -10,7 +10,13 @@ public class SocketCommand : ControllerCommand {
         if (data == null) return;
         KeyValuePair<int, ByteBuffer> buffer = (KeyValuePair<int, ByteBuffer>)data;
         switch (buffer.Key) {
-            default: Util.CallMethod("Network", "OnSocket", buffer.Key, buffer.Value); break;
+            default:
+                Util.CallMethod("Network", "OnSocket", buffer.Key, buffer.Value);
+                if (GameData.g_netManager)
+                {
+                    GameData.g_netManager.OnSocket(buffer.Key, buffer.Value);
+                }
+                break;
         }
 	}
 }

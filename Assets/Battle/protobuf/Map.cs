@@ -32,12 +32,14 @@ namespace Msg {
             "U3RhdHVzGAUgASgFEhEKCUd1YW5LYU51bRgGIAEoBSIPCg1HdWFuS2FSZXF1",
             "ZXN0ImgKDkd1YW5LYVJlc3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVz",
             "cG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJvchIcCgdndWFuS2Fz",
-            "GAMgAygLMgsubXNnLkd1YW5LYSJ7CgZHdWFuS2ESCgoCSWQYASABKAUSDAoE",
-            "TmFtZRgCIAEoCRIRCglDaGFwdGVySWQYAyABKAUSFwoERWFybhgEIAEoCzIJ",
-            "Lm1zZy5FYXJuEhsKBkV4cGVuZBgFIAEoCzILLm1zZy5FeHBlbmQSDgoGSXNP",
-            "cGVuGAYgASgIIkkKBEVhcm4SDwoHSXRlbUlkcxgBIAMoCRIPCgdIZXJvRXhw",
-            "GAIgASgFEhEKCVBsYXllckV4cBgDIAEoBRIMCgRHb2xkGAQgASgFIhcKBkV4",
-            "cGVuZBINCgVQb3dlchgBIAEoBWIGcHJvdG8z"));
+            "GAMgAygLMgsubXNnLkd1YW5LYSK8AQoGR3VhbkthEgoKAklkGAEgASgFEgwK",
+            "BE5hbWUYAiABKAkSEQoJQ2hhcHRlcklkGAMgASgFEhcKBEVhcm4YBCABKAsy",
+            "CS5tc2cuRWFybhIbCgZFeHBlbmQYBSABKAsyCy5tc2cuRXhwZW5kEg4KBklz",
+            "T3BlbhgGIAEoCBIMCgRTdGFyGAcgASgFEg4KBlN0YXR1cxgIIAEoBRINCgVU",
+            "aW1lcxgJIAEoBRISCgpUb3RhbFRpbWVzGAogASgFIkkKBEVhcm4SDwoHSXRl",
+            "bUlkcxgBIAMoCRIPCgdIZXJvRXhwGAIgASgFEhEKCVBsYXllckV4cBgDIAEo",
+            "BRIMCgRHb2xkGAQgASgFIhcKBkV4cGVuZBINCgVQb3dlchgBIAEoBWIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Msg.ErrReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -46,7 +48,7 @@ namespace Msg {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Chapter), global::Msg.Chapter.Parser, new[]{ "Id", "Name", "IsOpen", "Star", "Status", "GuanKaNum" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKaRequest), global::Msg.GuanKaRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKaResponse), global::Msg.GuanKaResponse.Parser, new[]{ "Code", "Err", "GuanKas" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKa), global::Msg.GuanKa.Parser, new[]{ "Id", "Name", "ChapterId", "Earn", "Expend", "IsOpen" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKa), global::Msg.GuanKa.Parser, new[]{ "Id", "Name", "ChapterId", "Earn", "Expend", "IsOpen", "Star", "Status", "Times", "TotalTimes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Earn), global::Msg.Earn.Parser, new[]{ "ItemIds", "HeroExp", "PlayerExp", "Gold" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Expend), global::Msg.Expend.Parser, new[]{ "Power" }, null, null, null)
           }));
@@ -923,6 +925,10 @@ namespace Msg {
       earn_ = other.earn_ != null ? other.earn_.Clone() : null;
       expend_ = other.expend_ != null ? other.expend_.Clone() : null;
       isOpen_ = other.isOpen_;
+      star_ = other.star_;
+      status_ = other.status_;
+      times_ = other.times_;
+      totalTimes_ = other.totalTimes_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -997,6 +1003,50 @@ namespace Msg {
       }
     }
 
+    /// <summary>Field number for the "Star" field.</summary>
+    public const int StarFieldNumber = 7;
+    private int star_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Star {
+      get { return star_; }
+      set {
+        star_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Status" field.</summary>
+    public const int StatusFieldNumber = 8;
+    private int status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Times" field.</summary>
+    public const int TimesFieldNumber = 9;
+    private int times_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Times {
+      get { return times_; }
+      set {
+        times_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "TotalTimes" field.</summary>
+    public const int TotalTimesFieldNumber = 10;
+    private int totalTimes_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TotalTimes {
+      get { return totalTimes_; }
+      set {
+        totalTimes_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GuanKa);
@@ -1016,6 +1066,10 @@ namespace Msg {
       if (!object.Equals(Earn, other.Earn)) return false;
       if (!object.Equals(Expend, other.Expend)) return false;
       if (IsOpen != other.IsOpen) return false;
+      if (Star != other.Star) return false;
+      if (Status != other.Status) return false;
+      if (Times != other.Times) return false;
+      if (TotalTimes != other.TotalTimes) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1028,6 +1082,10 @@ namespace Msg {
       if (earn_ != null) hash ^= Earn.GetHashCode();
       if (expend_ != null) hash ^= Expend.GetHashCode();
       if (IsOpen != false) hash ^= IsOpen.GetHashCode();
+      if (Star != 0) hash ^= Star.GetHashCode();
+      if (Status != 0) hash ^= Status.GetHashCode();
+      if (Times != 0) hash ^= Times.GetHashCode();
+      if (TotalTimes != 0) hash ^= TotalTimes.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1065,6 +1123,22 @@ namespace Msg {
         output.WriteRawTag(48);
         output.WriteBool(IsOpen);
       }
+      if (Star != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Star);
+      }
+      if (Status != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Status);
+      }
+      if (Times != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(Times);
+      }
+      if (TotalTimes != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(TotalTimes);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1090,6 +1164,18 @@ namespace Msg {
       }
       if (IsOpen != false) {
         size += 1 + 1;
+      }
+      if (Star != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Star);
+      }
+      if (Status != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
+      }
+      if (Times != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Times);
+      }
+      if (TotalTimes != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalTimes);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1125,6 +1211,18 @@ namespace Msg {
       }
       if (other.IsOpen != false) {
         IsOpen = other.IsOpen;
+      }
+      if (other.Star != 0) {
+        Star = other.Star;
+      }
+      if (other.Status != 0) {
+        Status = other.Status;
+      }
+      if (other.Times != 0) {
+        Times = other.Times;
+      }
+      if (other.TotalTimes != 0) {
+        TotalTimes = other.TotalTimes;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1165,6 +1263,22 @@ namespace Msg {
           }
           case 48: {
             IsOpen = input.ReadBool();
+            break;
+          }
+          case 56: {
+            Star = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            Status = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            Times = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            TotalTimes = input.ReadInt32();
             break;
           }
         }

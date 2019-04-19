@@ -1,5 +1,6 @@
 local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
 local BattleLogic = require "PixelFarm.Modules.Logic.BattleLogic"
+local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
 
 local _M = class(CtrlBase)
 
@@ -32,6 +33,14 @@ function _M:ShowBattle(guanKa)
             SceneManager.LoadSceneAsync("battle", LoadSceneMode.Additive)
         else
             toast(err.msg)
+        end
+    end)
+end
+
+function _M:ListenGuanKaUpdate(cb)
+    MapLogic:ListenGuanKaUpdate("ChapterDetailCtrl",function(guanKas)
+        if cb then
+            cb(guanKas)
         end
     end)
 end

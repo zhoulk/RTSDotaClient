@@ -24,6 +24,8 @@ require "PixelFarm/Manager/LocalDataManager"
 require "PixelFarm/Manager/NetManager"
 require "PixelFarm/Manager/PBManager"
 
+local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
+
 --管理器--
 Game = class();
 local this = Game
@@ -49,6 +51,7 @@ function Game.OnInitOK()
     CtrlManager:OpenCtrl(MoudleNames.Loading, LoadingCtrlNames.Loading)
     CtrlManager:OpenCtrl(MoudleNames.Common, CommonCtrlNames.Toast)
 
+    StoreLogic:Init()
     print('LuaFramework InitOK--->>>');
 end
 

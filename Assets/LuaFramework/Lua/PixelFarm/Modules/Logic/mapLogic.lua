@@ -6,6 +6,8 @@ local _MapLogic = class()
 local chapterResponseFunc
 local guanKaResponseFunc
 
+local guanKaUpdateHandlers = {}
+
 function _MapLogic:AllChapter(cb)
 
     if chapterResponseFunc then
@@ -76,6 +78,33 @@ function _MapLogic:AllGuanKa(cb)
     buffer:WriteShort(Protocal.KeyOf("GuanKaRequest"))
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
+end
+
+function _MapLogic:ListenGuanKaUpdate(key, cb)
+
+    guanKaUpdateHandlers[key] = cb
+
+    local guanKaUpdateNotifyFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[MapLogic.ListenGuanKaUpdate] response")
+
+        local decode = protobuf.decode("msg.GuanKaUpdateNotify", data)
+
+        print("[MapLogic.ListenGuanKaUpdate] response = " .. tabStr(decode))
+
+        for k, v in pairs(guanKaUpdateHandlers) do
+            if v then
+                v(decode.guanKas)
+            end
+        end
+    end
+    print(Protocal.KeyOf("GuanKaUpdateNotify"))
+    Event.AddListener(Protocal.KeyOf("GuanKaUpdateNotify"), guanKaUpdateNotifyFunc) 
+end
+
+function _MapLogic:RemoveGuanKaUpdate(key)
+    guanKaUpdateHandlers[key] = nil
 end
 
 return _MapLogic

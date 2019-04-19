@@ -56,7 +56,7 @@ public class BattleView : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -75,9 +75,9 @@ public class BattleView : MonoBehaviour {
         }
     }
 
-    public void ShowResult(Earn earn)
+    public void ShowResult(int result, Earn earn, int level, int exp, int levelUpExp)
     {
-        resultItem.InitData(earn);
+        resultItem.InitData(result, earn, level, exp, levelUpExp);
         resultItem.gameObject.SetActive(true);
     }
 
@@ -120,7 +120,7 @@ public class BattleView : MonoBehaviour {
 
             if (i == 0)
             {
-                baseHero.group = Fix64.One;
+                baseHero.group = Fix64.One * 2;
                 BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[0]);
                 skill.level = 2;
                 baseHero.skills.Add(skill);
@@ -142,7 +142,7 @@ public class BattleView : MonoBehaviour {
             }
             else if (i == 1)
             {
-                baseHero.group = Fix64.One * 2;
+                baseHero.group = Fix64.One;
                 BaseSkill skill = ConvertMsgSkillToSkill((Skill)m_skills[4]);
                 skill.level = 4;
                 baseHero.skills.Add(skill);

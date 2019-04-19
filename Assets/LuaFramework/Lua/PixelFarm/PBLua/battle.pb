@@ -1,5 +1,5 @@
 
-˜
+á
 battle.protomsg	err.proto	map.proto
 hero.protoskill.proto
 item.proto"=
@@ -31,9 +31,14 @@ item.proto"=
 guanka (2.msg.GuanKaRguanka"I
 BattleResultRequest
 battleId (	RbattleId
-result (Rresult"z
+result (Rresult"Â
 BattleResultResponse%
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr
-earn (2	.msg.EarnRearnbproto3
+earn (2	.msg.EarnRearn
+Exp (RExp
+Level (RLevel
+
+LevelUpExp (R
+LevelUpExpbproto3

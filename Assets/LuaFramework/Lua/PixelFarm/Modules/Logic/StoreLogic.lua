@@ -12,6 +12,27 @@ local GroupLogic = require "PixelFarm.Modules.Logic.GroupLogic"
 
 local _StoreLogic = class()
 
+function _StoreLogic:Init()
+    MapLogic:ListenGuanKaUpdate(function(guanKas)
+        if guanKas then
+            for i,gk in pairs(guanKas) do
+                local oldGuanKas = self:LoadGuanKas(gk.ChapterId)
+                local _guanKas = {}
+                for _,oldGk in pairs(oldGuanKas) do
+                    if oldGk.Id == gk.Id then
+                        local c = GuanKa.new()
+                        c:Init(gk)
+                        table.insert(_guanKas, c)
+                    else
+                        table.insert(_guanKas, oldGk)
+                    end
+                end 
+                self:SaveGuanKas(gk.ChapterId, _guanKas)
+            end
+        end
+    end)
+end
+
 function _StoreLogic:UpdateUid(uid)
     local player = self:CurrentPlayer()
     player.UserId = uid

@@ -19,6 +19,7 @@ public class GameData {
     public static BattleLogic g_battleLogic;
 
     public static string g_battleId = "";
+    public static int g_battleResult = 0;
 
     // 英雄队列
     public static List<BaseHero> g_listHero = new List<BaseHero>();

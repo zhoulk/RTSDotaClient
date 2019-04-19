@@ -16,7 +16,7 @@ public class NetManager : MonoBehaviour {
     NetworkManager networkManager;
     // Use this for initialization
     void Start () {
-        AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(CSSocketCommand));
+        //AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(CSSocketCommand));
 
         networkManager = AppFacade.Instance.GetManager<NetworkManager>(ManagerName.Network);
 
@@ -28,7 +28,7 @@ public class NetManager : MonoBehaviour {
     {
         BattleResultRequest battleResultRequest = new BattleResultRequest();
         battleResultRequest.BattleId = GameData.g_battleId;
-        battleResultRequest.Result = 1;
+        battleResultRequest.Result = GameData.g_battleResult;
         ByteBuffer buffer = new ByteBuffer();
         buffer.WriteShort(134);
         buffer.WriteBytes(battleResultRequest.ToByteArray());
@@ -82,7 +82,7 @@ public class NetManager : MonoBehaviour {
             battleResultResponse.MergeFrom(byteBuffer.ReadBytes());
             UnityTools.Log(battleResultResponse.Earn);
 
-            GameData.g_battleView.ShowResult(battleResultResponse.Earn);
+            GameData.g_battleView.ShowResult(GameData.g_battleResult, battleResultResponse.Earn, battleResultResponse.Level, battleResultResponse.Exp, battleResultResponse.LevelUpExp);
         }
         else if (key == 111)
         {
@@ -116,7 +116,7 @@ public class NetManager : MonoBehaviour {
     private void OnDestroy()
     {
         //AppFacade.Instance.RemoveCommand(NotiConst.DISPATCH_MESSAGE);
-        AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
+        //AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
     }
 }
 
