@@ -7,6 +7,7 @@ local chapterResponseFunc
 local guanKaResponseFunc
 
 local guanKaUpdateHandlers = {}
+local chapterUpdateHandlers = {}
 
 function _MapLogic:AllChapter(cb)
 
@@ -103,8 +104,35 @@ function _MapLogic:ListenGuanKaUpdate(key, cb)
     Event.AddListener(Protocal.KeyOf("GuanKaUpdateNotify"), guanKaUpdateNotifyFunc) 
 end
 
+function _MapLogic:ListenChapterUpdate(key, cb)
+
+    chapterUpdateHandlers[key] = cb
+
+    local chapterUpdateNotifyFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[MapLogic.ListenChapterUpdate] response")
+
+        local decode = protobuf.decode("msg.ChapterUpdateNotify", data)
+
+        print("[MapLogic.ListenChapterUpdate] response = " .. tabStr(decode))
+
+        for k, v in pairs(chapterUpdateHandlers) do
+            if v then
+                v(decode.chapters)
+            end
+        end
+    end
+    print(Protocal.KeyOf("ChapterUpdateNotify"))
+    Event.AddListener(Protocal.KeyOf("ChapterUpdateNotify"), chapterUpdateNotifyFunc) 
+end
+
 function _MapLogic:RemoveGuanKaUpdate(key)
     guanKaUpdateHandlers[key] = nil
+end
+
+function _MapLogic:RemoveChapterUpdate(key)
+    chapterUpdateHandlers[key] = nil
 end
 
 return _MapLogic

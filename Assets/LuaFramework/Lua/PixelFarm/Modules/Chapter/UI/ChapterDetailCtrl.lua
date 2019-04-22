@@ -45,4 +45,20 @@ function _M:ListenGuanKaUpdate(cb)
     end)
 end
 
+function _M:ListenChapterUpdate(cb)
+    MapLogic:ListenChapterUpdate("ChapterDetailCtrl",function(chapters)
+        if cb then
+            cb(chapters)
+        end
+    end)
+end
+
+function _M:FindItems(itemIds, cb)
+    StoreLogic:FindItems(itemIds,function (items)
+        if cb then
+            cb(items)
+        end
+    end)
+end
+
 return _M

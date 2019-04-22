@@ -96,7 +96,7 @@ public class BattleView : MonoBehaviour {
 
     public void InitItems(ArrayList items)
     {
-
+        GameData.g_items = items;
     }
 
     public void InitHeros(ArrayList heros)

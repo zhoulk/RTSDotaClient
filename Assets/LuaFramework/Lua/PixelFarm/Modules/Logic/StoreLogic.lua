@@ -5,10 +5,12 @@ local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
 local GuanKa = require "PixelFarm.Modules.Data.Entry.GuanKa"
 local Group = require "PixelFarm.Modules.Data.Entry.Group"
 local GroupMember = require "PixelFarm.Modules.Data.Entry.GroupMember"
+local Item = require "PixelFarm.Modules.Data.Entry.Item" 
 
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
 local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
 local GroupLogic = require "PixelFarm.Modules.Logic.GroupLogic"
+local ItemLogic = require "PixelFarm.Modules.Logic.ItemLogic"
 
 local _StoreLogic = class()
 
@@ -28,6 +30,25 @@ function _StoreLogic:Init()
                     end
                 end 
                 self:SaveGuanKas(gk.ChapterId, _guanKas)
+            end
+        end
+    end)
+
+    MapLogic:ListenChapterUpdate(function (chapters)
+        if chapters then
+            for i,chapter in pairs(chapters) do
+                local oldChapters = self:LoadChapters()
+                local _chapters = {}
+                for _,oldChapter in pairs(oldChapters) do
+                    if oldChapter.Id == chapter.Id then
+                        local c = Chapter.new()
+                        c:Init(chapter)
+                        table.insert(_chapters, c)
+                    else
+                        table.insert(_chapters, oldChapter)
+                    end
+                end 
+                self:SaveChapters(_chapters)
             end
         end
     end)
@@ -102,7 +123,7 @@ function _StoreLogic:AllOwnHeros(userId, cb, force)
 end
 
 function _StoreLogic:AllChapters(userId, cb, force)
-    local chapters = self:LoadChapters(userId)
+    local chapters = self:LoadChapters()
     if force or chapters == nil or #chapters == 0 then
         MapLogic:AllChapter(function(succeed, err, chapters)
             if succeed then
@@ -114,7 +135,7 @@ function _StoreLogic:AllChapters(userId, cb, force)
                         table.insert(_chapters, c)
                     end
                 end
-                self:SaveChapters(userId, _chapters)
+                self:SaveChapters(_chapters)
                 if cb then
                     cb(_chapters)
                 end
@@ -231,6 +252,49 @@ function _StoreLogic:GroupMembers(groupId, cb, force)
     end
 end
 
+function _StoreLogic:AllItem(cb, force)
+    local items = self:LoadItems()
+    if force or items == nil or #items == 0 then
+        ItemLogic:QueryItems(function(succeed, err, mbs)
+            if succeed then
+                local _items = {}
+                if mbs then
+                    for i,mem in pairs(mbs) do
+                        local m = Item.new()
+                        m:Init(mem)
+                        table.insert(_items, m)
+                    end
+                end
+                self:SaveItems(_items)
+                if cb then
+                    cb(_items)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(items)
+        end
+    end
+end
+
+function _StoreLogic:FindItems(itemIds, cb)
+    local res = {}
+    self:AllItem(function (items)
+        for _,item in pairs(items) do
+            for _, itemId in pairs(itemIds) do
+                if item.Id == itemId then
+                    table.insert(res, item)
+                end
+            end
+        end
+
+        if cb then
+            cb(res)
+        end
+    end)
+end
+
 function _StoreLogic:SavePlayer(player)
     LocalDataManager:Save("local_Player", player)
 end
@@ -293,14 +357,14 @@ function _StoreLogic:LoadHeroSkills(heroId)
     return _skills
 end
 
-function _StoreLogic:SaveChapters(userId, chapters)
-    LocalDataManager:Save("local_Chapters_" .. userId, chapters)
+function _StoreLogic:SaveChapters(chapters)
+    LocalDataManager:Save("local_Chapters", chapters)
 end
-function _StoreLogic:LoadChapters(userId)
-    local key = "local_Chapters_" .. userId
+function _StoreLogic:LoadChapters()
+    local key = "local_Chapters"
     local chaptersTab = LocalDataManager:Load(key)
     local _chapters = {}
-    if chaptersTab then
+    if chaptersTab and type(chaptersTab) == "table" then
         for i,chapter in pairs(chaptersTab) do
             local _s = Chapter.new()
             _s:Init(chapter)
@@ -357,6 +421,23 @@ function _StoreLogic:LoadGroupMembers(groupId)
         end
     end
     return _members
+end
+
+function _StoreLogic:SaveItems(items)
+    LocalDataManager:Save("local_Items", items)
+end
+function _StoreLogic:LoadItems()
+    local key = "local_Items"
+    local itemsTab = LocalDataManager:Load(key)
+    local _items = {}
+    if itemsTab then
+        for i,mem in pairs(itemsTab) do
+            local _m = Item.new()
+            _m:Init(mem)
+            table.insert(_items, _m)
+        end
+    end
+    return _items
 end
 
 return _StoreLogic

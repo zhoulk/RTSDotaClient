@@ -25,6 +25,8 @@ function _M:InitData()
        self:UpdateGuanKaList(guanKas)
    end)
 
+   self:UpdateStars()
+
    self.iCtrl:ListenGuanKaUpdate(function (gks)
        print("ChapterDetailView Update")
        for _, item in pairs(self.guanKaCache) do
@@ -40,6 +42,22 @@ function _M:InitData()
                 self:UpdateGuanKaDetail(gk)
             end
         end
+   end)
+
+   self.iCtrl:ListenChapterUpdate(function (chapters)
+       if chapters then
+        local isUpdate = false
+        for _,chapter in pairs(chapters) do
+            if chapter.Id == self.chapter.Id then
+                self.chapter = chapter
+                isUpdate = true
+                break
+            end
+        end
+        if isUpdate then
+            self:UpdateStars()
+        end
+       end
    end)
 end
 
@@ -100,8 +118,14 @@ function _M:InitStarsBlock(trans, path)
 
     block.progressFontImage = transform:Find("progress/font"):GetComponent("Image")
     block.gift1Obj = transform:Find("gift1").gameObject
+    block.gift1Image = transform:Find("gift1"):GetComponent("Image")
+    block.gift1Text = transform:Find("gift1/label"):GetComponent("Text")
     block.gift2Obj = transform:Find("gift2").gameObject
+    block.gift2Image = transform:Find("gift2"):GetComponent("Image")
+    block.gift2Text = transform:Find("gift2/label"):GetComponent("Text")
     block.gift3Obj = transform:Find("gift3").gameObject
+    block.gift3Image = transform:Find("gift3"):GetComponent("Image")
+    block.gift3Text = transform:Find("gift3/label"):GetComponent("Text")
     block.totalText = transform:Find("total"):GetComponent("Text")
 
     return block
@@ -160,31 +184,60 @@ function _M:UpdateGuanKaDetail(gk)
     self.detailBlock.starsText.text = "星  " .. gk.Star .. "/3"
     self.detailBlock.powerText.text = gk.Expend.Power
     self.detailBlock.earnText.text = "金币 " .. gk.Earn.Gold .. "   经验  " .. gk.Earn.PlayerExp
-    for i, itemId in pairs(gk.Earn.ItemIds) do
-        local item = {}
-        if i <= #self.itemCache then
-            item = self.itemCache[i]
-        else
-            local itemObj = newObject(self.detailBlock.items.item)
-            itemObj.transform:SetParent(self.detailBlock.items.list.transform, false)
-            itemObj.transform.localScale = Vector3(1,1,1)
-            item.obj = itemObj
-            item.nameText = itemObj.transform:Find("label"):GetComponent("Text")
-            table.insert(self.itemCache, item)
-        end
-        
-        item.obj:SetActive(true)
-        item.nameText.text = itemId
-    end
 
-    for i=#gk.Earn.ItemIds + 1,#self.itemCache,1 do
-        local item = self.itemCache[i]
-        item.obj:SetActive(false)
-    end
+    self.iCtrl:FindItems(gk.Earn.ItemIds, function (items)
+        for i, itemItem in pairs(items) do
+            print("UpdateGuanKaDetail    " .. tabStr(itemItem))
+            local item = {}
+            if i <= #self.itemCache then
+                item = self.itemCache[i]
+            else
+                local itemObj = newObject(self.detailBlock.items.item)
+                itemObj.transform:SetParent(self.detailBlock.items.list.transform, false)
+                itemObj.transform.localScale = Vector3(1,1,1)
+                item.obj = itemObj
+                item.nameText = itemObj.transform:Find("label"):GetComponent("Text")
+                table.insert(self.itemCache, item)
+            end
+            
+            item.obj:SetActive(true)
+            item.nameText.text = itemItem.Name
+        end
+
+        for i=#gk.Earn.ItemIds + 1,#self.itemCache,1 do
+            local item = self.itemCache[i]
+            item.obj:SetActive(false)
+        end
+    end)
 end
 
-function _M:()
-    
+function _M:UpdateStars()
+    self.starsBlock.progressFontImage.fillAmount = self.chapter.Star / (self.chapter.GuanKaNum * 3)
+    self.starsBlock.totalText.text = "星 " .. self.chapter.Star .. "/" .. (self.chapter.GuanKaNum * 3)
+    self.starsBlock.gift1Text.text = self.chapter.GuanKaNum .. "星"
+    self.starsBlock.gift2Text.text = self.chapter.GuanKaNum*2 .. "星"
+    self.starsBlock.gift3Text.text = self.chapter.GuanKaNum*3 .. "星"
+    if self.chapter.Star >= self.chapter.GuanKaNum then
+        self.starsBlock.gift1Obj:SetOnClick(function ()
+            
+        end)
+    else
+        self.starsBlock.gift1Image.color = Color(0.5, 0.5, 0.5, 1)
+    end
+    if self.chapter.Star >= self.chapter.GuanKaNum*2 then
+        self.starsBlock.gift2Obj:SetOnClick(function ()
+            
+        end)
+    else
+        self.starsBlock.gift2Image.color = Color(0.5, 0.5, 0.5, 1)
+    end
+    if self.chapter.Star >= self.chapter.GuanKaNum*3 then
+        self.starsBlock.gift3Obj:SetOnClick(function ()
+            
+        end)
+    else
+        self.starsBlock.gift3Image.color = Color(0.5, 0.5, 0.5, 1)
+    end
 end
 
 function _M:OnGuanKaClick(gk)

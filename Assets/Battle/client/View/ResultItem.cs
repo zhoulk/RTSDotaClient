@@ -95,9 +95,15 @@ public class ResultItem {
 
         for(int i=0; i< m_earn.ItemIds.Count; i++)
         {
-            goods[i].nameText.text = m_earn.ItemIds[i];
-            goods[i].numText.text = "1";
-            goods[i].gameObject.SetActive(true);
+            foreach(Item item in GameData.g_items)
+            {
+                if(item.Id+"" == m_earn.ItemIds[i])
+                {
+                    goods[i].nameText.text = item.Name;
+                    goods[i].numText.text = "1";
+                    goods[i].gameObject.SetActive(true);
+                }
+            }
         }
         for (int i= m_earn.ItemIds.Count; i<goods.Length; i++)
         {

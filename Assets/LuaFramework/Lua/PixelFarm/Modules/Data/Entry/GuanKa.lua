@@ -22,7 +22,14 @@ function _M:Init(g)
     if g.Earn then
         self.Earn.PlayerExp = g.Earn.PlayerExp or 0
         self.Earn.Gold = g.Earn.Gold or 0
-        self.Earn.ItemIds = g.Earn.ItemIds or {}
+        if g.Earn.ItemIds then
+            self.Earn.ItemIds = {}
+            for _, itemId in pairs(g.Earn.ItemIds) do
+                table.insert(self.Earn.ItemIds, tonumber(itemId))
+            end
+        else
+            self.Earn.ItemIds = {}
+        end
     else
         self.Earn.PlayerExp = 0
         self.Earn.Gold = 0

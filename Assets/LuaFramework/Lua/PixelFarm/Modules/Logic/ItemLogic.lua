@@ -5,19 +5,18 @@ local _ItemLogic = class()
 
 local ItemResponseFunc
 
-function _ItemLogic:AllItem(cb)
-
+function _ItemLogic:QueryItems(cb)
     if ItemResponseFunc then
         Event.RemoveListener(Protocal.KeyOf("ItemResponse"), ItemResponseFunc) 
     end
     ItemResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
-        print("[ItemLogic.AllItem] response")
+        print("[ItemLogic.QueryItems] response")
 
         local decode = protobuf.decode("msg.ItemResponse", data)
 
-        print("[ItemLogic.AllItem] response = " .. tabStr(decode))
+        print("[ItemLogic.QueryItems] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
             -- self:SaveUid(decode.uid)

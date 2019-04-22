@@ -20,7 +20,7 @@ function _M:AllChapters(cb)
         if cb then
             cb(chapters)
         end
-    end)
+    end, true)
 end
 
 function _M:ShowChapterDetail(chapter)
