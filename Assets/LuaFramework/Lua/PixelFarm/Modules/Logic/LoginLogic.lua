@@ -128,6 +128,8 @@ function _LoginLogic:AllZone(cb)
     buffer:WriteShort(Protocal.KeyOf("ZoneRequest"))
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
+
+    print("LoginLogic.AllZone request")
 end
 
 function _LoginLogic:SaveUid(uid)
