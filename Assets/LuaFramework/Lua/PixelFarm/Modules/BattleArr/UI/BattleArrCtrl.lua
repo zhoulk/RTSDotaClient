@@ -19,7 +19,7 @@ function _M:AllOwnHeros(cb)
         if cb then
             cb(heros)
         end
-    end)
+    end, true)
 end
 
 function _M:HeroSkills(heroId, cb)
@@ -27,7 +27,7 @@ function _M:HeroSkills(heroId, cb)
         if cb then
             cb(skills)
         end
-    end)
+    end, true)
 end
 
 function _M:ShowHeroSelect(pos, cb)

@@ -19,7 +19,7 @@ function _M:AllOwnHeros(cb)
         if cb then
             cb(heros)
         end
-    end)
+    end, true)
 end
 
 function _M:SelectHero(item)

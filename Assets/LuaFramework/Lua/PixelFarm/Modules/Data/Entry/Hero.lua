@@ -27,6 +27,8 @@ function _M:Init(h)
 	self.SkillPoint = h.SkillPoint or 0
 	self.Exp = h.Exp or 0
 	self.LevelUpExp = h.LevelUpExp or 1
+
+	-- print("Hero Init " .. h.Name)
 end
 
 -- HeroTypeStrength     int32 = 1

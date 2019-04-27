@@ -42,23 +42,32 @@ end
 function _M:UpdateHeroList(heros)
     if heros then
         for i,hero in pairs(heros) do
-            local heroItem = {}
+            local heroItem
+            if i <= #self.heroItemCache then
+                heroItem = self.heroItemCache[i]
+            else
+                heroItem = {}
+                local heroObj = newObject(self.heroListBlock.heroItem)
+                heroObj.transform:SetParent(self.heroListBlock.heroList.content, false)
+                heroObj.transform.localScale = Vector3(1,1,1)
+    
+                heroItem.obj = heroObj
+                heroItem.nameText = heroObj.transform:Find("bg/name"):GetComponent("Text")
+                heroItem.selectBtn = heroObj.transform:Find("bg/selectBtn").gameObject
 
-            local heroObj = newObject(self.heroListBlock.heroItem)
-            heroObj.transform:SetParent(self.heroListBlock.heroList.content, false)
-            heroObj.transform.localScale = Vector3(1,1,1)
-            heroObj:SetActive(true)
+                table.insert(self.heroItemCache, heroItem)
+            end
 
-            heroItem.nameText = heroObj.transform:Find("bg/name"):GetComponent("Text")
-            heroItem.selectBtn = heroObj.transform:Find("bg/selectBtn").gameObject
-
+            heroItem.obj:SetActive(true)
             heroItem.data = hero
             heroItem.nameText.text = hero.Name
             heroItem.selectBtn:SetOnClick(function ()
                 self:SelectHero(heroItem)
             end)
-
-            table.insert(self.heroItemCache, heroItem)
+        end
+        for i=#heros+1,#self.heroItemCache,1 do
+            heroItem = self.heroItemCache[i]
+            heroItem.obj:SetActive(false)
         end
     end
 end
