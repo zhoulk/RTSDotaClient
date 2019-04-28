@@ -26,7 +26,7 @@ function _LoginLogic:Login(accout, password, cb)
         print("[LoginLogic.Login] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
-            self:SaveUid(decode.player.UserId)
+            self:SavePlayer(decode.player)
             if cb then
                 cb(true, nil, decode.player)
             end
@@ -68,7 +68,7 @@ function _LoginLogic:Registe(accout, password, cb)
         print(decode.err.msg)
         
         if decode.code == "SUCCESS" then
-            self:SaveUid(decode.player.UserId)
+            self:SavePlayer(decode.player)
             if cb then
                 cb(true, nil, decode.player)
             end
@@ -109,7 +109,6 @@ function _LoginLogic:AllZone(cb)
         print(decode.err.msg)
         
         if decode.code == "SUCCESS" then
-            -- self:SaveUid(decode.uid)
             if cb then
                 cb(true, nil, decode.zones)
             end
@@ -132,8 +131,8 @@ function _LoginLogic:AllZone(cb)
     print("LoginLogic.AllZone request")
 end
 
-function _LoginLogic:SaveUid(uid)
-    StoreLogic:UpdateUid(uid)
+function _LoginLogic:SavePlayer(player)
+    StoreLogic:SavePlayer(player)
 end
 
 return _LoginLogic

@@ -1,10 +1,12 @@
 
 HeroCtrlNames = {
-    HeroSelect = "HeroSelectCtrl"
+    HeroSelect = "HeroSelectCtrl",
+    HeroList = "HeroListCtrl"
 }
 
 HeroViewNames = {
-    HeroSelect = "HeroSelectView"
+    HeroSelect = "HeroSelectView",
+    HeroList = "HeroListView"
 }
 
 

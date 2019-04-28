@@ -15,11 +15,6 @@ end
 
 function _M:CurrentPlayer(cb)
     local player = StoreLogic:CurrentPlayer()
-    LoginLogic:Login(player.uid, "", function (succeed, err, player)
-        if cb then
-            cb(player)
-        end
-    end)
 end
 
 function _M:ShowTavernDetail(camp, level)

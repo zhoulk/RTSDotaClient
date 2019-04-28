@@ -54,10 +54,11 @@ function _StoreLogic:Init()
     end)
 end
 
-function _StoreLogic:UpdateUid(uid)
+function _StoreLogic:SavePlayer(p)
+    print("_StoreLogic:SavePlayer" .. tabStr(p))
     local player = self:CurrentPlayer()
-    player.UserId = uid
-    self:SavePlayer(player)
+    player:Init(p)
+    self:_SavePlayer(player)
 end
 
 function _StoreLogic:CurrentPlayer()
@@ -65,7 +66,7 @@ function _StoreLogic:CurrentPlayer()
     if player == nil then
         player = Player.new()
         player:Init()
-        self:SavePlayer(player)
+        self:_SavePlayer(player)
     end
     return player
 end
@@ -295,7 +296,7 @@ function _StoreLogic:FindItems(itemIds, cb)
     end)
 end
 
-function _StoreLogic:SavePlayer(player)
+function _StoreLogic:_SavePlayer(player)
     LocalDataManager:Save("local_Player", player)
 end
 function _StoreLogic:LoadPlayer()

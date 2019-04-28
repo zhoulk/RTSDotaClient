@@ -12,12 +12,12 @@ end
 function baseInfoStr(baseInfo)
     local str = ""
     if baseInfo then
-        str = str .. "{ Gold : " .. baseInfo.Gold
-        str = str .. ", Diamond : " .. baseInfo.Diamond
-        str = str .. ", Exp : " .. baseInfo.Exp
-        str = str .. ", LevelUpExp : " .. baseInfo.LevelUpExp
-        str = str .. ", Power : " .. baseInfo.Power
-        str = str .. ", Level : " .. baseInfo.Level
+        str = str .. "{ Gold : " .. baseInfo.Gold or 0
+        str = str .. ", Diamond : " .. baseInfo.Diamond or 0
+        str = str .. ", Exp : " .. baseInfo.Exp or 0
+        str = str .. ", LevelUpExp : " .. baseInfo.LevelUpExp or 0
+        str = str .. ", Power : " .. baseInfo.Power or 0
+        str = str .. ", Level : " .. baseInfo.Level or 0
         str = str .. "},"
     end
     return str

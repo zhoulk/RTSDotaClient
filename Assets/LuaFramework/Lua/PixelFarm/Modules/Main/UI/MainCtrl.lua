@@ -10,11 +10,9 @@ end
 
 function _M:CurrentPlayer(cb)
     local player = StoreLogic:CurrentPlayer()
-    LoginLogic:Login(player.UserId, "", function (succeed, err, player)
-        if cb then
-            cb(player)
-        end
-    end)
+    if cb then
+        cb(player)
+    end
 end
 
 function _M:ShowTavern()
@@ -48,6 +46,21 @@ function _M:ShowGroup()
             CtrlManager:CloseCtrl(MainCtrlNames.Main)
         end
     end)
+end
+
+function _M:ShowHeroList()
+    CtrlManager:OpenCtrl(MoudleNames.Hero, HeroCtrlNames.HeroList)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
+end
+
+function _M:ShowEquipList()
+    CtrlManager:OpenCtrl(MoudleNames.Equip, EquipCtrlNames.EquipList)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
+end
+
+function _M:ShowItemList()
+    CtrlManager:OpenCtrl(MoudleNames.Item, ItemCtrlNames.ItemList)
+    CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
 return _M

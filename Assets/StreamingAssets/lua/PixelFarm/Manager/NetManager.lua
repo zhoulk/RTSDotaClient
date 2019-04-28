@@ -49,4 +49,7 @@ function _NetManager:Init()
     Protocal.Registe(145, "BattleCreateResponse")
     Protocal.Registe(146, "HeroLotteryRequest")
     Protocal.Registe(147, "HeroLotteryResponse")
+
+    Protocal.Registe(1000, "ChapterUpdateNotify")
+    Protocal.Registe(1001, "GuanKaUpdateNotify")
 end

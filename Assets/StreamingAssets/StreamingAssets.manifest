@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 840130743
+CRC: 418892401
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -27,20 +27,23 @@ AssetBundleManifest:
       Name: hero_prefab.unity3d
       Dependencies: {}
     Info_8:
-      Name: loading_prefab.unity3d
+      Name: item_prefab.unity3d
       Dependencies: {}
     Info_9:
-      Name: login_prefab.unity3d
+      Name: loading_prefab.unity3d
       Dependencies: {}
     Info_10:
-      Name: main_prefab.unity3d
+      Name: login_prefab.unity3d
       Dependencies: {}
     Info_11:
-      Name: skill_prefab.unity3d
+      Name: main_prefab.unity3d
       Dependencies: {}
     Info_12:
-      Name: tavern_prefab.unity3d
+      Name: skill_prefab.unity3d
       Dependencies: {}
     Info_13:
+      Name: tavern_prefab.unity3d
+      Dependencies: {}
+    Info_14:
       Name: test_prefab.unity3d
       Dependencies: {}

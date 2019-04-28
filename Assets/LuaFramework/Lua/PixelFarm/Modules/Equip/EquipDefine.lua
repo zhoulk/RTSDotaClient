@@ -1,10 +1,12 @@
 
 EquipCtrlNames = {
-    Equip = "EquipCtrl"
+    EquipDetail = "EquipDetailCtrl",
+    EquipList = "EquipListCtrl"
 }
 
 EquipViewNames = {
-    Equip = "EquipView"
+    EquipDetail = "EquipDetailView",
+    EquipList = "EquipListView"
 }
 
 

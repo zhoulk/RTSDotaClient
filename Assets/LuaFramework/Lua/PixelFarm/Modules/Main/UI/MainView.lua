@@ -8,6 +8,7 @@ function _M:OnCreate()
     self.powerBlock = self:InitPowerBlock(self.transform, "bg/top/power")
     self.coinBlock = self:InitCoinBlock(self.transform, "bg/top/coin")
     self.diamondBlock = self:InitDiamondBlock(self.transform, "bg/top/diamond")
+    self.bagMenuBlock = self:InitBagMenuBlock(self.transform, "bg/bagMenu")
 
     self:InitBtns()
     self:InitData()
@@ -67,6 +68,30 @@ function _M:InitBtns()
     end)
 end
 
+function _M:InitBagMenuBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.itemBtn = transform:Find("menu/item").gameObject
+    block.equipBtn = transform:Find("menu/equip").gameObject
+
+    block.gameObject:SetOnClick(function ()
+        block.gameObject:SetActive(false)
+    end)
+    
+    block.itemBtn:SetOnClick(function ()
+        self:OnItemClick()
+    end)
+
+    block.equipBtn:SetOnClick(function ()
+        self:OnEquipClick()
+    end)
+
+    return block
+end
+
 function _M:InitCoinBlock(trans, path)
     local block = {}
     local transform = trans:Find(path)
@@ -117,6 +142,7 @@ end
 
 function _M:OnHeroClick()
     print("OnHeroClick click")
+    self.iCtrl:ShowHeroList()
 end
 
 function _M:OnGroupClick()
@@ -126,6 +152,17 @@ end
 
 function _M:OnBagClick()
     print("OnBagClick click")
+    self.bagMenuBlock.gameObject:SetActive(true)
+end
+
+function _M:OnItemClick()
+    print("OnItemClick click")
+    self.iCtrl:ShowItemList()
+end
+
+function _M:OnEquipClick()
+    print("OnEquipClick click")
+    self.iCtrl:ShowEquipList()
 end
 
 function _M:OnChallengeClick()

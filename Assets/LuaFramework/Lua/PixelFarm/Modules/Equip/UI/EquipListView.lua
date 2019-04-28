@@ -2,18 +2,21 @@
 local _M = class(ViewBase)
 
 function _M:OnCreate()
-    print("EquipView oncreate  ~~~~~~~")
+    print("EquipListView oncreate  ~~~~~~~")
 
-    self.backBtn = self.transform:Find("backBtn").gameObject
-    self.backBtn:SetOnClick(function ()
+    self.equipItemCache = {}
+
+    self.backObj = self.transform:Find("backBtn").gameObject
+    self.backObj:SetOnClick(function ()
         self:OnBackClick()
     end)
 
-    self.infoBlock = self:InitInfoBlock(self.transform, "center/content/info")
-    self.upgradeBlock = self:InitUpgradeBlock(self.transform, "center/content/upgrade")
-    self.menuBlock = self:InitMenuBlock(self.transform, "center/menu")
+    -- self.topBlock = self:InitTopBlock(self.transform, "top")
+    -- self.heroListBlock = self:InitHeroListBlock(self.transform, "content/heroList")
+    -- self.chipListBlock = self:InitChipListBlock(self.transform, "content/chipList")
+    -- self.tabBlock = self:InitTabBlock(self.transform, "content/tabs")
 
-    self:InitData()
+    -- self:InitData()
 end
 
 function _M:InitData()
