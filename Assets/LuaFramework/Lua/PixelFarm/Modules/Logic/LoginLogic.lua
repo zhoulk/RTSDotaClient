@@ -6,6 +6,8 @@ local _LoginLogic = class()
 -- 登录
 -- cb(succeed, err)
 
+local playerInfoUpdateHandlers = {}
+
 local loginResponseFunc
 local registeResponseFunc
 local zoneResponseFunc
@@ -129,6 +131,28 @@ function _LoginLogic:AllZone(cb)
     networkMgr:SendMessage(buffer)
 
     print("LoginLogic.AllZone request")
+end
+
+function _LoginLogic:ListenPlayerInfo(key, cb)
+    playerInfoUpdateHandlers[key] = cb
+
+    local playerInfoUpdateNotifyFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[MapLogic.ListenPlayerInfo] response")
+
+        local decode = protobuf.decode("msg.PlayerInfoNotify", data)
+
+        print("[MapLogic.ListenPlayerInfo] response = " .. tabStr(decode))
+
+        for k, v in pairs(playerInfoUpdateHandlers) do
+            if v then
+                v(decode.player)
+            end
+        end
+    end
+    print(Protocal.KeyOf("PlayerInfoNotify"))
+    Event.AddListener(Protocal.KeyOf("PlayerInfoNotify"), playerInfoUpdateNotifyFunc) 
 end
 
 function _LoginLogic:SavePlayer(player)

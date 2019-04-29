@@ -1,6 +1,7 @@
 local _M = class()
 
 function _M:Init(h)
+    -- print(tabStr(h))
     h = h or {}
     self.Id = h.Id or 0
 	self.Name = h.Name or ""

@@ -1,5 +1,5 @@
 
-ˆ
+Á
 login.protomsg	err.proto"D
 LoginRequest
 account (	Raccount
@@ -22,7 +22,9 @@
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr
-zones (2	.msg.ZoneRzones"_
+zones (2	.msg.ZoneRzones"7
+PlayerInfoNotify#
+player (2.msg.PlayerRplayer"_
 Player
 UserId (	RUserId
 Name (	RName)

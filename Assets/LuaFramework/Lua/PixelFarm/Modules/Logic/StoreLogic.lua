@@ -9,6 +9,7 @@ local Equip = require "PixelFarm.Modules.Data.Entry.Equip"
 local Item = require "PixelFarm.Modules.Data.Entry.Item" 
 
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
+local LoginLogic = require "PixelFarm.Modules.Logic.LoginLogic"
 local MapLogic = require "PixelFarm.Modules.Logic.MapLogic"
 local GroupLogic = require "PixelFarm.Modules.Logic.GroupLogic"
 local ItemLogic = require "PixelFarm.Modules.Logic.ItemLogic"
@@ -51,6 +52,12 @@ function _StoreLogic:Init()
                 end 
                 self:SaveChapters(_chapters)
             end
+        end
+    end)
+
+    LoginLogic:ListenPlayerInfo("", function (player)
+        if player then
+            self:SavePlayer(player)
         end
     end)
 end
@@ -254,8 +261,9 @@ function _StoreLogic:GroupMembers(groupId, cb, force)
     end
 end
 
-function _StoreLogic:AllOwnEquips(cb, force)
+function _StoreLogic:AllOwnEquips(userId, cb, force)
     local equips = self:LoadOwnEquips()
+    print(tabStr(equips))
     if force or equips == nil or #equips == 0 then
         ItemLogic:QueryOwnEquips(function(succeed, err, mbs)
             if succeed then

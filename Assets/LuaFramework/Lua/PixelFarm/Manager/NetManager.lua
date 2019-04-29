@@ -54,4 +54,5 @@ function _NetManager:Init()
 
     Protocal.Registe(1000, "ChapterUpdateNotify")
     Protocal.Registe(1001, "GuanKaUpdateNotify")
+    Protocal.Registe(1002, "PlayerInfoNotify")
 end
