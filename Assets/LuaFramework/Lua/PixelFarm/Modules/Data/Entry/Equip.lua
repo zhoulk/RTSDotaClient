@@ -5,6 +5,7 @@ function _M:Init(h)
     self.Id = h.Id or 0
 	self.Name = h.Name or ""
     self.Price = h.Price or 0
+    self.Effect = h.Effect or ""
     self.Desc = h.Desc or ""
 end
 

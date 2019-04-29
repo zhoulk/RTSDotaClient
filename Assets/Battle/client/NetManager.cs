@@ -50,7 +50,7 @@ public class NetManager : MonoBehaviour {
         skillBuffer.WriteBytes(skillRequest.ToByteArray());
         networkManager.SendMessage(skillBuffer);
 
-        ItemRequest itemRequest = new ItemRequest();
+        EquipRequest itemRequest = new EquipRequest();
         ByteBuffer itemBuffer = new ByteBuffer();
         itemBuffer.WriteShort(112);
         itemBuffer.WriteBytes(itemRequest.ToByteArray());
@@ -98,13 +98,13 @@ public class NetManager : MonoBehaviour {
         else if (key == 113)
         {
             byteBuffer.ReadShort();
-            ItemResponse itemResponse = new ItemResponse();
+            EquipResponse itemResponse = new EquipResponse();
             itemResponse.MergeFrom(byteBuffer.ReadBytes());
-            foreach (var item in itemResponse.Items)
+            foreach (var item in itemResponse.Equips)
             {
                 UnityTools.Log(item.ToString());
             }
-            GameData.g_battleView.InitItems(itemResponse.Items.ToArrayList());
+            GameData.g_battleView.InitItems(itemResponse.Equips.ToArrayList());
         }
     }
 

@@ -30,26 +30,26 @@ namespace Msg {
             "dHRsZUNyZWF0ZVJlc3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9u",
             "c2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJvchIQCghiYXR0bGVJZBgD",
             "IAEoCSImChJCYXR0bGVTdGFydFJlcXVlc3QSEAoIYmF0dGxlSWQYASABKAki",
-            "nwEKE0JhdHRsZVN0YXJ0UmVzcG9uc2USHwoEY29kZRgBIAEoDjIRLm1zZy5S",
+            "oQEKE0JhdHRsZVN0YXJ0UmVzcG9uc2USHwoEY29kZRgBIAEoDjIRLm1zZy5S",
             "ZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNnLkVycm9yEhgKBWhlcm9z",
             "GAMgAygLMgkubXNnLkhlcm8SGgoGc2tpbGxzGAQgAygLMgoubXNnLlNraWxs",
-            "EhgKBWl0ZW1zGAUgAygLMgkubXNnLkl0ZW0iJwoTQmF0dGxlR3VhbkthUmVx",
-            "dWVzdBIQCghndWFuS2FJZBgBIAEoBSJ9ChRCYXR0bGVHdWFuS2FSZXNwb25z",
-            "ZRIfCgRjb2RlGAEgASgOMhEubXNnLlJlc3BvbnNlQ29kZRIXCgNlcnIYAiAB",
-            "KAsyCi5tc2cuRXJyb3ISDgoGcmVzdWx0GAMgASgFEhsKBmd1YW5rYRgEIAEo",
-            "CzILLm1zZy5HdWFuS2EiNwoTQmF0dGxlUmVzdWx0UmVxdWVzdBIQCghiYXR0",
-            "bGVJZBgBIAEoCRIOCgZyZXN1bHQYAiABKAUimQEKFEJhdHRsZVJlc3VsdFJl",
-            "c3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2Vy",
-            "chgCIAEoCzIKLm1zZy5FcnJvchIXCgRlYXJuGAMgASgLMgkubXNnLkVhcm4S",
-            "CwoDRXhwGAQgASgFEg0KBUxldmVsGAUgASgFEhIKCkxldmVsVXBFeHAYBiAB",
-            "KAViBnByb3RvMw=="));
+            "EhoKBmVxdWlwcxgFIAMoCzIKLm1zZy5FcXVpcCInChNCYXR0bGVHdWFuS2FS",
+            "ZXF1ZXN0EhAKCGd1YW5LYUlkGAEgASgFIn0KFEJhdHRsZUd1YW5LYVJlc3Bv",
+            "bnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgC",
+            "IAEoCzIKLm1zZy5FcnJvchIOCgZyZXN1bHQYAyABKAUSGwoGZ3VhbmthGAQg",
+            "ASgLMgsubXNnLkd1YW5LYSI3ChNCYXR0bGVSZXN1bHRSZXF1ZXN0EhAKCGJh",
+            "dHRsZUlkGAEgASgJEg4KBnJlc3VsdBgCIAEoBSKZAQoUQmF0dGxlUmVzdWx0",
+            "UmVzcG9uc2USHwoEY29kZRgBIAEoDjIRLm1zZy5SZXNwb25zZUNvZGUSFwoD",
+            "ZXJyGAIgASgLMgoubXNnLkVycm9yEhcKBGVhcm4YAyABKAsyCS5tc2cuRWFy",
+            "bhILCgNFeHAYBCABKAUSDQoFTGV2ZWwYBSABKAUSEgoKTGV2ZWxVcEV4cBgG",
+            "IAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Msg.ErrReflection.Descriptor, global::Msg.MapReflection.Descriptor, global::Msg.HeroReflection.Descriptor, global::Msg.SkillReflection.Descriptor, global::Msg.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleCreateRequest), global::Msg.BattleCreateRequest.Parser, new[]{ "Type", "Args" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleCreateResponse), global::Msg.BattleCreateResponse.Parser, new[]{ "Code", "Err", "BattleId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleStartRequest), global::Msg.BattleStartRequest.Parser, new[]{ "BattleId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleStartResponse), global::Msg.BattleStartResponse.Parser, new[]{ "Code", "Err", "Heros", "Skills", "Items" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleStartResponse), global::Msg.BattleStartResponse.Parser, new[]{ "Code", "Err", "Heros", "Skills", "Equips" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleGuanKaRequest), global::Msg.BattleGuanKaRequest.Parser, new[]{ "GuanKaId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleGuanKaResponse), global::Msg.BattleGuanKaResponse.Parser, new[]{ "Code", "Err", "Result", "Guanka" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.BattleResultRequest), global::Msg.BattleResultRequest.Parser, new[]{ "BattleId", "Result" }, null, null, null),
@@ -558,7 +558,7 @@ namespace Msg {
       err_ = other.err_ != null ? other.err_.Clone() : null;
       heros_ = other.heros_.Clone();
       skills_ = other.skills_.Clone();
-      items_ = other.items_.Clone();
+      equips_ = other.equips_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -609,14 +609,14 @@ namespace Msg {
       get { return skills_; }
     }
 
-    /// <summary>Field number for the "items" field.</summary>
-    public const int ItemsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::Msg.Item> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(42, global::Msg.Item.Parser);
-    private readonly pbc::RepeatedField<global::Msg.Item> items_ = new pbc::RepeatedField<global::Msg.Item>();
+    /// <summary>Field number for the "equips" field.</summary>
+    public const int EquipsFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::Msg.Equip> _repeated_equips_codec
+        = pb::FieldCodec.ForMessage(42, global::Msg.Equip.Parser);
+    private readonly pbc::RepeatedField<global::Msg.Equip> equips_ = new pbc::RepeatedField<global::Msg.Equip>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Msg.Item> Items {
-      get { return items_; }
+    public pbc::RepeatedField<global::Msg.Equip> Equips {
+      get { return equips_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -636,7 +636,7 @@ namespace Msg {
       if (!object.Equals(Err, other.Err)) return false;
       if(!heros_.Equals(other.heros_)) return false;
       if(!skills_.Equals(other.skills_)) return false;
-      if(!items_.Equals(other.items_)) return false;
+      if(!equips_.Equals(other.equips_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -647,7 +647,7 @@ namespace Msg {
       if (err_ != null) hash ^= Err.GetHashCode();
       hash ^= heros_.GetHashCode();
       hash ^= skills_.GetHashCode();
-      hash ^= items_.GetHashCode();
+      hash ^= equips_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -671,7 +671,7 @@ namespace Msg {
       }
       heros_.WriteTo(output, _repeated_heros_codec);
       skills_.WriteTo(output, _repeated_skills_codec);
-      items_.WriteTo(output, _repeated_items_codec);
+      equips_.WriteTo(output, _repeated_equips_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -688,7 +688,7 @@ namespace Msg {
       }
       size += heros_.CalculateSize(_repeated_heros_codec);
       size += skills_.CalculateSize(_repeated_skills_codec);
-      size += items_.CalculateSize(_repeated_items_codec);
+      size += equips_.CalculateSize(_repeated_equips_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -711,7 +711,7 @@ namespace Msg {
       }
       heros_.Add(other.heros_);
       skills_.Add(other.skills_);
-      items_.Add(other.items_);
+      equips_.Add(other.equips_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -743,7 +743,7 @@ namespace Msg {
             break;
           }
           case 42: {
-            items_.AddEntriesFrom(input, _repeated_items_codec);
+            equips_.AddEntriesFrom(input, _repeated_equips_codec);
             break;
           }
         }

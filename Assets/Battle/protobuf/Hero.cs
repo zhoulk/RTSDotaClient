@@ -46,28 +46,28 @@ namespace Msg {
             "Zy5FcnJvchIPCgdoZXJvSWRzGAMgAygJIiMKEUhlcm9Ta2lsbHNSZXF1ZXN0",
             "Eg4KBmhlcm9JZBgBIAEoCSJqChJIZXJvU2tpbGxzUmVzcG9uc2USHwoEY29k",
             "ZRgBIAEoDjIRLm1zZy5SZXNwb25zZUNvZGUSFwoDZXJyGAIgASgLMgoubXNn",
-            "LkVycm9yEhoKBnNraWxscxgDIAMoCzIKLm1zZy5Ta2lsbCIiChBIZXJvSXRl",
-            "bXNSZXF1ZXN0Eg4KBmhlcm9JZBgBIAEoCSJnChFIZXJvSXRlbXNSZXNwb25z",
-            "ZRIfCgRjb2RlGAEgASgOMhEubXNnLlJlc3BvbnNlQ29kZRIXCgNlcnIYAiAB",
-            "KAsyCi5tc2cuRXJyb3ISGAoFaXRlbXMYAyADKAsyCS5tc2cuSXRlbSLFAwoE",
-            "SGVybxIKCgJJZBgBIAEoBRIMCgROYW1lGAIgASgJEg0KBUxldmVsGAMgASgF",
-            "EhAKCFN0cmVuZ3RoGAQgASgFEg8KB0FnaWxpdHkYBSABKAUSFAoMSW50ZWxs",
-            "aWdlbmNlGAYgASgFEg0KBUFybW9yGAcgASgFEhEKCUF0dGFja01pbhgIIAEo",
-            "BRIRCglBdHRhY2tNYXgYCSABKAUSDQoFQmxvb2QYCiABKAUSDAoEVHlwZRgL",
-            "IAEoBRIUCgxTdHJlbmd0aFN0ZXAYDCABKAUSEwoLQWdpbGl0eVN0ZXAYDSAB",
-            "KAUSGAoQSW50ZWxsaWdlbmNlU3RlcBgOIAEoBRIQCghTa2lsbElkcxgPIAMo",
-            "CRIOCgZIZXJvSWQYECABKAkSEAoIUGxheWVySWQYESABKAkSEAoISXNTZWxl",
-            "Y3QYEiABKAgSCwoDUG9zGBMgASgFEgoKAk1QGBQgASgFEhAKCE1heEJsb29k",
-            "GBUgASgFEg0KBU1heE1QGBYgASgFEhIKClNraWxsUG9pbnQYFyABKAUSCwoD",
-            "RXhwGBggASgFEhIKCkxldmVsVXBFeHAYGSABKAUSDwoHSXRlbUlkcxgaIAMo",
-            "CSKlAgoLSGVyb0xvdHRlcnkSFwoPRnJlZUdvb2RMb3R0ZXJ5GAEgASgFEhkK",
-            "EUZyZWVCZXR0ZXJMb3R0ZXJ5GAIgASgFEhwKFE5leHRHb29kTG90dGVyeVN0",
-            "YW1wGAMgASgDEh4KFk5leHRCZXR0ZXJMb3R0ZXJ5U3RhbXAYBCABKAMSGgoS",
-            "TWF4RnJlZUdvb2RMb3R0ZXJ5GAUgASgFEhwKFE1heEZyZWVCZXR0ZXJMb3R0",
-            "ZXJ5GAYgASgFEhYKDkdvb2RMb3R0ZXJ5Q250GAcgASgFEhgKEEJldHRlckxv",
-            "dHRlcnlDbnQYCCABKAUSGgoSTmVlZEdvb2RMb3R0ZXJ5Q250GAkgASgFEhwK",
-            "FE5lZWRCZXR0ZXJMb3R0ZXJ5Q250GAogASgFKjEKD0hlcm9SYW5kb21MZXZl",
-            "bBIICgRHT09EEAASCgoGQkVUVEVSEAESCAoEQkVTVBACYgZwcm90bzM="));
+            "LkVycm9yEhoKBnNraWxscxgDIAMoCzIKLm1zZy5Ta2lsbCIjChFIZXJvRXF1",
+            "aXBzUmVxdWVzdBIOCgZoZXJvSWQYASABKAkiagoSSGVyb0VxdWlwc1Jlc3Bv",
+            "bnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcKA2VychgC",
+            "IAEoCzIKLm1zZy5FcnJvchIaCgZlcXVpcHMYAyADKAsyCi5tc2cuRXF1aXAi",
+            "xQMKBEhlcm8SCgoCSWQYASABKAUSDAoETmFtZRgCIAEoCRINCgVMZXZlbBgD",
+            "IAEoBRIQCghTdHJlbmd0aBgEIAEoBRIPCgdBZ2lsaXR5GAUgASgFEhQKDElu",
+            "dGVsbGlnZW5jZRgGIAEoBRINCgVBcm1vchgHIAEoBRIRCglBdHRhY2tNaW4Y",
+            "CCABKAUSEQoJQXR0YWNrTWF4GAkgASgFEg0KBUJsb29kGAogASgFEgwKBFR5",
+            "cGUYCyABKAUSFAoMU3RyZW5ndGhTdGVwGAwgASgFEhMKC0FnaWxpdHlTdGVw",
+            "GA0gASgFEhgKEEludGVsbGlnZW5jZVN0ZXAYDiABKAUSEAoIU2tpbGxJZHMY",
+            "DyADKAkSDgoGSGVyb0lkGBAgASgJEhAKCFBsYXllcklkGBEgASgJEhAKCElz",
+            "U2VsZWN0GBIgASgIEgsKA1BvcxgTIAEoBRIKCgJNUBgUIAEoBRIQCghNYXhC",
+            "bG9vZBgVIAEoBRINCgVNYXhNUBgWIAEoBRISCgpTa2lsbFBvaW50GBcgASgF",
+            "EgsKA0V4cBgYIAEoBRISCgpMZXZlbFVwRXhwGBkgASgFEg8KB0l0ZW1JZHMY",
+            "GiADKAkipQIKC0hlcm9Mb3R0ZXJ5EhcKD0ZyZWVHb29kTG90dGVyeRgBIAEo",
+            "BRIZChFGcmVlQmV0dGVyTG90dGVyeRgCIAEoBRIcChROZXh0R29vZExvdHRl",
+            "cnlTdGFtcBgDIAEoAxIeChZOZXh0QmV0dGVyTG90dGVyeVN0YW1wGAQgASgD",
+            "EhoKEk1heEZyZWVHb29kTG90dGVyeRgFIAEoBRIcChRNYXhGcmVlQmV0dGVy",
+            "TG90dGVyeRgGIAEoBRIWCg5Hb29kTG90dGVyeUNudBgHIAEoBRIYChBCZXR0",
+            "ZXJMb3R0ZXJ5Q250GAggASgFEhoKEk5lZWRHb29kTG90dGVyeUNudBgJIAEo",
+            "BRIcChROZWVkQmV0dGVyTG90dGVyeUNudBgKIAEoBSoxCg9IZXJvUmFuZG9t",
+            "TGV2ZWwSCAoER09PRBAAEgoKBkJFVFRFUhABEggKBEJFU1QQAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Msg.ErrReflection.Descriptor, global::Msg.SkillReflection.Descriptor, global::Msg.ItemReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Msg.HeroRandomLevel), }, new pbr::GeneratedClrTypeInfo[] {
@@ -85,8 +85,8 @@ namespace Msg {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroUnSelectResponse), global::Msg.HeroUnSelectResponse.Parser, new[]{ "Code", "Err", "HeroIds" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroSkillsRequest), global::Msg.HeroSkillsRequest.Parser, new[]{ "HeroId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroSkillsResponse), global::Msg.HeroSkillsResponse.Parser, new[]{ "Code", "Err", "Skills" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroItemsRequest), global::Msg.HeroItemsRequest.Parser, new[]{ "HeroId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroItemsResponse), global::Msg.HeroItemsResponse.Parser, new[]{ "Code", "Err", "Items" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroEquipsRequest), global::Msg.HeroEquipsRequest.Parser, new[]{ "HeroId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroEquipsResponse), global::Msg.HeroEquipsResponse.Parser, new[]{ "Code", "Err", "Equips" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Hero), global::Msg.Hero.Parser, new[]{ "Id", "Name", "Level", "Strength", "Agility", "Intelligence", "Armor", "AttackMin", "AttackMax", "Blood", "Type", "StrengthStep", "AgilityStep", "IntelligenceStep", "SkillIds", "HeroId", "PlayerId", "IsSelect", "Pos", "MP", "MaxBlood", "MaxMP", "SkillPoint", "Exp", "LevelUpExp", "ItemIds" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.HeroLottery), global::Msg.HeroLottery.Parser, new[]{ "FreeGoodLottery", "FreeBetterLottery", "NextGoodLotteryStamp", "NextBetterLotteryStamp", "MaxFreeGoodLottery", "MaxFreeBetterLottery", "GoodLotteryCnt", "BetterLotteryCnt", "NeedGoodLotteryCnt", "NeedBetterLotteryCnt" }, null, null, null)
           }));
@@ -2260,11 +2260,11 @@ namespace Msg {
 
   }
 
-  public sealed partial class HeroItemsRequest : pb::IMessage<HeroItemsRequest> {
-    private static readonly pb::MessageParser<HeroItemsRequest> _parser = new pb::MessageParser<HeroItemsRequest>(() => new HeroItemsRequest());
+  public sealed partial class HeroEquipsRequest : pb::IMessage<HeroEquipsRequest> {
+    private static readonly pb::MessageParser<HeroEquipsRequest> _parser = new pb::MessageParser<HeroEquipsRequest>(() => new HeroEquipsRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<HeroItemsRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<HeroEquipsRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -2277,21 +2277,21 @@ namespace Msg {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsRequest() {
+    public HeroEquipsRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsRequest(HeroItemsRequest other) : this() {
+    public HeroEquipsRequest(HeroEquipsRequest other) : this() {
       heroId_ = other.heroId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsRequest Clone() {
-      return new HeroItemsRequest(this);
+    public HeroEquipsRequest Clone() {
+      return new HeroEquipsRequest(this);
     }
 
     /// <summary>Field number for the "heroId" field.</summary>
@@ -2307,11 +2307,11 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as HeroItemsRequest);
+      return Equals(other as HeroEquipsRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(HeroItemsRequest other) {
+    public bool Equals(HeroEquipsRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -2361,7 +2361,7 @@ namespace Msg {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(HeroItemsRequest other) {
+    public void MergeFrom(HeroEquipsRequest other) {
       if (other == null) {
         return;
       }
@@ -2389,11 +2389,11 @@ namespace Msg {
 
   }
 
-  public sealed partial class HeroItemsResponse : pb::IMessage<HeroItemsResponse> {
-    private static readonly pb::MessageParser<HeroItemsResponse> _parser = new pb::MessageParser<HeroItemsResponse>(() => new HeroItemsResponse());
+  public sealed partial class HeroEquipsResponse : pb::IMessage<HeroEquipsResponse> {
+    private static readonly pb::MessageParser<HeroEquipsResponse> _parser = new pb::MessageParser<HeroEquipsResponse>(() => new HeroEquipsResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<HeroItemsResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<HeroEquipsResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -2406,23 +2406,23 @@ namespace Msg {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsResponse() {
+    public HeroEquipsResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsResponse(HeroItemsResponse other) : this() {
+    public HeroEquipsResponse(HeroEquipsResponse other) : this() {
       code_ = other.code_;
       err_ = other.err_ != null ? other.err_.Clone() : null;
-      items_ = other.items_.Clone();
+      equips_ = other.equips_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HeroItemsResponse Clone() {
-      return new HeroItemsResponse(this);
+    public HeroEquipsResponse Clone() {
+      return new HeroEquipsResponse(this);
     }
 
     /// <summary>Field number for the "code" field.</summary>
@@ -2447,23 +2447,23 @@ namespace Msg {
       }
     }
 
-    /// <summary>Field number for the "items" field.</summary>
-    public const int ItemsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Msg.Item> _repeated_items_codec
-        = pb::FieldCodec.ForMessage(26, global::Msg.Item.Parser);
-    private readonly pbc::RepeatedField<global::Msg.Item> items_ = new pbc::RepeatedField<global::Msg.Item>();
+    /// <summary>Field number for the "equips" field.</summary>
+    public const int EquipsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Msg.Equip> _repeated_equips_codec
+        = pb::FieldCodec.ForMessage(26, global::Msg.Equip.Parser);
+    private readonly pbc::RepeatedField<global::Msg.Equip> equips_ = new pbc::RepeatedField<global::Msg.Equip>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Msg.Item> Items {
-      get { return items_; }
+    public pbc::RepeatedField<global::Msg.Equip> Equips {
+      get { return equips_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as HeroItemsResponse);
+      return Equals(other as HeroEquipsResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(HeroItemsResponse other) {
+    public bool Equals(HeroEquipsResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -2472,7 +2472,7 @@ namespace Msg {
       }
       if (Code != other.Code) return false;
       if (!object.Equals(Err, other.Err)) return false;
-      if(!items_.Equals(other.items_)) return false;
+      if(!equips_.Equals(other.equips_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2481,7 +2481,7 @@ namespace Msg {
       int hash = 1;
       if (Code != 0) hash ^= Code.GetHashCode();
       if (err_ != null) hash ^= Err.GetHashCode();
-      hash ^= items_.GetHashCode();
+      hash ^= equips_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2503,7 +2503,7 @@ namespace Msg {
         output.WriteRawTag(18);
         output.WriteMessage(Err);
       }
-      items_.WriteTo(output, _repeated_items_codec);
+      equips_.WriteTo(output, _repeated_equips_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2518,7 +2518,7 @@ namespace Msg {
       if (err_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Err);
       }
-      size += items_.CalculateSize(_repeated_items_codec);
+      size += equips_.CalculateSize(_repeated_equips_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2526,7 +2526,7 @@ namespace Msg {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(HeroItemsResponse other) {
+    public void MergeFrom(HeroEquipsResponse other) {
       if (other == null) {
         return;
       }
@@ -2539,7 +2539,7 @@ namespace Msg {
         }
         Err.MergeFrom(other.Err);
       }
-      items_.Add(other.items_);
+      equips_.Add(other.equips_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2563,7 +2563,7 @@ namespace Msg {
             break;
           }
           case 26: {
-            items_.AddEntriesFrom(input, _repeated_items_codec);
+            equips_.AddEntriesFrom(input, _repeated_equips_codec);
             break;
           }
         }

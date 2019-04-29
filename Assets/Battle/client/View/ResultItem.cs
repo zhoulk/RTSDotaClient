@@ -95,7 +95,7 @@ public class ResultItem {
 
         for(int i=0; i< m_earn.ItemIds.Count; i++)
         {
-            foreach(Item item in GameData.g_items)
+            foreach(Equip item in GameData.g_items)
             {
                 if(item.Id+"" == m_earn.ItemIds[i])
                 {

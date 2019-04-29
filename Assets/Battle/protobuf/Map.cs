@@ -27,27 +27,31 @@ namespace Msg {
             "CgltYXAucHJvdG8SA21zZxoJZXJyLnByb3RvIhAKDkNoYXB0ZXJSZXF1ZXN0",
             "ImsKD0NoYXB0ZXJSZXNwb25zZRIfCgRjb2RlGAEgASgOMhEubXNnLlJlc3Bv",
             "bnNlQ29kZRIXCgNlcnIYAiABKAsyCi5tc2cuRXJyb3ISHgoIY2hhcHRlcnMY",
-            "AyADKAsyDC5tc2cuQ2hhcHRlciJkCgdDaGFwdGVyEgoKAklkGAEgASgFEgwK",
-            "BE5hbWUYAiABKAkSDgoGSXNPcGVuGAMgASgIEgwKBFN0YXIYBCABKAUSDgoG",
-            "U3RhdHVzGAUgASgFEhEKCUd1YW5LYU51bRgGIAEoBSIPCg1HdWFuS2FSZXF1",
-            "ZXN0ImgKDkd1YW5LYVJlc3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVz",
-            "cG9uc2VDb2RlEhcKA2VychgCIAEoCzIKLm1zZy5FcnJvchIcCgdndWFuS2Fz",
-            "GAMgAygLMgsubXNnLkd1YW5LYSK8AQoGR3VhbkthEgoKAklkGAEgASgFEgwK",
-            "BE5hbWUYAiABKAkSEQoJQ2hhcHRlcklkGAMgASgFEhcKBEVhcm4YBCABKAsy",
-            "CS5tc2cuRWFybhIbCgZFeHBlbmQYBSABKAsyCy5tc2cuRXhwZW5kEg4KBklz",
-            "T3BlbhgGIAEoCBIMCgRTdGFyGAcgASgFEg4KBlN0YXR1cxgIIAEoBRINCgVU",
-            "aW1lcxgJIAEoBRISCgpUb3RhbFRpbWVzGAogASgFIkkKBEVhcm4SDwoHSXRl",
-            "bUlkcxgBIAMoCRIPCgdIZXJvRXhwGAIgASgFEhEKCVBsYXllckV4cBgDIAEo",
-            "BRIMCgRHb2xkGAQgASgFIhcKBkV4cGVuZBINCgVQb3dlchgBIAEoBWIGcHJv",
-            "dG8z"));
+            "AyADKAsyDC5tc2cuQ2hhcHRlciIPCg1HdWFuS2FSZXF1ZXN0ImgKDkd1YW5L",
+            "YVJlc3BvbnNlEh8KBGNvZGUYASABKA4yES5tc2cuUmVzcG9uc2VDb2RlEhcK",
+            "A2VychgCIAEoCzIKLm1zZy5FcnJvchIcCgdndWFuS2FzGAMgAygLMgsubXNn",
+            "Lkd1YW5LYSI1ChNDaGFwdGVyVXBkYXRlTm90aWZ5Eh4KCGNoYXB0ZXJzGAEg",
+            "AygLMgwubXNnLkNoYXB0ZXIiMgoSR3VhbkthVXBkYXRlTm90aWZ5EhwKB2d1",
+            "YW5LYXMYASADKAsyCy5tc2cuR3VhbkthImQKB0NoYXB0ZXISCgoCSWQYASAB",
+            "KAUSDAoETmFtZRgCIAEoCRIOCgZJc09wZW4YAyABKAgSDAoEU3RhchgEIAEo",
+            "BRIOCgZTdGF0dXMYBSABKAUSEQoJR3VhbkthTnVtGAYgASgFIrwBCgZHdWFu",
+            "S2ESCgoCSWQYASABKAUSDAoETmFtZRgCIAEoCRIRCglDaGFwdGVySWQYAyAB",
+            "KAUSFwoERWFybhgEIAEoCzIJLm1zZy5FYXJuEhsKBkV4cGVuZBgFIAEoCzIL",
+            "Lm1zZy5FeHBlbmQSDgoGSXNPcGVuGAYgASgIEgwKBFN0YXIYByABKAUSDgoG",
+            "U3RhdHVzGAggASgFEg0KBVRpbWVzGAkgASgFEhIKClRvdGFsVGltZXMYCiAB",
+            "KAUiSQoERWFybhIPCgdJdGVtSWRzGAEgAygJEg8KB0hlcm9FeHAYAiABKAUS",
+            "EQoJUGxheWVyRXhwGAMgASgFEgwKBEdvbGQYBCABKAUiFwoGRXhwZW5kEg0K",
+            "BVBvd2VyGAEgASgFYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Msg.ErrReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.ChapterRequest), global::Msg.ChapterRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.ChapterResponse), global::Msg.ChapterResponse.Parser, new[]{ "Code", "Err", "Chapters" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Chapter), global::Msg.Chapter.Parser, new[]{ "Id", "Name", "IsOpen", "Star", "Status", "GuanKaNum" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKaRequest), global::Msg.GuanKaRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKaResponse), global::Msg.GuanKaResponse.Parser, new[]{ "Code", "Err", "GuanKas" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.ChapterUpdateNotify), global::Msg.ChapterUpdateNotify.Parser, new[]{ "Chapters" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKaUpdateNotify), global::Msg.GuanKaUpdateNotify.Parser, new[]{ "GuanKas" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Chapter), global::Msg.Chapter.Parser, new[]{ "Id", "Name", "IsOpen", "Star", "Status", "GuanKaNum" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.GuanKa), global::Msg.GuanKa.Parser, new[]{ "Id", "Name", "ChapterId", "Earn", "Expend", "IsOpen", "Star", "Status", "Times", "TotalTimes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Earn), global::Msg.Earn.Parser, new[]{ "ItemIds", "HeroExp", "PlayerExp", "Gold" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Msg.Expend), global::Msg.Expend.Parser, new[]{ "Power" }, null, null, null)
@@ -341,6 +345,532 @@ namespace Msg {
 
   }
 
+  public sealed partial class GuanKaRequest : pb::IMessage<GuanKaRequest> {
+    private static readonly pb::MessageParser<GuanKaRequest> _parser = new pb::MessageParser<GuanKaRequest>(() => new GuanKaRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GuanKaRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaRequest(GuanKaRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaRequest Clone() {
+      return new GuanKaRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GuanKaRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GuanKaRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GuanKaRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GuanKaResponse : pb::IMessage<GuanKaResponse> {
+    private static readonly pb::MessageParser<GuanKaResponse> _parser = new pb::MessageParser<GuanKaResponse>(() => new GuanKaResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GuanKaResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaResponse(GuanKaResponse other) : this() {
+      code_ = other.code_;
+      err_ = other.err_ != null ? other.err_.Clone() : null;
+      guanKas_ = other.guanKas_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaResponse Clone() {
+      return new GuanKaResponse(this);
+    }
+
+    /// <summary>Field number for the "code" field.</summary>
+    public const int CodeFieldNumber = 1;
+    private global::Msg.ResponseCode code_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Msg.ResponseCode Code {
+      get { return code_; }
+      set {
+        code_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "err" field.</summary>
+    public const int ErrFieldNumber = 2;
+    private global::Msg.Error err_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Msg.Error Err {
+      get { return err_; }
+      set {
+        err_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "guanKas" field.</summary>
+    public const int GuanKasFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Msg.GuanKa> _repeated_guanKas_codec
+        = pb::FieldCodec.ForMessage(26, global::Msg.GuanKa.Parser);
+    private readonly pbc::RepeatedField<global::Msg.GuanKa> guanKas_ = new pbc::RepeatedField<global::Msg.GuanKa>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Msg.GuanKa> GuanKas {
+      get { return guanKas_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GuanKaResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GuanKaResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Code != other.Code) return false;
+      if (!object.Equals(Err, other.Err)) return false;
+      if(!guanKas_.Equals(other.guanKas_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Code != 0) hash ^= Code.GetHashCode();
+      if (err_ != null) hash ^= Err.GetHashCode();
+      hash ^= guanKas_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Code != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Code);
+      }
+      if (err_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Err);
+      }
+      guanKas_.WriteTo(output, _repeated_guanKas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Code != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Code);
+      }
+      if (err_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Err);
+      }
+      size += guanKas_.CalculateSize(_repeated_guanKas_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GuanKaResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Code != 0) {
+        Code = other.Code;
+      }
+      if (other.err_ != null) {
+        if (err_ == null) {
+          err_ = new global::Msg.Error();
+        }
+        Err.MergeFrom(other.Err);
+      }
+      guanKas_.Add(other.guanKas_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            code_ = (global::Msg.ResponseCode) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (err_ == null) {
+              err_ = new global::Msg.Error();
+            }
+            input.ReadMessage(err_);
+            break;
+          }
+          case 26: {
+            guanKas_.AddEntriesFrom(input, _repeated_guanKas_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ChapterUpdateNotify : pb::IMessage<ChapterUpdateNotify> {
+    private static readonly pb::MessageParser<ChapterUpdateNotify> _parser = new pb::MessageParser<ChapterUpdateNotify>(() => new ChapterUpdateNotify());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ChapterUpdateNotify> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ChapterUpdateNotify() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ChapterUpdateNotify(ChapterUpdateNotify other) : this() {
+      chapters_ = other.chapters_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ChapterUpdateNotify Clone() {
+      return new ChapterUpdateNotify(this);
+    }
+
+    /// <summary>Field number for the "chapters" field.</summary>
+    public const int ChaptersFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Msg.Chapter> _repeated_chapters_codec
+        = pb::FieldCodec.ForMessage(10, global::Msg.Chapter.Parser);
+    private readonly pbc::RepeatedField<global::Msg.Chapter> chapters_ = new pbc::RepeatedField<global::Msg.Chapter>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Msg.Chapter> Chapters {
+      get { return chapters_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ChapterUpdateNotify);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ChapterUpdateNotify other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!chapters_.Equals(other.chapters_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= chapters_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      chapters_.WriteTo(output, _repeated_chapters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += chapters_.CalculateSize(_repeated_chapters_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ChapterUpdateNotify other) {
+      if (other == null) {
+        return;
+      }
+      chapters_.Add(other.chapters_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            chapters_.AddEntriesFrom(input, _repeated_chapters_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GuanKaUpdateNotify : pb::IMessage<GuanKaUpdateNotify> {
+    private static readonly pb::MessageParser<GuanKaUpdateNotify> _parser = new pb::MessageParser<GuanKaUpdateNotify>(() => new GuanKaUpdateNotify());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GuanKaUpdateNotify> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaUpdateNotify() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaUpdateNotify(GuanKaUpdateNotify other) : this() {
+      guanKas_ = other.guanKas_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GuanKaUpdateNotify Clone() {
+      return new GuanKaUpdateNotify(this);
+    }
+
+    /// <summary>Field number for the "guanKas" field.</summary>
+    public const int GuanKasFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Msg.GuanKa> _repeated_guanKas_codec
+        = pb::FieldCodec.ForMessage(10, global::Msg.GuanKa.Parser);
+    private readonly pbc::RepeatedField<global::Msg.GuanKa> guanKas_ = new pbc::RepeatedField<global::Msg.GuanKa>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Msg.GuanKa> GuanKas {
+      get { return guanKas_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GuanKaUpdateNotify);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GuanKaUpdateNotify other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!guanKas_.Equals(other.guanKas_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= guanKas_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      guanKas_.WriteTo(output, _repeated_guanKas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += guanKas_.CalculateSize(_repeated_guanKas_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GuanKaUpdateNotify other) {
+      if (other == null) {
+        return;
+      }
+      guanKas_.Add(other.guanKas_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            guanKas_.AddEntriesFrom(input, _repeated_guanKas_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class Chapter : pb::IMessage<Chapter> {
     private static readonly pb::MessageParser<Chapter> _parser = new pb::MessageParser<Chapter>(() => new Chapter());
     private pb::UnknownFieldSet _unknownFields;
@@ -349,7 +879,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -610,290 +1140,6 @@ namespace Msg {
 
   }
 
-  public sealed partial class GuanKaRequest : pb::IMessage<GuanKaRequest> {
-    private static readonly pb::MessageParser<GuanKaRequest> _parser = new pb::MessageParser<GuanKaRequest>(() => new GuanKaRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GuanKaRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaRequest(GuanKaRequest other) : this() {
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaRequest Clone() {
-      return new GuanKaRequest(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as GuanKaRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GuanKaRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GuanKaRequest other) {
-      if (other == null) {
-        return;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class GuanKaResponse : pb::IMessage<GuanKaResponse> {
-    private static readonly pb::MessageParser<GuanKaResponse> _parser = new pb::MessageParser<GuanKaResponse>(() => new GuanKaResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GuanKaResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaResponse(GuanKaResponse other) : this() {
-      code_ = other.code_;
-      err_ = other.err_ != null ? other.err_.Clone() : null;
-      guanKas_ = other.guanKas_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GuanKaResponse Clone() {
-      return new GuanKaResponse(this);
-    }
-
-    /// <summary>Field number for the "code" field.</summary>
-    public const int CodeFieldNumber = 1;
-    private global::Msg.ResponseCode code_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Msg.ResponseCode Code {
-      get { return code_; }
-      set {
-        code_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "err" field.</summary>
-    public const int ErrFieldNumber = 2;
-    private global::Msg.Error err_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Msg.Error Err {
-      get { return err_; }
-      set {
-        err_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "guanKas" field.</summary>
-    public const int GuanKasFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Msg.GuanKa> _repeated_guanKas_codec
-        = pb::FieldCodec.ForMessage(26, global::Msg.GuanKa.Parser);
-    private readonly pbc::RepeatedField<global::Msg.GuanKa> guanKas_ = new pbc::RepeatedField<global::Msg.GuanKa>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Msg.GuanKa> GuanKas {
-      get { return guanKas_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as GuanKaResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GuanKaResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Code != other.Code) return false;
-      if (!object.Equals(Err, other.Err)) return false;
-      if(!guanKas_.Equals(other.guanKas_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Code != 0) hash ^= Code.GetHashCode();
-      if (err_ != null) hash ^= Err.GetHashCode();
-      hash ^= guanKas_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Code != 0) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Code);
-      }
-      if (err_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Err);
-      }
-      guanKas_.WriteTo(output, _repeated_guanKas_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Code != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Code);
-      }
-      if (err_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Err);
-      }
-      size += guanKas_.CalculateSize(_repeated_guanKas_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GuanKaResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Code != 0) {
-        Code = other.Code;
-      }
-      if (other.err_ != null) {
-        if (err_ == null) {
-          err_ = new global::Msg.Error();
-        }
-        Err.MergeFrom(other.Err);
-      }
-      guanKas_.Add(other.guanKas_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            code_ = (global::Msg.ResponseCode) input.ReadEnum();
-            break;
-          }
-          case 18: {
-            if (err_ == null) {
-              err_ = new global::Msg.Error();
-            }
-            input.ReadMessage(err_);
-            break;
-          }
-          case 26: {
-            guanKas_.AddEntriesFrom(input, _repeated_guanKas_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
   public sealed partial class GuanKa : pb::IMessage<GuanKa> {
     private static readonly pb::MessageParser<GuanKa> _parser = new pb::MessageParser<GuanKa>(() => new GuanKa());
     private pb::UnknownFieldSet _unknownFields;
@@ -902,7 +1148,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1295,7 +1541,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1500,7 +1746,7 @@ namespace Msg {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Msg.MapReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Msg.MapReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

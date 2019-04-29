@@ -5,6 +5,7 @@ local Chapter = require "PixelFarm.Modules.Data.Entry.Chapter"
 local GuanKa = require "PixelFarm.Modules.Data.Entry.GuanKa"
 local Group = require "PixelFarm.Modules.Data.Entry.Group"
 local GroupMember = require "PixelFarm.Modules.Data.Entry.GroupMember"
+local Equip = require "PixelFarm.Modules.Data.Entry.Equip" 
 local Item = require "PixelFarm.Modules.Data.Entry.Item" 
 
 local HeroLogic = require "PixelFarm.Modules.Logic.HeroLogic"
@@ -253,10 +254,36 @@ function _StoreLogic:GroupMembers(groupId, cb, force)
     end
 end
 
-function _StoreLogic:AllItem(cb, force)
-    local items = self:LoadItems()
+function _StoreLogic:AllOwnEquips(cb, force)
+    local equips = self:LoadOwnEquips()
+    if force or equips == nil or #equips == 0 then
+        ItemLogic:QueryOwnEquips(function(succeed, err, mbs)
+            if succeed then
+                local _items = {}
+                if mbs then
+                    for i,mem in pairs(mbs) do
+                        local m = Equip.new()
+                        m:Init(mem)
+                        table.insert(_items, m)
+                    end
+                end
+                self:SaveOwnEquips(_items)
+                if cb then
+                    cb(_items)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(equips)
+        end
+    end
+end
+
+function _StoreLogic:AllItems(cb, force)
+    local items = self:LoadAllItems()
     if force or items == nil or #items == 0 then
-        ItemLogic:QueryItems(function(succeed, err, mbs)
+        ItemLogic:QueryAllItems(function(succeed, err, mbs)
             if succeed then
                 local _items = {}
                 if mbs then
@@ -266,7 +293,7 @@ function _StoreLogic:AllItem(cb, force)
                         table.insert(_items, m)
                     end
                 end
-                self:SaveItems(_items)
+                self:SaveAllItems(_items)
                 if cb then
                     cb(_items)
                 end
@@ -281,7 +308,7 @@ end
 
 function _StoreLogic:FindItems(itemIds, cb)
     local res = {}
-    self:AllItem(function (items)
+    self:AllItems(function (items)
         for _,item in pairs(items) do
             for _, itemId in pairs(itemIds) do
                 if item.Id == itemId then
@@ -424,11 +451,28 @@ function _StoreLogic:LoadGroupMembers(groupId)
     return _members
 end
 
-function _StoreLogic:SaveItems(items)
-    LocalDataManager:Save("local_Items", items)
+function _StoreLogic:SaveOwnEquips(items)
+    LocalDataManager:Save("local_own_equips", items)
 end
-function _StoreLogic:LoadItems()
-    local key = "local_Items"
+function _StoreLogic:LoadOwnEquips()
+    local key = "local_own_equips"
+    local itemsTab = LocalDataManager:Load(key)
+    local _items = {}
+    if itemsTab then
+        for i,mem in pairs(itemsTab) do
+            local _m = Equip.new()
+            _m:Init(mem)
+            table.insert(_items, _m)
+        end
+    end
+    return _items
+end
+
+function _StoreLogic:SaveAllItems(items)
+    LocalDataManager:Save("local_own_items", items)
+end
+function _StoreLogic:LoadAllItems()
+    local key = "local_own_items"
     local itemsTab = LocalDataManager:Load(key)
     local _items = {}
     if itemsTab then
