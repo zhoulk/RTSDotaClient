@@ -17,7 +17,7 @@ local ItemLogic = require "PixelFarm.Modules.Logic.ItemLogic"
 local _StoreLogic = class()
 
 function _StoreLogic:Init()
-    MapLogic:ListenGuanKaUpdate(function(guanKas)
+    MapLogic:ListenGuanKaUpdate("", function(guanKas)
         if guanKas then
             for i,gk in pairs(guanKas) do
                 local oldGuanKas = self:LoadGuanKas(gk.ChapterId)
@@ -32,11 +32,13 @@ function _StoreLogic:Init()
                     end
                 end 
                 self:SaveGuanKas(gk.ChapterId, _guanKas)
+
+                Event.Brocast(EventType.GuanKaInfoChanged)
             end
         end
     end)
 
-    MapLogic:ListenChapterUpdate(function (chapters)
+    MapLogic:ListenChapterUpdate("", function (chapters)
         if chapters then
             for i,chapter in pairs(chapters) do
                 local oldChapters = self:LoadChapters()
@@ -51,6 +53,8 @@ function _StoreLogic:Init()
                     end
                 end 
                 self:SaveChapters(_chapters)
+
+                Event.Brocast(EventType.ChapterInfoChanged)
             end
         end
     end)
@@ -58,6 +62,8 @@ function _StoreLogic:Init()
     LoginLogic:ListenPlayerInfo("", function (player)
         if player then
             self:SavePlayer(player)
+
+            Event.Brocast(EventType.PlayerInfoChanged)
         end
     end)
 end
@@ -155,6 +161,19 @@ function _StoreLogic:AllChapters(userId, cb, force)
             cb(chapters)
         end
     end
+end
+
+function _StoreLogic:FindChapter(chapterId, cb)
+    self:AllChapters("", function (chapters)
+        for _, chapter in pairs(chapters) do
+            if chapter.Id == chapterId then
+                if cb then
+                    cb(chapter)
+                end
+                break
+            end
+        end
+    end)
 end
 
 function _StoreLogic:AllGuanKas(chapterId, cb, force)

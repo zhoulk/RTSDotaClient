@@ -1,6 +1,3 @@
-
-local StoreLogic = require "PixelFarm.Modules.Logic.StoreLogic"
-
 local _LoginLogic = class()
 
 -- 登录
@@ -28,7 +25,6 @@ function _LoginLogic:Login(accout, password, cb)
         print("[LoginLogic.Login] response = " .. tabStr(decode))
 
         if decode.code == "SUCCESS" then
-            self:SavePlayer(decode.player)
             if cb then
                 cb(true, nil, decode.player)
             end
@@ -70,7 +66,6 @@ function _LoginLogic:Registe(accout, password, cb)
         print(decode.err.msg)
         
         if decode.code == "SUCCESS" then
-            self:SavePlayer(decode.player)
             if cb then
                 cb(true, nil, decode.player)
             end
@@ -134,6 +129,7 @@ function _LoginLogic:AllZone(cb)
 end
 
 function _LoginLogic:ListenPlayerInfo(key, cb)
+    print("_LoginLogic:ListenPlayerInfo  key ==== " .. key)
     playerInfoUpdateHandlers[key] = cb
 
     local playerInfoUpdateNotifyFunc = function(buffer)
@@ -151,12 +147,7 @@ function _LoginLogic:ListenPlayerInfo(key, cb)
             end
         end
     end
-    print(Protocal.KeyOf("PlayerInfoNotify"))
     Event.AddListener(Protocal.KeyOf("PlayerInfoNotify"), playerInfoUpdateNotifyFunc) 
-end
-
-function _LoginLogic:SavePlayer(player)
-    StoreLogic:SavePlayer(player)
 end
 
 return _LoginLogic

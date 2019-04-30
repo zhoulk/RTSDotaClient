@@ -63,4 +63,21 @@ function _M:ShowItemList()
     CtrlManager:CloseCtrl(MainCtrlNames.Main)
 end
 
+local playerInfoHandler
+function _M:ListenPlayerInfoChanged(cb)
+    if playerInfoHandler == nil then
+        playerInfoHandler = function ()
+            local player = StoreLogic:CurrentPlayer()
+            if cb then
+                cb(player)
+            end
+        end
+    end
+    Event.AddListener(EventType.PlayerInfoChanged, playerInfoHandler)
+end
+
+function _M:RemovePlayerInfoListen()
+    Event.RemoveListener(EventType.PlayerInfoChanged, playerInfoHandler)
+end
+
 return _M

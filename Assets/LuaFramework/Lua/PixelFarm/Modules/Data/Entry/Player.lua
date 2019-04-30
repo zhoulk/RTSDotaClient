@@ -1,7 +1,7 @@
 local _M = class()
 
 function _M:Init(p)
-    print("player init " .. tabStr(p))
+    -- print("player init " .. tabStr(p))
     p = p or {}
     self.UserId = p.UserId or ""
     self.Name = p.Name or ""
@@ -23,7 +23,7 @@ function _M:Init(p)
         self.BaseInfo.Level = p.BaseInfo.Level or 0
     end
 
-    print("player init end")
+    -- print("player init end")
 end
 
 return _M

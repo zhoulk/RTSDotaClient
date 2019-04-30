@@ -6,6 +6,8 @@ local _M = class(CtrlBase)
 
 function _M:StartView()
     print("ChapterDetailCtrl startView ~~~~~~~")
+    self.chapter = self.args[1]
+
 	ViewManager:Start(self, MoudleNames.Chapter, ChapterViewNames.ChapterDetail, PANEL_HIGH(), self.args)
 end
 
@@ -37,20 +39,41 @@ function _M:ShowBattle(guanKa)
     end)
 end
 
+local guankaInfoHandler
+local chapterInfoHandler
+
 function _M:ListenGuanKaUpdate(cb)
-    MapLogic:ListenGuanKaUpdate("ChapterDetailCtrl",function(guanKas)
-        if cb then
-            cb(guanKas)
+    if guankaInfoHandler == nil then
+        guankaInfoHandler = function ()
+            StoreLogic:AllGuanKas(self.chapter.Id, function (guanKas)
+                if cb then
+                    cb(guanKas)
+                end
+            end)
         end
-    end)
+    end
+    Event.AddListener(EventType.GuanKaInfoChanged,guankaInfoHandler)
+end
+
+function _M:RemoveGuanKaListen()
+    Event.RemoveListener(EventType.GuanKaInfoChanged,guankaInfoHandler)
 end
 
 function _M:ListenChapterUpdate(cb)
-    MapLogic:ListenChapterUpdate("ChapterDetailCtrl",function(chapters)
-        if cb then
-            cb(chapters)
+    if chapterInfoHandler == nil then
+        chapterInfoHandler = function ()
+            StoreLogic:FindChapter(self.chapter.Id, function (chapter)
+                if cb then
+                    cb(chapter)
+                end
+            end)
         end
-    end)
+    end
+    Event.AddListener(EventType.ChapterInfoChanged,chapterInfoHandler)
+end
+
+function _M:RemoveChapterListen()
+    Event.RemoveListener(EventType.GuanKaInfoChanged,chapterInfoHandler)
 end
 
 function _M:FindItems(itemIds, cb)

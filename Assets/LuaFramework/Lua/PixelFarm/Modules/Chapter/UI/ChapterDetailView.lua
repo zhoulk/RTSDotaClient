@@ -44,19 +44,10 @@ function _M:InitData()
         end
    end)
 
-   self.iCtrl:ListenChapterUpdate(function (chapters)
-       if chapters then
-        local isUpdate = false
-        for _,chapter in pairs(chapters) do
-            if chapter.Id == self.chapter.Id then
-                self.chapter = chapter
-                isUpdate = true
-                break
-            end
-        end
-        if isUpdate then
-            self:UpdateStars()
-        end
+   self.iCtrl:ListenChapterUpdate(function (chapter)
+       if chapter then
+        self.chapter = chapter
+        self:UpdateStars()
        end
    end)
 end
@@ -218,6 +209,7 @@ function _M:UpdateStars()
     self.starsBlock.gift2Text.text = self.chapter.GuanKaNum*2 .. "星"
     self.starsBlock.gift3Text.text = self.chapter.GuanKaNum*3 .. "星"
     if self.chapter.Star >= self.chapter.GuanKaNum then
+        self.starsBlock.gift3Image.color = Color(1, 1, 1, 1)
         self.starsBlock.gift1Obj:SetOnClick(function ()
             
         end)
@@ -225,6 +217,7 @@ function _M:UpdateStars()
         self.starsBlock.gift1Image.color = Color(0.5, 0.5, 0.5, 1)
     end
     if self.chapter.Star >= self.chapter.GuanKaNum*2 then
+        self.starsBlock.gift3Image.color = Color(1, 1, 1, 1)
         self.starsBlock.gift2Obj:SetOnClick(function ()
             
         end)
@@ -232,6 +225,7 @@ function _M:UpdateStars()
         self.starsBlock.gift2Image.color = Color(0.5, 0.5, 0.5, 1)
     end
     if self.chapter.Star >= self.chapter.GuanKaNum*3 then
+        self.starsBlock.gift3Image.color = Color(1, 1, 1, 1)
         self.starsBlock.gift3Obj:SetOnClick(function ()
             
         end)
@@ -254,7 +248,8 @@ function _M:OnBackClick()
 end
 
 function _M:OnDestroy()
-
+    self.iCtrl:RemoveGuanKaListen()
+    self.iCtrl:RemoveChapterListen()
 end
 
 return _M
