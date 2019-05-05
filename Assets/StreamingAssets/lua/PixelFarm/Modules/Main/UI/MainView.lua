@@ -21,6 +21,9 @@ function _M:InitData()
             self:UpdatePlayerUI(player)
         end
     end)
+    self.iCtrl:ListenPlayerInfoChanged(function (player)
+        self:UpdatePlayerUI(player)
+    end)
 end
 
 function _M:InitPlayerBlock(trans, path)
@@ -157,6 +160,7 @@ end
 
 function _M:OnItemClick()
     print("OnItemClick click")
+    self.iCtrl:ShowItemList()
 end
 
 function _M:OnEquipClick()
@@ -175,7 +179,7 @@ function _M:OnChapterClick()
 end
 
 function _M:OnDestroy()
-    
+    self.iCtrl:RemovePlayerInfoListen()
 end
 
 return _M

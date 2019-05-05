@@ -53,8 +53,9 @@ function _M:InitPosListBlock(trans, path)
         posItem.nameText = posObj.transform:Find("head/label"):GetComponent("Text")
         posItem.selectObj = posObj.transform:Find("select").gameObject
         posItem.selectObj:SetActive(false)
+        posItem.btn = posObj.transform:GetComponent("Button")
 
-        posObj:SetOnClick(function ()
+        posItem.btn.onClick:AddListener(function ()
             self:SelectPos(i)
         end)
 

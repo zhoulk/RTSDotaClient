@@ -21,6 +21,7 @@ MoudleNames = {
     Battle = "Battle",
     Group = "Group",
     Challenge = "Challenge",
+    Item = "Item",
 
     Test = "Test"
 }
@@ -47,6 +48,7 @@ require "PixelFarm.Modules.Chapter.ChapterDefine"
 require "PixelFarm.Modules.Battle.BattleDefine"
 require "PixelFarm.Modules.Group.GroupDefine"
 require "PixelFarm.Modules.Challenge.ChallengeDefine"
+require "PixelFarm.Modules.Item.ItemDefine"
 require "PixelFarm/Modules/Common/CommonDefine"
 require "PixelFarm/Modules/Test/TestDefine"
 

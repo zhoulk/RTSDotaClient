@@ -176,6 +176,11 @@ function _M:OnOneClick()
     print("OnOneClick click")
     self.iCtrl:RandomHero(self.camp, self.level, function (hero)
         self:ShowGainHero(hero)
+
+        self.iCtrl:HeroLottery(function (lottery)
+            self.lottery = lottery
+            self:UpdateLottery()
+        end)
     end)
 end
 
@@ -183,6 +188,11 @@ function _M:OnMoreClick()
     print("OnMoreClick click")
     self.iCtrl:RandomHero(self.camp, self.level, function (hero)
         self:ShowGainHero(hero)
+
+        self.iCtrl:HeroLottery(function (lottery)
+            self.lottery = lottery
+            self:UpdateLottery()
+        end)
     end)
 end
 

@@ -57,6 +57,7 @@ end
 
 function _M:RemoveGuanKaListen()
     Event.RemoveListener(EventType.GuanKaInfoChanged,guankaInfoHandler)
+    guankaInfoHandler = nil
 end
 
 function _M:ListenChapterUpdate(cb)
@@ -74,6 +75,7 @@ end
 
 function _M:RemoveChapterListen()
     Event.RemoveListener(EventType.GuanKaInfoChanged,chapterInfoHandler)
+    chapterInfoHandler = nil
 end
 
 function _M:FindItems(itemIds, cb)

@@ -9,8 +9,10 @@ function _LoginCtrl:StartView()
 end
 
 function _LoginCtrl:Login(accout, password)
-    LoginLogic:Login(accout,password,function (succeed, err)
+    LoginLogic:Login(accout,password,function (succeed, err, player)
         if succeed then
+            StoreLogic:SavePlayer(player)
+
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else
@@ -20,8 +22,10 @@ function _LoginCtrl:Login(accout, password)
 end
 
 function _LoginCtrl:Registe(accout, password)
-    LoginLogic:Registe(accout,password,function (succeed, err)
+    LoginLogic:Registe(accout,password,function (succeed, err, player)
         if succeed then
+            StoreLogic:SavePlayer(player)
+
             CtrlManager:OpenCtrl(MoudleNames.Main, MainCtrlNames.Main)
             CtrlManager:CloseCtrl(LoginCtrlNames.Login)
         else

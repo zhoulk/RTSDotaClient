@@ -67,6 +67,7 @@ local playerInfoHandler
 function _M:ListenPlayerInfoChanged(cb)
     if playerInfoHandler == nil then
         playerInfoHandler = function ()
+            print("ListenPlayerInfoChanged execute")
             local player = StoreLogic:CurrentPlayer()
             if cb then
                 cb(player)
@@ -78,6 +79,7 @@ end
 
 function _M:RemovePlayerInfoListen()
     Event.RemoveListener(EventType.PlayerInfoChanged, playerInfoHandler)
+    playerInfoHandler = nil
 end
 
 return _M

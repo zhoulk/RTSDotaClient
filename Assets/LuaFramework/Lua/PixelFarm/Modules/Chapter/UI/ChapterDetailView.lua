@@ -28,7 +28,6 @@ function _M:InitData()
    self:UpdateStars()
 
    self.iCtrl:ListenGuanKaUpdate(function (gks)
-       print("ChapterDetailView Update")
        for _, item in pairs(self.guanKaCache) do
             for _, gk in pairs(gks) do
                 if item.data ~= nil and item.data.Id == gk.Id then
@@ -209,7 +208,7 @@ function _M:UpdateStars()
     self.starsBlock.gift2Text.text = self.chapter.GuanKaNum*2 .. "星"
     self.starsBlock.gift3Text.text = self.chapter.GuanKaNum*3 .. "星"
     if self.chapter.Star >= self.chapter.GuanKaNum then
-        self.starsBlock.gift3Image.color = Color(1, 1, 1, 1)
+        self.starsBlock.gift1Image.color = Color(1, 1, 1, 1)
         self.starsBlock.gift1Obj:SetOnClick(function ()
             
         end)
@@ -217,7 +216,7 @@ function _M:UpdateStars()
         self.starsBlock.gift1Image.color = Color(0.5, 0.5, 0.5, 1)
     end
     if self.chapter.Star >= self.chapter.GuanKaNum*2 then
-        self.starsBlock.gift3Image.color = Color(1, 1, 1, 1)
+        self.starsBlock.gift2Image.color = Color(1, 1, 1, 1)
         self.starsBlock.gift2Obj:SetOnClick(function ()
             
         end)
