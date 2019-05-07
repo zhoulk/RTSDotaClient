@@ -23,6 +23,13 @@ function _M:Init(p)
         self.BaseInfo.Level = p.BaseInfo.Level or 0
     end
 
+    self.ExtendInfo = {
+        GroupId = ""
+    }
+    if p.ExtendInfo ~= nil then
+        self.ExtendInfo.GroupId = p.ExtendInfo.GroupId or ""
+    end
+
     -- print("player init end")
 end
 

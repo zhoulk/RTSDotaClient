@@ -1,5 +1,5 @@
 
-¡
+õ
 login.protomsg	err.proto"D
 LoginRequest
 account (	Raccount
@@ -24,11 +24,14 @@
 .msg.ErrorRerr
 zones (2	.msg.ZoneRzones"7
 PlayerInfoNotify#
-player (2.msg.PlayerRplayer"_
+player (2.msg.PlayerRplayer"ê
 Player
 UserId (	RUserId
 Name (	RName)
-BaseInfo (2.msg.BaseInfoRBaseInfo"≤
+BaseInfo (2.msg.BaseInfoRBaseInfo/
+
+ExtendInfo (2.msg.ExtendInfoR
+ExtendInfo"≤
 BaseInfo
 Gold (RGold
 Diamond (RDiamond
@@ -38,7 +41,10 @@
 
 LevelUpExp (R
 LevelUpExp
-MaxPower (RMaxPower"@
+MaxPower (RMaxPower"&
+
+ExtendInfo
+GroupId (	RGroupId"@
 Zone
 Id (	RId
 Name (	RName

@@ -1,6 +1,5 @@
 
-ê
-
+ó
 group.protomsg	err.proto"2
 GroupCreateRequest
 	groupName (	R	groupName"|
@@ -30,11 +29,32 @@
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr*
-members (2.msg.GroupMemberRmembers"@
+members (2.msg.GroupMemberRmembers"-
+GroupApplyRequest
+groupId (	RgroupId"Y
+GroupApplyResponse%
+code (2.msg.ResponseCodeRcode
+err (2
+.msg.ErrorRerr"4
+GroupApplyMembersRequest
+groupId (	RgroupId"Œ
+GroupApplyMembersResponse%
+code (2.msg.ResponseCodeRcode
+err (2
+.msg.ErrorRerr*
+members (2.msg.GroupMemberRmembers"X
 GroupOperRequest
 groupId (	RgroupId
-oper (Roper"X
+oper (Roper
+userId (	RuserId"X
 GroupOperResponse%
+code (2.msg.ResponseCodeRcode
+err (2
+.msg.ErrorRerr"D
+GroupContriRequest
+groupId (	RgroupId
+level (Rlevel"Z
+GroupContriResponse%
 code (2.msg.ResponseCodeRcode
 err (2
 .msg.ErrorRerr"¹

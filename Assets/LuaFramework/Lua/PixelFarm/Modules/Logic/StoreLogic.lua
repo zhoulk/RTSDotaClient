@@ -254,6 +254,33 @@ function _StoreLogic:OwnGroup(userId, cb, force)
     end
 end
 
+function _StoreLogic:AllGroup(cb, force)
+    local groups = self:LoadAllGroup()
+    if force or groups == nil then
+        GroupLogic:GroupList(function(succeed, err, gps)
+            print(gps)
+            if succeed then
+                local _groups = {}
+                if gps then
+                    for i,mem in pairs(gps) do
+                        local m = Group.new()
+                        m:Init(mem)
+                        table.insert(_groups, m)
+                    end
+                end
+                self:SaveAllGroup(_groups)
+                if cb then
+                    cb(_groups)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(groups)
+        end
+    end
+end
+
 function _StoreLogic:GroupMembers(groupId, cb, force)
     local members = self:LoadGroupMembers(groupId)
     if force or members == nil or #members == 0 then
@@ -459,6 +486,23 @@ function _StoreLogic:LoadOwnGroup(userId)
         _group:Init(groupTab)
     end
     return _group
+end
+
+function _StoreLogic:SaveAllGroup(gps)
+    LocalDataManager:Save("local_AllGroup", gps)
+end
+function _StoreLogic:LoadAllGroup()
+    local key = "local_AllGroup"
+    local groupTab = LocalDataManager:Load(key)
+    local _groups = {}
+    if groupTab then
+        for i,mem in pairs(groupTab) do
+            local _m = Group.new()
+            _m:Init(mem)
+            table.insert(_groups, _m)
+        end
+    end
+    return _groups
 end
 
 function _StoreLogic:SaveGroupMembers(groupId, members)
