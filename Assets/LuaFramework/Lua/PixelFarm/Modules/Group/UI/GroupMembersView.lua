@@ -4,9 +4,11 @@ function _M:OnCreate()
     print("GroupMemberView oncreate  ~~~~~~~")
     self.group = self.args[1]
     self.memberItemCache = {}
+    self.applyMemberItemCache = {}
 
     self.tabBlock = self:InitTabBlock(self.transform, "content/tabs")
     self.memberListBlock = self:InitMemberListBlock(self.transform, "content/memberList")
+    self.applyMemberListBlock = self:InitApplyMemberListBlock(self.transform, "content/applyMemberList")
 
     self.bgObj = self.transform:Find("bg").gameObject
     self.bgObj:SetOnClick(function ()
@@ -19,7 +21,14 @@ end
 function _M:InitData()
     self.iCtrl:GroupMembers(self.group.GroupId, function (members)
         self.members = members
+        self:RefreshMembers()
+
         self:OnClickTab(1)
+    end)
+    self.iCtrl:GroupApplyMembers(self.group.GroupId, function (members)
+        self.applyMembers = members
+        self:RefreshApplyMembers()
+
     end)
 end
 
@@ -33,9 +42,11 @@ function _M:OnClickTab(index)
     end
 
     if index == 1 then
-        self:RefreshMembers()
+        self.memberListBlock.gameObject:SetActive(true)
+        self.applyMemberListBlock.gameObject:SetActive(false)
     else
-
+        self.memberListBlock.gameObject:SetActive(false)
+        self.applyMemberListBlock.gameObject:SetActive(true)
     end
 end
 
@@ -93,6 +104,49 @@ function _M:RefreshMembers()
     end
 end
 
+function _M:RefreshApplyMembers()
+    if self.applyMembers then
+        for i,member in pairs(self.applyMembers) do
+            local memberItem = {}
+
+            if i <= #self.applyMemberItemCache then
+                memberItem = self.applyMemberItemCache[i]
+            else
+                local memberObj = newObject(self.applyMemberListBlock.memberItem)
+                memberObj.transform:SetParent(self.applyMemberListBlock.memberList.content, false)
+                memberObj.transform.localScale = Vector3(1,1,1)
+                memberObj:SetActive(true)
+    
+                memberItem.obj = memberObj
+                memberItem.nameText = memberObj.transform:Find("name"):GetComponent("Text")
+                memberItem.levelText = memberObj.transform:Find("level"):GetComponent("Text")
+                memberItem.powerText = memberObj.transform:Find("power/label"):GetComponent("Text")
+                memberItem.agreeBtn = memberObj.transform:Find("agreeBtn"):GetComponent("Button")
+                memberItem.adjustBtn = memberObj.transform:Find("adjustBtn"):GetComponent("Button")
+
+                table.insert(self.applyMemberItemCache, memberItem)
+            end
+
+            memberItem.data = member
+            memberItem.nameText.text = member.Name
+            memberItem.levelText.text = "LV." .. member.Level
+            memberItem.powerText.text = member.Power
+
+            memberItem.agreeBtn.onClick:AddListener(function ()
+                self:OnAgreeClick(member)
+            end)
+            memberItem.adjustBtn.onClick:AddListener(function ()
+                self:OnRejectClick(member)
+            end)
+        end
+
+        for i=#self.applyMembers+1 ,#self.applyMemberItemCache,1 do
+            memberItem = self.applyMemberItemCache[i]
+            memberItem.obj:SetActive(false)
+        end
+    end
+end
+
 function _M:InitTabBlock(trans, path)
     local block = {}
     local transform = trans:Find(path)
@@ -133,8 +187,48 @@ function _M:InitMemberListBlock(trans, path)
     return block
 end
 
+function _M:InitApplyMemberListBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.memberItem = transform:Find("item").gameObject
+    block.memberList = transform:GetComponent("ScrollRect")
+
+    return block
+end
+
 function _M:OnBackClick()
     self.iCtrl:Close()
+end
+
+function _M:OnAgreeClick(mem)
+    self.iCtrl:GroupAgree(self.group.GroupId, mem.UserId, function ()
+        self.iCtrl:GroupMembers(self.group.GroupId, function (members)
+            self.members = members
+            self:RefreshMembers()
+        end)
+        self.iCtrl:GroupApplyMembers(self.group.GroupId, function (members)
+            self.applyMembers = members
+            self:RefreshApplyMembers()
+    
+        end)
+    end)
+end
+
+function _M:OnRejectClick(mem)
+    self.iCtrl:GroupAgree(self.group.GroupId, mem.UserId, function ()
+        self.iCtrl:GroupMembers(self.group.GroupId, function (members)
+            self.members = members
+            self:RefreshMembers()
+        end)
+        self.iCtrl:GroupApplyMembers(self.group.GroupId, function (members)
+            self.applyMembers = members
+            self:RefreshApplyMembers()
+    
+        end)
+    end)
 end
 
 function _M:OnDestroy()

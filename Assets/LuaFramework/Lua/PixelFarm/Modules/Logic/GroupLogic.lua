@@ -4,6 +4,8 @@ local GroupOwnResponseFunc
 local GroupListResponseFunc
 local GroupCreateResponseFunc
 local GroupMembersResponseFunc
+local GroupApplyMembersResponseFunc
+local GroupOperResponseFunc
 local GroupApplyResponseFunc
 
 function _GroupLogic:GroupOwn(cb)
@@ -185,6 +187,82 @@ function _GroupLogic:GroupMembers(gid, cb)
     local code = protobuf.encode("msg.GroupMembersRequest", requestParams)
     local buffer = ByteBuffer.New()
     buffer:WriteShort(Protocal.KeyOf("GroupMembersRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
+function _GroupLogic:GroupApplyMembers(gid, cb)
+
+    if GroupApplyMembersResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("GroupApplyMembersResponse"), GroupApplyMembersResponseFunc) 
+    end
+    GroupApplyMembersResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[GroupLogic.GroupApplyMembers] response")
+
+        local decode = protobuf.decode("msg.GroupApplyMembersResponse", data)
+
+        print("[GroupLogic.GroupApplyMembers] response = " .. tabStr(decode))
+
+        if decode.code == "SUCCESS" then
+            -- self:SaveUid(decode.uid)
+            if cb then
+                cb(true, nil, decode.members)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("GroupApplyMembersResponse"), GroupApplyMembersResponseFunc) 
+
+    local requestParams = {
+        groupId = gid
+    }
+    local code = protobuf.encode("msg.GroupApplyMembersRequest", requestParams)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("GroupApplyMembersRequest"))
+    buffer:WriteBuffer(code)
+    networkMgr:SendMessage(buffer)
+end
+
+function _GroupLogic:GroupOper(gid, oper, userId, cb)
+
+    if GroupOperResponseFunc then
+        Event.RemoveListener(Protocal.KeyOf("GroupOperMembersResponse"), GroupOperResponseFunc) 
+    end
+    GroupOperResponseFunc = function(buffer)
+        local data = buffer:ReadBuffer()
+
+        print("[GroupLogic.GroupOper] response")
+
+        local decode = protobuf.decode("msg.GroupOperMembersResponse", data)
+
+        print("[GroupLogic.GroupOper] response = " .. tabStr(decode))
+
+        if decode.code == "SUCCESS" then
+            -- self:SaveUid(decode.uid)
+            if cb then
+                cb(true, nil)
+            end
+        else
+            if cb then
+                cb(false, decode.err)
+            end
+        end
+    end
+    Event.AddListener(Protocal.KeyOf("GroupOperMembersResponse"), GroupOperResponseFunc) 
+
+    local requestParams = {
+        groupId = gid,
+        oper = oper,
+        userId = userId
+    }
+    local code = protobuf.encode("msg.GroupOperMembersRequest", requestParams)
+    local buffer = ByteBuffer.New()
+    buffer:WriteShort(Protocal.KeyOf("GroupOperMembersRequest"))
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
 end

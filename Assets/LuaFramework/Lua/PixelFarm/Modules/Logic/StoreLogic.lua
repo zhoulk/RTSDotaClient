@@ -307,6 +307,32 @@ function _StoreLogic:GroupMembers(groupId, cb, force)
     end
 end
 
+function _StoreLogic:GroupApplyMembers(groupId, cb, force)
+    local members = self:LoadGroupApplyMembers(groupId)
+    if force or members == nil or #members == 0 then
+        GroupLogic:GroupApplyMembers(groupId, function(succeed, err, mbs)
+            if succeed then
+                local _members = {}
+                if mbs then
+                    for i,mem in pairs(mbs) do
+                        local m = GroupMember.new()
+                        m:Init(mem)
+                        table.insert(_members, m)
+                    end
+                end
+                self:SaveGroupApplyMembers(groupId, _members)
+                if cb then
+                    cb(_members)
+                end
+            end
+        end)
+    else
+        if cb then
+            cb(members)
+        end
+    end
+end
+
 function _StoreLogic:AllOwnEquips(userId, cb, force)
     local equips = self:LoadOwnEquips()
     print(tabStr(equips))
@@ -510,6 +536,23 @@ function _StoreLogic:SaveGroupMembers(groupId, members)
 end
 function _StoreLogic:LoadGroupMembers(groupId)
     local key = "local_GroupMembers_" .. groupId
+    local membersTab = LocalDataManager:Load(key)
+    local _members = {}
+    if membersTab then
+        for i,mem in pairs(membersTab) do
+            local _m = GroupMember.new()
+            _m:Init(mem)
+            table.insert(_members, _m)
+        end
+    end
+    return _members
+end
+
+function _StoreLogic:SaveGroupApplyMembers(groupId, members)
+    LocalDataManager:Save("local_GroupApplyMembers_" .. groupId, members)
+end
+function _StoreLogic:LoadGroupApplyMembers(groupId)
+    local key = "local_GroupApplyMembers_" .. groupId
     local membersTab = LocalDataManager:Load(key)
     local _members = {}
     if membersTab then
