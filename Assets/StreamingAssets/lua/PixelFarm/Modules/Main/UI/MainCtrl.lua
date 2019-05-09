@@ -45,7 +45,7 @@ function _M:ShowGroup()
             CtrlManager:OpenCtrl(MoudleNames.Group, GroupCtrlNames.GroupMain, group)
             CtrlManager:CloseCtrl(MainCtrlNames.Main)
         end
-    end)
+    end, true)
 end
 
 function _M:ShowHeroList()

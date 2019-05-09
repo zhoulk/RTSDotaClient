@@ -10,8 +10,8 @@ common_prefab.unity3d|7fd95601fd1953b899f23e3b1478dc6d
 common_prefab.unity3d.manifest|b9af0f2aa33381e921e280a33d44c48d
 equip_prefab.unity3d|bdd36d217a16e8e437b9e23c98e2f074
 equip_prefab.unity3d.manifest|9f4e1a24a25f64e059045c5f2a8dba59
-group_prefab.unity3d|6b6c86f658dfabc5f87943be9f4ff327
-group_prefab.unity3d.manifest|5b36f1e4b378a79d677a71771cfaae64
+group_prefab.unity3d|8488cffc6e67b36b3e351c2c1ea7aef9
+group_prefab.unity3d.manifest|720e4c95008c620ea77cc33ec08aa5ea
 hero_prefab.unity3d|21d424c1af5815253d84aa3a5b5ef277
 hero_prefab.unity3d.manifest|52b52739534847cb128876b20991c38d
 item_prefab.unity3d|a8656c29196fb78d9bc27015ec43aa41
@@ -24,8 +24,8 @@ main_prefab.unity3d|1ad7ada4d58e980e81b5decd61c749a6
 main_prefab.unity3d.manifest|6e8d7e5f1228114be39e7fe2fd3a06a0
 skill_prefab.unity3d|8b5dfdd2fad15200f48cf3db783f4c7e
 skill_prefab.unity3d.manifest|8552e1c4019001cc52bd6f7bb3d69b7a
-StreamingAssets|d7843d3e93a3a08e5dc4e5a1b308adc9
-StreamingAssets.manifest|45492f624e2156eeede50cbda9f7d8cc
+StreamingAssets|a5bcd729a9bdd5f426a6c033257da9fa
+StreamingAssets.manifest|27cead0eec366525d7a8235d6df663d9
 tavern_prefab.unity3d|b4e0b196573401d12e2b2434e5514885
 tavern_prefab.unity3d.manifest|2996efa802101599df21a1ca07d9e5a2
 test_prefab.unity3d|c10846f2b7d83baeb1959df0626ae097
@@ -164,8 +164,8 @@ lua/PixelFarm/Modules/Group/UI/GroupListCtrl.lua|5b66170da9454a3d1139713641766a5
 lua/PixelFarm/Modules/Group/UI/GroupListView.lua|2fb1fb3c4ac06f08c8067296aa268642
 lua/PixelFarm/Modules/Group/UI/GroupMainCtrl.lua|d48e1f576932f56934ccd00965df96b5
 lua/PixelFarm/Modules/Group/UI/GroupMainView.lua|541b49166e05ea4746c2f784ed071233
-lua/PixelFarm/Modules/Group/UI/GroupMembersCtrl.lua|1604b5c454ac40695438451c5f4b6c23
-lua/PixelFarm/Modules/Group/UI/GroupMembersView.lua|a2ff561019542cdad5365a30de21b671
+lua/PixelFarm/Modules/Group/UI/GroupMembersCtrl.lua|8f91d3d31c04764c2f3fc15d9de72e37
+lua/PixelFarm/Modules/Group/UI/GroupMembersView.lua|faa1d886f317f966261fef00d188c0f2
 lua/PixelFarm/Modules/Hero/HeroDefine.lua|0efedb8a19b467b49b3daa19926c61ca
 lua/PixelFarm/Modules/Hero/UI/HeroListCtrl.lua|9a490295391db967259e1930fe4c55be
 lua/PixelFarm/Modules/Hero/UI/HeroListView.lua|b7ad5c92f8d641cc20cf9684f41aa2f5
@@ -178,7 +178,7 @@ lua/PixelFarm/Modules/Loading/LoadingDefine.lua|5591b68dc908114e291be6945c9d72d1
 lua/PixelFarm/Modules/Loading/UI/LoadingCtrl.lua|224df39deff9a33501eb7f2284145299
 lua/PixelFarm/Modules/Loading/UI/LoadingView.lua|028337090f7a33fbe1aba03ac01cbece
 lua/PixelFarm/Modules/Logic/BattleLogic.lua|3e57f2d57515e80854d9cabe8e065d4f
-lua/PixelFarm/Modules/Logic/GroupLogic.lua|6837d6906be87585d5f29a40264d915e
+lua/PixelFarm/Modules/Logic/GroupLogic.lua|ca9e4a3b0a7d8743e31f999b995daca5
 lua/PixelFarm/Modules/Logic/HeroLogic.lua|4a5aff909b3bd9436c5c234ca03fdafa
 lua/PixelFarm/Modules/Logic/ItemLogic.lua|47d218354d15d5c5c4ec485b5ed9c630
 lua/PixelFarm/Modules/Logic/LoginLogic.lua|0f79b77e1ed324224918d3ca6b1420a9
@@ -189,7 +189,7 @@ lua/PixelFarm/Modules/Login/LoginDefine.lua|49e6d8039397e065ee5e207cea0eb3ef
 lua/PixelFarm/Modules/Login/UI/LoginCtrl.lua|d0fef3ebcc4d9aee84558d6e3953b3c2
 lua/PixelFarm/Modules/Login/UI/LoginView.lua|b6a49a208149b4259b676ce2f2d9a7a6
 lua/PixelFarm/Modules/Main/MainDefine.lua|7d62f90e6b8ad95f62b598f37e1ef63c
-lua/PixelFarm/Modules/Main/UI/MainCtrl.lua|5f78eb15da52a5de4c19d5ee9eba6fcf
+lua/PixelFarm/Modules/Main/UI/MainCtrl.lua|39defb13dd2450897a700b4f710b6978
 lua/PixelFarm/Modules/Main/UI/MainView.lua|fe9410e896b3bee0a07843008a6b3475
 lua/PixelFarm/Modules/Skill/SkillDefine.lua|62e2b4ea7f2f8b53a6ebc4154adcd18a
 lua/PixelFarm/Modules/Skill/UI/SkillCtrl.lua|96a9a988c4c04a8692a81e9ab50a400d

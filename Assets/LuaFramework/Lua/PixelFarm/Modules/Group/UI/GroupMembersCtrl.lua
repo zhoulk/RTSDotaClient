@@ -53,4 +53,16 @@ function _M:GroupReject(groupId, userId, cb)
     end)
 end
 
+function _M:GroupDel(groupId, userId, cb)
+    GroupLogic:GroupOper(groupId, 3, userId, function (succeed, err)
+        if succeed then
+            if cb then
+                cb()
+            end
+        else
+            toast(err.msg)
+        end
+    end)
+end
+
 return _M

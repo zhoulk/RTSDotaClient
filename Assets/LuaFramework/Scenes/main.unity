@@ -422,6 +422,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224658787801772678, guid: 58d1226fe7943cf4e9584d7bd84a9357,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1195214398411000, guid: 58d1226fe7943cf4e9584d7bd84a9357, type: 2}
       propertyPath: m_IsActive
       value: 0

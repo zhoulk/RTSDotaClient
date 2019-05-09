@@ -9,6 +9,7 @@ function _M:OnCreate()
     self.tabBlock = self:InitTabBlock(self.transform, "content/tabs")
     self.memberListBlock = self:InitMemberListBlock(self.transform, "content/memberList")
     self.applyMemberListBlock = self:InitApplyMemberListBlock(self.transform, "content/applyMemberList")
+    self.operBlock = self:InitOperBlock(self.transform, "detail")
 
     self.bgObj = self.transform:Find("bg").gameObject
     self.bgObj:SetOnClick(function ()
@@ -72,7 +73,7 @@ function _M:RefreshMembers()
                 memberItem.contriText = memberObj.transform:Find("contri/label"):GetComponent("Text")
                 memberItem.contriTotalText = memberObj.transform:Find("contriTotal/label"):GetComponent("Text")
                 memberItem.statusText = memberObj.transform:Find("status"):GetComponent("Text")
-                memberItem.detailBtn = memberObj.transform:Find("detailBtn").gameObject
+                memberItem.operBtn = memberObj.transform:Find("operBtn"):GetComponent("Button")
 
                 table.insert(self.memberItemCache, memberItem)
             end
@@ -95,6 +96,9 @@ function _M:RefreshMembers()
             else
                 memberItem.statusText.text = "今日捐献" .. member.ContriToday
             end
+            memberItem.operBtn.onClick:AddListener(function ()
+                self:OnOperClick(member)
+            end)
         end
 
         for i=#self.members+1 ,#self.memberItemCache,1 do
@@ -199,8 +203,83 @@ function _M:InitApplyMemberListBlock(trans, path)
     return block
 end
 
+function _M:InitOperBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.gameObject:SetOnClick(function ()
+        block.gameObject:SetActive(false)
+    end)
+
+    block.delBtn = transform:Find("bg/del").gameObject
+    block.jobBtn = transform:Find("bg/job").gameObject
+    block.giveBtn = transform:Find("bg/give").gameObject
+
+    block.jobs = self:InitJobsBlock(transform, "jobs")
+
+    block.delBtn:SetOnClick(function ()
+        self:OnDelClick()
+    end)
+    block.jobBtn:SetOnClick(function ()
+        self:OnJobClick()
+    end)
+    block.giveBtn:SetOnClick(function ()
+        self:OnGiveClick()
+    end)
+
+    return block
+end
+
+function _M:InitJobsBlock(trans, path)
+    local block = {}
+    local transform = trans:Find(path)
+    block.transform = transform
+    block.gameObject = transform.gameObject
+
+    block.gameObject:SetOnClick(function ()
+        block.gameObject:SetActive(false)
+    end)
+
+    block.secondLeaderBtn = transform:Find("jobList/secondLeader").gameObject
+    block.memberBtn = transform:Find("jobList/member").gameObject
+
+    return block
+end
+
 function _M:OnBackClick()
     self.iCtrl:Close()
+end
+
+function _M:OnOperClick(mem)
+    self.operBlock.data = mem
+    self.operBlock.gameObject:SetActive(true)
+end
+
+function _M:OnDelClick()
+    local mem = self.operBlock.data
+    self.iCtrl:GroupDel(self.group.GroupId, mem.UserId, function ()
+        self.iCtrl:GroupMembers(self.group.GroupId, function (members)
+            self.members = members
+            self:RefreshMembers()
+        end)
+        self.iCtrl:GroupApplyMembers(self.group.GroupId, function (members)
+            self.applyMembers = members
+            self:RefreshApplyMembers()
+    
+        end)
+
+        self.operBlock.gameObject:SetActive(false)
+    end)
+end
+
+function _M:OnJobClick()
+    self.operBlock.jobs.gameObject:SetActive(true)
+end
+
+function _M:OnGiveClick()
+    
 end
 
 function _M:OnAgreeClick(mem)
@@ -218,7 +297,7 @@ function _M:OnAgreeClick(mem)
 end
 
 function _M:OnRejectClick(mem)
-    self.iCtrl:GroupAgree(self.group.GroupId, mem.UserId, function ()
+    self.iCtrl:GroupReject(self.group.GroupId, mem.UserId, function ()
         self.iCtrl:GroupMembers(self.group.GroupId, function (members)
             self.members = members
             self:RefreshMembers()

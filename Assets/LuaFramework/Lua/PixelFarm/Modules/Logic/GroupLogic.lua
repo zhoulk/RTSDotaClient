@@ -231,14 +231,14 @@ end
 function _GroupLogic:GroupOper(gid, oper, userId, cb)
 
     if GroupOperResponseFunc then
-        Event.RemoveListener(Protocal.KeyOf("GroupOperMembersResponse"), GroupOperResponseFunc) 
+        Event.RemoveListener(Protocal.KeyOf("GroupOperResponse"), GroupOperResponseFunc) 
     end
     GroupOperResponseFunc = function(buffer)
         local data = buffer:ReadBuffer()
 
         print("[GroupLogic.GroupOper] response")
 
-        local decode = protobuf.decode("msg.GroupOperMembersResponse", data)
+        local decode = protobuf.decode("msg.GroupOperResponse", data)
 
         print("[GroupLogic.GroupOper] response = " .. tabStr(decode))
 
@@ -253,16 +253,16 @@ function _GroupLogic:GroupOper(gid, oper, userId, cb)
             end
         end
     end
-    Event.AddListener(Protocal.KeyOf("GroupOperMembersResponse"), GroupOperResponseFunc) 
+    Event.AddListener(Protocal.KeyOf("GroupOperResponse"), GroupOperResponseFunc) 
 
     local requestParams = {
         groupId = gid,
         oper = oper,
         userId = userId
     }
-    local code = protobuf.encode("msg.GroupOperMembersRequest", requestParams)
+    local code = protobuf.encode("msg.GroupOperRequest", requestParams)
     local buffer = ByteBuffer.New()
-    buffer:WriteShort(Protocal.KeyOf("GroupOperMembersRequest"))
+    buffer:WriteShort(Protocal.KeyOf("GroupOperRequest"))
     buffer:WriteBuffer(code)
     networkMgr:SendMessage(buffer)
 end
